@@ -22,7 +22,7 @@
                 <input type="text" class="form-control" name="password" id="password" placeholder="Nhập tài khoản..." required>
             </div>
             <button class="btn-submit" type="submit" name="submit">Login</button>
-            <a href="register.php" class="link">Sign Up</a>
+            <a href="register.html" class="link">Sign Up</a>
         </form>
     </div>
 </body>

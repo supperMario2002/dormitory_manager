@@ -39,7 +39,7 @@ class c_user extends controller {
                 $this->redirect($this->base_url(""));
                 
             }else{
-                echo "them that bai";
+                $_SESSION['err_login'] = "Tài khoản hoặc mật khẩu không đúng";
                 die();
             }
 
