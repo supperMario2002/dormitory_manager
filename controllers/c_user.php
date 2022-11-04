@@ -14,10 +14,10 @@ class c_user extends controller {
             $result = $insert->insert_account($username,md5($password),$email);
 
             if($result){
-                echo "them thanh cong";
+                $this->redirect($this->base_url("login.html"));
                 die();
             }else{
-                echo "them that bai";
+                echo "them that bai"; 
                 die();
             }
 

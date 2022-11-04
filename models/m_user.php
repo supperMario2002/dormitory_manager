@@ -9,7 +9,7 @@ class m_user extends DB{
             'password' => $b,
             'email' => $c,
         ];
-        $b = $this->a->insert('users', $data);
+        $b = $this->insert('users', $data);
         return $b;
     }
 

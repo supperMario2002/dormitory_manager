@@ -1,8 +1,9 @@
 <?php
-
-class c_home{
+include_once "core/controller.php";
+class c_home extends controller{
 
     public function index(){
-        include("views/home/index.php");
+        
+         $this->view("home/index");
     }
 }

@@ -2,7 +2,6 @@
 class controller{
     public function base_url($url = '')
     {
-        global $domain_block;
         $a = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER["HTTP_HOST"];
         if ($a == 'http://localhost') {
             $a = _WEB_ROOT;
@@ -14,5 +13,11 @@ class controller{
     {
         header("Location: {$url}");
         exit();
+    }
+
+    public function view($path){
+        $view = "views/".$path.".php";
+        $layout = "views/layout/layout.php";
+        include($layout);
     }
 }
