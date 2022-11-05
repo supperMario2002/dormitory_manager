@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-5">
-                        <a href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
+                        <a href="<?php echo _WEB_ROOT; ?>/student/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
                     </div>
                     <div class="col-sm-7">
                         <div class="text-sm-end">
@@ -28,7 +28,12 @@
                         </div>
                     </div><!-- end col-->
                 </div>
-
+                <?php if (isset($_SESSION["suc"])) : ?>
+                    <div class="alert alert-success " role="alert">
+                        <?php echo $_SESSION["suc"];
+                        unset($_SESSION["suc"]); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="table-responsive">
                     <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                         <thead>

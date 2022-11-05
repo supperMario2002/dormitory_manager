@@ -12,7 +12,7 @@ if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
 $forder = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),'', str_replace('\\','/', strtolower(_DIR_ROOT)));
 $web_root = trim($web_root . trim($forder, '\\'), '/');
 
-define('_WEB_ROOT', $web_root."/");
+define('_WEB_ROOT', $web_root);
 
 $request = new Request();
 $controllerName = $request->controller;

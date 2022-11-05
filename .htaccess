@@ -5,9 +5,9 @@ RewriteCond %{REQUEST_FILENAME}% !-f
 RewriteCond %{REQUEST_FILENAME}% !-l
 
 
-RewriteRule login.html$ index.php?controller=user&method=login
-RewriteRule register.html$ index.php?controller=user&method=register
-RewriteRule home.html$ index.php?controller=home&method=index
+RewriteRule login$ index.php?controller=user&method=login
+RewriteRule register$ index.php?controller=user&method=register
+RewriteRule home$ index.php?controller=home&method=index
 
-RewriteRule ^([a-z]+)/([a-z]+).html$ index.php?controller=$1&method=$2
+RewriteRule ^([a-z]+)/([a-z]+)$ index.php?controller=$1&method=$2
 RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)$ ?controller=$1&method=$2&id=$3

@@ -15,7 +15,7 @@ class m_user extends DB{
 
     function login_account($a,$b){
         $sql = "SELECT * FROM users WHERE username = '$a' AND password = '$b'";
-        $b = $this->get_list($sql);
+        $b = $this->get_row($sql);
         return $b;
     }
     

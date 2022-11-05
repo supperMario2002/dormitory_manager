@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= _WEB_ROOT ?>public/css/app.css">
+    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/public/css/app.css">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
             </div>
 
             <button class="btn-submit" type="submit" name="submit">Sign Up</button>
-            <a href="login.html" class="link">Login</a>
+            <a href="login" class="link">Login</a>
         </form>
     </div>
 </body>
