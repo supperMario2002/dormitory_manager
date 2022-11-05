@@ -14,6 +14,11 @@
         ?>
             <link href="<?= _WEB_ROOT ?>/public/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
             <link href="<?= _WEB_ROOT ?>/public/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+        <?php
+        } elseif (strpos($view, "room", 0) > 0) {
+        ?>
+            <link href="<?= _WEB_ROOT ?>/public/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
+            <link href="<?= _WEB_ROOT ?>/public/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
     <?php }
     } ?>
     <link href="<?= _WEB_ROOT ?>/public/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -73,6 +78,14 @@
             <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.dashboard.js"></script>
         <?php
         } elseif (strpos($view, "student", 0) > 0) {
+        ?>
+            <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery.dataTables.min.js"></script>
+            <script src="<?= _WEB_ROOT ?>/public/js/vendor/dataTables.bootstrap5.js"></script>
+            <script src="<?= _WEB_ROOT ?>/public/js/vendor/dataTables.responsive.min.js"></script>
+            <script src="<?= _WEB_ROOT ?>/public/js/vendor/responsive.bootstrap5.min.js"></script>
+            <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.datatable-init.js"></script>
+        <?php
+        } elseif (strpos($view, "room", 0) > 0) {
         ?>
             <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery.dataTables.min.js"></script>
             <script src="<?= _WEB_ROOT ?>/public/js/vendor/dataTables.bootstrap5.js"></script>

@@ -67,7 +67,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
                                     <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                        <!-- <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> -->
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -105,7 +105,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
                                     <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" />
+                                        <!-- <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> -->
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -132,7 +132,7 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <span class="account-user-avatar">
-                    <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <!-- <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle"> -->
                 </span>
                 <span>
                     <span class="account-user-name">Dominic Keller</span>
@@ -170,7 +170,7 @@
                 </a>
 
                 <!-- item-->
-                <a href="<?php echo _WEB_ROOT;?>/user/logout" class="dropdown-item notify-item">
+                <a href="<?= _WEB_ROOT;?>/user/logout" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout me-1"></i>
                     <span>Logout</span>
                 </a>

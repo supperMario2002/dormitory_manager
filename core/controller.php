@@ -24,9 +24,12 @@ class controller{
         exit();
     }
 
-    public function view($path){
+    public function view($path, $data = []){
         $view = "views/".$path.".php";
-        $layout = "views/layout/layout.php";
-        include($layout);
+        if(file_exists($view)){
+           $layout = "views/layout/layout.php";
+           require_once($layout); 
+        }
+        
     }
 }

@@ -19,18 +19,18 @@
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-5">
-                        <a href="<?php echo _WEB_ROOT; ?>/student/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
+                        <a href="<?= _WEB_ROOT; ?>/student/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
                     </div>
                     <div class="col-sm-7">
                         <div class="text-sm-end">
                             <button type="button" class="btn btn-light mb-2 me-1">Import</button>
                             <button type="button" class="btn btn-light mb-2">Export</button>
                         </div>
-                    </div><!-- end col-->
+                    </div>
                 </div>
                 <?php if (isset($_SESSION["suc"])) : ?>
                     <div class="alert alert-success " role="alert">
-                        <?php echo $_SESSION["suc"];
+                        <?= $_SESSION["suc"];
                         unset($_SESSION["suc"]); ?>
                     </div>
                 <?php endif; ?>
