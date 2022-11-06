@@ -70,17 +70,18 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="faculty" class="form-label">Khoa</label>
-                                <input type="text" id="faculty" name="faculty" class="form-control" placeholder="Nhập tên khoa...">
-                            </div>
-
-                            <div class="mb-3">
                                 <label for="room_id" class="form-label">Phòng</label>
                                 <select class="form-select" id="room_id" name="room_id">
-                                    <option value="">A101</option>
-                                    <option value="">A102</option>
-                                    <option value="">A103</option>
-                                    <option value="">A104</option>
+                                <?php
+                                    if (isset($data["room"])) {
+                                        var_dump($data);
+                                        foreach ($data["room"] as $key => $val) {
+                                    ?>
+                                            <option value="<?php echo $val["id"]; ?>"><?php echo $val["name"]; ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
 

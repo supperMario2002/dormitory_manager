@@ -9,10 +9,16 @@ class c_student extends controller{
     }
 
     public function index(){
-        $this->view("student/index");
+        $student = new m_student();
+        $students = $student->get_all_students();
+        $rooms = $student->get_all_room();
+        $this->view("student/index", compact('students','rooms'));
     }
 
     public function create(){
+        
+        $student = new m_student();
+        $room = $student->get_all_room();
         if(isset($_POST["submit"])){
             $id = $_POST["id"];
             $name = $_POST["name"];
@@ -22,14 +28,12 @@ class c_student extends controller{
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $class = $_POST["class"];
-            $faculty = $_POST["faculty"];
             $room_id = $_POST["room_id"];
             $date_start = $_POST["date_start"];
             $date_end = $_POST["date_end"];
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0,1000).$_FILES['avatar']['name'] : "";
 
-            $student = new m_student();
-            $insert = $student->insert_student($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $faculty, $room_id, $date_start, $date_end,$avatar_url, $_SESSION['user_id']);
+            $insert = $student->insert_student($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $date_start, $date_end,$avatar_url);
 
             if($insert){
                 if ($avatar_url != "") {
@@ -48,6 +52,6 @@ class c_student extends controller{
                 $this->redirect($this->base_url("student/index"));
             }
         }
-        $this->view("student/create");
+        $this->view("student/create",compact('room'));
     }
 }

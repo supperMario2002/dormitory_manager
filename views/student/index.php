@@ -39,33 +39,66 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
+                                <th>Mã sinh viên</th>
                                 <th>Họ và tên</th>
-                                <th>Số điện thoại</th>
                                 <th>Email</th>
-                                <th>Hết hạn</th>
-                                <th>Status</th>
+                                <th>Phone</th>
+                                <th> </th>
                             </tr>
                         </thead>
-
-
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                            <tr>
-                                <td>Garrett Winters</td>
-                                <td>Accountant</td>
-                                <td>Tokyo</td>
-                                <td>63</td>
-                                <td>2011/07/25</td>
-                                <td>$170,750</td>
-                            </tr>
-                        </tbody>
+                            <?php
+                            if (isset($data["students"])) {
+                                foreach ($data["students"] as $key => $value) {
+                            ?>
+                                    <tr>
+                                        <td><?= $key + 1; ?></td>
+                                        <td><?= $value["id"]; ?></td>
+                                        <td><?= $value["name"]; ?></td>
+                                        <td><a href="mailto:<?= $value["email"]; ?>"><?= $value["email"]; ?></a></td>
+                                        <td><a href="tel:<?= $value["phone"]; ?>"><?= $value["phone"]; ?></a></td>
+                                        <td class="table-action">
+                                            <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["id"]; ?>"> <i class="mdi mdi-eye"></i></a>
+
+                                            <div class="modal fade" id="centermodal<?= $value["id"]; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myCenterModalLabel">Thông tin chi tiết</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                        </div>
+                                                        <div class="card text-center">
+                                                            <div class="modal-body">
+                                                                <img src="<?= _WEB_ROOT ?>/public/avatar/<?= $value["avatar"] ?>" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+                                                                <div class="text-start mt-3">
+                                                                    <p class="text-muted"><strong>Mã sinh viên:</strong> <span class="ms-2"><?= $value["id"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Họ và tên:</strong> <span class="ms-2"><?= $value["name"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Giới tính:</strong> <span class="ms-2"><?= ($value["sex"] == 0) ? "Nam" : "Nữ"; ?></span></p>
+                                                                    <p class="text-muted"><strong>Ngày sinh:</strong> <span class="ms-2"><?= $value["date_birth"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Địa chỉ:</strong> <span class="ms-2"><?= $value["address"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Email:</strong> <span class="ms-2"><?= $value["email"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Số điện thoại:</strong> <span class="ms-2"><?= $value["phone"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Lớp:</strong> <span class="ms-2"><?= $value["class"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?php foreach ($data["rooms"] as $k => $t) {
+                                                                                                                                                echo ($value["room_id"] == $t["id"]) ? $t["name"] : "";
+                                                                                                                                            } ?></span></p>
+                                                                    <p class="text-muted"><strong>Ngày đăng ký:</strong> <span class="ms-2"><?= $value["date_start"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Ngày hết hạn:</strong> <span class="ms-2"><?= $value["date_end"]; ?></span></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <a href="<?= $this->base_url("room/edit/" . $value["id"]) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
                     </table>
                 </div>
             </div>
