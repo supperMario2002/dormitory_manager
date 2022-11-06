@@ -18,6 +18,17 @@ class m_room extends DB{
         $sql = "SELECT * FROM rooms WHERE id = $id";
         return $this->get_row($sql);
     }
+
+    public function select_all_user(){
+        $sql = "SELECT id,name FROM users";
+        return $this->get_list($sql);
+    }
+
+    public function update_room($id, $name, $user_id, $status, $describes)
+    {
+        $sql = "UPDATE rooms SET name = '$name', user_id = '$user_id', status = '$status', describes = '$describes' WHERE id = '$id'";
+        return $this->query($sql);
+    }
 }
 
 ?>

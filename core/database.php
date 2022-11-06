@@ -16,50 +16,11 @@ class DB
             mysqli_close($this->ketnoi);
         }
     }
-    public function site($data)
-    {
-        $this->connect();
-        $row = $this->ketnoi->query("SELECT * FROM `settings` WHERE `name` = '$data' ")->fetch_array();
-        return $row['value'];
-    }
     public function query($sql)
     {
         $this->connect();
         $row = $this->ketnoi->query($sql);
         return $row;
-    }
-     function insert($table, $data)
-    {
-        $this->connect();
-        $field_list = '';
-        $value_list = '';
-        foreach ($data as $key => $value) {
-            $field_list .= ",$key";
-            $value_list .= ",'".mysqli_real_escape_string($this->ketnoi, $value)."'";
-        }
-        $sql = 'INSERT INTO '.$table. '('.trim($field_list, ',').') VALUES ('.trim($value_list, ',').')';
-
-        return mysqli_query($this->ketnoi, $sql);
-    }
-    public function update($table, $data, $where)
-    {
-        $this->connect();
-        $sql = '';
-        foreach ($data as $key => $value) {
-            $sql .= "$key = '".mysqli_real_escape_string($this->ketnoi, $value)."',";
-        }
-        $sql = 'UPDATE '.$table. ' SET '.trim($sql, ',').' WHERE '.$where;
-        return mysqli_query($this->ketnoi, $sql);
-    }
-    public function update_value($table, $data, $where, $value1)
-    {
-        $this->connect();
-        $sql = '';
-        foreach ($data as $key => $value) {
-            $sql .= "$key = '".mysqli_real_escape_string($this->ketnoi, $value)."',";
-        }
-        $sql = 'UPDATE '.$table. ' SET '.trim($sql, ',').' WHERE '.$where.' LIMIT '.$value1;
-        return mysqli_query($this->ketnoi, $sql);
     }
     public function remove($table, $where)
     {

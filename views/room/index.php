@@ -48,8 +48,8 @@
 
                     <tbody>
                         <?php
-                        if (isset($data)) {
-                            foreach ($data as $key => $value) {
+                        if (isset($data["list_room"])) {
+                            foreach ($data["list_room"] as $key => $value) {
                         ?>
                                 <tr>
                                     <td><?= $key+1; ?></td>

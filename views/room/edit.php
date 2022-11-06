@@ -16,7 +16,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post">
                     <div class="row">
                         <div class="col-xl-3 "></div>
                         <div class="col-xl-6 ">
@@ -28,25 +28,30 @@
                             <?php endif; ?>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Tên phòng <span class="text-danger">(*)</span></label>
-                                <input type="text" id="name" name="name" class="form-control" value="<?= $data["name"]; ?>" placeholder="Nhập tên" required>
+                                <input type="text" id="name" name="name" class="form-control" value="<?= $data["room"]["name"]; ?>" placeholder="Nhập tên" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="status1" class="form-label">Phòng</label>
                                 <select class="form-select" id="status1" name="status">
-                                    <option value="1" <?= ($data["status"]==1) ? "selected" : ""; ?>>Hoạt Động</option>
-                                    <option value="0" <?= ($data["status"]==0) ? "selected" : ""; ?>>Bảo Trì</option>
+                                    <option value="1" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Hoạt Động</option>
+                                    <option value="0" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Bảo Trì</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="user1" class="form-label">Người quản lý</label>
                                 <select class="form-select" id="user1" name="user_id">
-                                    <option value="1">Lương Văn Hòa</option>
-                                    <option value="2">Đỗ Kim Khánh</option>
-                                    <option value="3">Lưu Quang Vinh</option>
-                                    <option value="4">Nguyễn Đình Khang An</option>
-                                    <option value="5">Trần Ngọc Thắng</option>
+                                    <?php
+                                    if (isset($data["user"])) {
+                                        var_dump($data);
+                                        foreach ($data["user"] as $key => $val) {
+                                    ?>
+                                            <option value="<?php echo $val["id"]; ?>"><?php echo $val["name"]; ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
