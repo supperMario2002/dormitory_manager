@@ -34,6 +34,30 @@
                     <span> Quản lý phòng </span>
                 </a>
             </li>
+            <li class="side-nav-item">
+                <a href="<?= $this->base_url("room/index") ?>" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Quản lý người dùng </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="<?= $this->base_url("room/index") ?>" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Quản lý điện nước </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="<?= $this->base_url("room/index") ?>" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Quản lý thu/chi lưu trú </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="<?= $this->base_url("room/index") ?>" class="side-nav-link">
+                    <i class="uil-calender"></i>
+                    <span> Báo cáo thống kê </span>
+                </a>
+            </li>
         </ul>
     </div>
 

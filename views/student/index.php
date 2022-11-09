@@ -28,6 +28,12 @@
                         </div>
                     </div>
                 </div>
+                <?php if (isset($_SESSION["err"])) : ?>
+                    <div class="alert alert-danger " role="alert">
+                        <?= $_SESSION["err"];
+                        unset($_SESSION["err"]); ?>
+                    </div>
+                <?php endif; ?>
                 <?php if (isset($_SESSION["suc"])) : ?>
                     <div class="alert alert-success " role="alert">
                         <?= $_SESSION["suc"];
@@ -91,8 +97,8 @@
                                                 </div>
                                             </div>
 
-                                            <a href="<?= $this->base_url("room/edit/" . $value["id"]) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                <a href="<?= $this->base_url("student/edit/" . $value["id"]) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                <a href="<?= $this->base_url("student/delete/" . $value["id"]) ?>" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                             <?php
