@@ -5,10 +5,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="<?php _WEB_ROOT ?>">Trang chủ</a></li>
                     <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li> -->
-                    <li class="breadcrumb-item active">Sinh viên</li>
+                    <li class="breadcrumb-item active">Người dùng</li>
                 </ol>
             </div>
-            <h4 class="page-title">Quản lý sinh viên</h4>
+            <h4 class="page-title">Quản lý người dùng</h4>
         </div>
     </div>
 </div>
@@ -17,17 +17,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-5">
-                        <a href="<?= _WEB_ROOT; ?>/student/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="text-sm-end">
-                            <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                            <button type="button" class="btn btn-light mb-2">Export</button>
-                        </div>
-                    </div>
-                </div>
                 <?php if (isset($_SESSION["err"])) : ?>
                     <div class="alert alert-danger " role="alert">
                         <?= $_SESSION["err"];
@@ -45,24 +34,33 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã sinh viên</th>
+                                <th>Tên đăng nhập</th>
                                 <th>Họ và tên</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Trạng thái</th>
                                 <th> </th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            if (isset($data["students"])) {
-                                foreach ($data["students"] as $key => $value) {
+                            if (isset($data["user"])) {
+                                foreach ($data["user"] as $key => $value) {
+                                    if($value["id"] != 2){
                             ?>
                                     <tr>
                                         <td><?= $key + 1; ?></td>
-                                        <td><?= $value["id"]; ?></td>
+                                        <td><?= $value["username"]; ?></td>
                                         <td><?= $value["name"]; ?></td>
                                         <td><a href="mailto:<?= $value["email"]; ?>"><?= $value["email"]; ?></a></td>
                                         <td><a href="tel:<?= $value["phone"]; ?>"><?= $value["phone"]; ?></a></td>
+                                        <td>
+                                            <?php if ($value["status"] == 0) { ?>
+                                                <span class="badge bg-success">Hoạt động</span>
+                                            <?php } else { ?>
+                                                <span class="badge bg-danger">Khóa</span>
+                                            <?php } ?>
+                                        </td>
                                         <td class="table-action d-flex">
                                             <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["id"]; ?>"> <i class="mdi mdi-eye"></i></a>
 
@@ -77,33 +75,33 @@
                                                             <div class="modal-body">
                                                                 <img src="<?= _WEB_ROOT ?>/public/avatar/<?= $value["avatar"] ?>" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
                                                                 <div class="text-start mt-3">
-                                                                    <p class="text-muted"><strong>Mã sinh viên:</strong> <span class="ms-2"><?= $value["id"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Tên đăng nhập:</strong> <span class="ms-2"><?= $value["username"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Họ và tên:</strong> <span class="ms-2"><?= $value["name"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Giới tính:</strong> <span class="ms-2"><?= ($value["sex"] == 0) ? "Nam" : "Nữ"; ?></span></p>
                                                                     <p class="text-muted"><strong>Ngày sinh:</strong> <span class="ms-2"><?= $value["date_birth"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Địa chỉ:</strong> <span class="ms-2"><?= $value["address"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Email:</strong> <span class="ms-2"><?= $value["email"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Số điện thoại:</strong> <span class="ms-2"><?= $value["phone"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Lớp:</strong> <span class="ms-2"><?= $value["class"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?php foreach ($data["rooms"] as $k => $t) {
-                                                                                                                                                echo ($value["room_id"] == $t["id"]) ? $t["name"] : "";
-                                                                                                                                            } ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày đăng ký:</strong> <span class="ms-2"><?= $value["date_start"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày hết hạn:</strong> <span class="ms-2"><?= $value["date_end"]; ?></span></p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <a href="<?= $this->base_url("student/edit/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <form action="<?= $this->base_url("student/delete/" . $value["id"]) ?>" id="form-delete" method="get">
+                                            <?php if ($value["status"] == 1) { ?>
+                                                <a href="<?= $this->base_url("user/edit/" . $value['id']) ?>" class="action-icon" title="Mở"> <i class="mdi mdi-account-lock-open"></i></a>
+                                            <?php } else { ?>
+                                                <a href="<?= $this->base_url("user/edit/" . $value['id']) ?>" class="action-icon" title="Khóa"> <i class="mdi mdi-account-lock"></i></a>
+                                            <?php } 
+                                            if($_SESSION['user_id'] == 2){?>
+                                            <form action="<?= $this->base_url("user/delete/" . $value["id"]) ?>" id="form-delete" method="get">
                                                 <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
                                             </form>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                             <?php
+                                    }
                                 }
                             }
                             ?>
@@ -142,7 +140,7 @@
 
     }
 
-    #form-delete a:hover{
+    #form-delete a:hover {
         color: red;
     }
 

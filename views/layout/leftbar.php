@@ -1,6 +1,6 @@
 <div class="leftside-menu">
 
-    <a href="<?php _WEB_ROOT ?>" class="logo text-center logo-light">
+    <a href="<?php _WEB_ROOT ?>" class="logo text-center logo-light" style="margin-top: 18px;">
         <span class="logo-lg">
             <h2>Hunre</h2>
             <!-- <img src="assets/images/logo.png" alt="" height="16"> -->
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="<?= $this->base_url("room/index") ?>" class="side-nav-link">
+                <a href="<?= $this->base_url("user/index") ?>" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Quản lý người dùng </span>
                 </a>

@@ -12,7 +12,6 @@
 - Quản lý sinh viên (người thuê ký túc)
 - Quản lý người dùng
 - Quản lý phòng
-- Quản lý hợp đồng
 - Quản lý hóa đơn
 
 ### Công nghệ sử dụng
@@ -22,6 +21,12 @@
 - JS
 - PHP
 
+### Một số thư viện sử dụng
+- Bootraps5
+- Jquery
+- SweetAlert2
+- DataTable
+- jVectorMap
 
 ## License
 

@@ -28,6 +28,12 @@
                         </div>
                     </div>
                 </div>
+                <?php if (isset($_SESSION["err"])) : ?>
+                    <div class="alert alert-danger " role="alert">
+                        <?= $_SESSION["err"];
+                        unset($_SESSION["err"]); ?>
+                    </div>
+                <?php endif; ?>
                 <?php if (isset($_SESSION["suc"])) : ?>
                     <div class="alert alert-success " role="alert">
                         <?= $_SESSION["suc"];
@@ -40,6 +46,7 @@
                             <th>STT</th>
                             <th>Tên phòng</th>
                             <th>Người quản lý</th>
+                            <th>Số lượng</th>
                             <th>Trạng thái</th>
                             <th></th>
                         </tr>
@@ -52,21 +59,79 @@
                             foreach ($data["list_room"] as $key => $value) {
                         ?>
                                 <tr>
-                                    <td><?= $key+1; ?></td>
+                                    <td><?= $key + 1; ?></td>
                                     <td><?= $value["name"]; ?></td>
                                     <td><?= $value["name_user"]; ?></td>
                                     <td>
-                                        <?php if($value["status"] == 1){ ?>
-                                        <span class="badge bg-success">Hoạt động</span>
-                                        <?php }else{ ?>
-                                        <span class="badge bg-danger">Bảo trì</span>
+                                        <?php
+                                        $tong_student = 6;
+                                        $dem[$value["name"]] = 0;
+                                        foreach ($data['students'] as $student) {
+                                            if ($student["room_id"] == $value["id"]) {
+                                                $dem[$value["name"]]++;
+                                            }
+                                        }
+
+                                        echo $dem[$value["name"]] . "/" . $tong_student;
+                                        if ($dem[$value["name"]] == $tong_student) {
+                                            echo "<span class='badge bg-danger ms-2'>Đầy</span>";
+                                        } else {
+                                            echo "<span class='badge bg-success ms-2'>Thiếu</span>";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($value["status"] == 0) { ?>
+                                            <span class="badge bg-success">Hoạt động</span>
+                                        <?php } else { ?>
+                                            <span class="badge bg-danger">Bảo trì</span>
                                         <?php } ?>
                                     </td>
 
                                     <td class="table-action">
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                        <a href="<?= $this->base_url("room/edit/".$value["id"]) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["name"]; ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+
+                                        <div class="modal fade" id="centermodal<?= $value["name"]; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myCenterModalLabel">Thông tin chi tiết</h4>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                    </div>
+                                                    <div class="card text-center">
+                                                        <div class="modal-body">
+                                                            <div class="text-start mt-3">
+                                                                <div class="inbox-widget">
+                                                                    <?php
+                                                                    foreach ($data['students'] as $student) {
+                                                                        if ($student["room_id"] == $value["id"]) {
+                                                                    ?>
+                                                                            <div class="inbox-item">
+                                                                                <div class="inbox-item-img"><img src="<?= _WEB_ROOT ?>/public/avatar/<?= $student["avatar"] ?>" class="rounded-circle" alt=""></div>
+                                                                                <p class="inbox-item-author"><?= $student["name"] ?></p>
+                                                                                <p class="inbox-item-text">Ngày hết hạn: <?= $student["date_end"] ?></p>
+                                                                            </div>
+                                                                    <?php
+                                                                        }
+                                                                    }
+                                                                    if ($dem[$value["name"]] == 0) {
+                                                                        echo "<h3>Phòng trống</h3>";
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <a href="<?= $this->base_url("room/edit/" . $value["id"]) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                        <form action="<?= $this->base_url("room/delete/" . $value["id"]) ?>" class="form-delete" id="form-delete" method="get">
+                                            <a class=" btn-delete btn" > <i class="mdi mdi-delete"></i></a>
+                                        </form>
                                     </td>
                                 </tr>
                         <?php
@@ -79,3 +144,50 @@
         </div>
     </div>
 </div>
+
+<script>
+    const x = document.getElementsByClassName("form-delete");
+    for (let i = 0; i < x.length; i++) {
+        x[i].onclick = function() {
+            Swal.fire({
+                title: 'Bạn chắc chắn muốn xóa?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'OK',
+                denyButtonText: `Không`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        }
+    }
+</script>
+
+<style>
+    .inbox-item-img img {
+        height: 40px;
+    }
+
+    #form-delete {
+        font-size: 1.2rem;
+        display: inline-block;
+        padding: 0 3px;
+    }
+
+    #form-delete a {
+        color: #98a6ad;
+        padding: 0;
+        border: 0;
+
+    }
+
+    #form-delete a:hover {
+        color: red;
+    }
+
+    #form-delete a i {
+        font-size: 1.2rem;
+
+    }
+</style>

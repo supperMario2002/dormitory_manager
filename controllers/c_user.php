@@ -42,6 +42,7 @@ class c_user extends controller {
             }else{
                 $_SESSION['auth_login'] = $result['username'];
                 $_SESSION['user_id'] = $result['id'];
+                $_SESSION['status_user'] = $result['status'];
                 $this->redirect($this->base_url(""));
             }
 
@@ -54,4 +55,27 @@ class c_user extends controller {
         $this->redirect($this->base_url("login"));
     }
 
+    public function index(){
+        $result = new m_user();
+        $user = $result->getAllUser();
+        $this->view("user/index",compact('user'));
+    }
+
+    public function edit(){
+        if(isset($_GET['id'])){
+            $result = new m_user();
+            $check_status = $result->getStatusByUserId($_GET["id"]);
+            if($check_status["status"] == 0){
+                $edit = $result->editStatus($_GET["id"], 1);
+            }else{
+                $edit = $result->editStatus($_GET["id"], 0);
+            }
+            if(!$edit){
+                $_SESSION["err"] = "Lỗi không đổi trạng thái đc!!";
+            }else{
+                $_SESSION["suc"] = "Thay đổi trạng thái thành công!";
+            }
+            $this->redirect($this->base_url("user/index"));
+        }
+    }
 }

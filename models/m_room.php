@@ -29,6 +29,21 @@ class m_room extends DB{
         $sql = "UPDATE rooms SET name = '$name', user_id = '$user_id', status = '$status', describes = '$describes' WHERE id = '$id'";
         return $this->query($sql);
     }
+
+    public function select_student(){
+        $sql = "SELECT students.*, contracts.room_id,contracts.date_start, contracts.date_end FROM students INNER JOIN contracts ON students.id = contracts.student_id ";
+        return $this->get_list($sql);
+    }
+
+    public function delete_room($id){
+        $sql = "DELETE FROM rooms WHERE id=$id";
+        return $this->query($sql);
+    }
+
+    public function getStudentByRoomId($id){
+        $sql = "SELECT * FROM contracts WHERE room_id = $id";
+        return $this->get_list($sql);
+    }
 }
 
 ?>

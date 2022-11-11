@@ -11,8 +11,9 @@ class c_room extends controller{
     public function index(){
         $select = new m_room();
         $list_room = $select->select_room();
+        $students = $select->select_student();
 
-        $this->view("room/index", compact('list_room'));
+        $this->view("room/index", compact('list_room', 'students'));
     }
 
     public function create(){
@@ -56,6 +57,26 @@ class c_room extends controller{
             }
         }
         $this->view("room/edit", compact('room','user'));
+    }
+
+    public function delete(){
+        if(isset($_GET["id"])){
+            $result = new m_room();
+
+            $students = $result->getStudentByRoomId($_GET["id"]);
+            if(count($students) == 0){
+                $del = $result->delete_room($_GET["id"]);
+                if(!$del){
+                    $_SESSION["err"]="Không được xóa";
+                }else{
+                    $_SESSION["suc"] = "Xóa thành công";
+                }
+            }else{
+                $_SESSION["err"]="Không được xóa!! Vẫn còn người ở trong phòng!!";
+            }
+            
+            $this->redirect($this->base_url("room/index"));
+        }
     }
 
 }

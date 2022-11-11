@@ -3,8 +3,8 @@
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Phòng</a></li>
+                    <li class="breadcrumb-item"><a href="http://localhost/dormitory_manager/">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="http://localhost/dormitory_manager/room/index">Phòng</a></li>
                     <li class="breadcrumb-item active">Sửa phòng</li>
                 </ol>
             </div>
@@ -34,8 +34,8 @@
                             <div class="mb-3">
                                 <label for="status1" class="form-label">Phòng</label>
                                 <select class="form-select" id="status1" name="status">
-                                    <option value="1" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Hoạt Động</option>
-                                    <option value="0" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Bảo Trì</option>
+                                    <option value="1" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Hoạt Động</option>
+                                    <option value="0" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Bảo Trì</option>
                                 </select>
                             </div>
 

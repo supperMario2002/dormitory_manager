@@ -4,13 +4,14 @@ class m_user extends DB{
 
 
     function insert_account($a,$b,$c){
-        $data = [
-            'username' => $a,
-            'password' => $b,
-            'email' => $c,
-        ];
-        $b = $this->insert('users', $data);
-        return $b;
+        // $data = [
+        //     'username' => $a,
+        //     'password' => $b,
+        //     'email' => $c,
+        // ];
+        // $b = $this->insert('users', $data);
+        // return $b;
+        return false;
     }
 
     function login_account($a,$b){
@@ -18,6 +19,19 @@ class m_user extends DB{
         $b = $this->get_row($sql);
         return $b;
     }
-    
 
+    public function getAllUser(){
+        $sql = "SELECT * FROM users";
+        return $this->get_list($sql);
+    }
+
+    public function editStatus($id, $status){
+        $sql = "UPDATE users SET status = $status WHERE id = $id";
+        return $this->query($sql);
+    }
+
+    public function getStatusByUserId($id){
+        $sql = "SELECT status FROM users WHERE id = $id";
+        return $this->get_row($sql);
+    }
 }

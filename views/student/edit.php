@@ -66,7 +66,7 @@
 
                             <div class="mb-3">
                                 <label for="class" class="form-label">Lớp</label>
-                                <input type="text" id="class" name="class" class="form-control" value="<?= $data["student"]["class"]; ?>" placeholder="Nhập tên lớp...">
+                                <input type="text" id="class" name="class" class="form-control text-uppercase" value="<?= $data["student"]["class"]; ?>" placeholder="Nhập tên lớp...">
                             </div>
 
                             <div class="mb-3">
