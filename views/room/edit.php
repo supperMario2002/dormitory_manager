@@ -20,10 +20,9 @@
                     <div class="row">
                         <div class="col-xl-3 "></div>
                         <div class="col-xl-6 ">
-                            <?php if (isset($_SESSION["err"])) : ?>
+                            <?php if (isset($_COOKIE["err"])) : ?>
                                 <div class="alert alert-danger " role="alert">
-                                    <?= $_SESSION["err"];
-                                    unset($_SESSION["err"]); ?>
+                                    <?= $_COOKIE["err"]; ?>
                                 </div>
                             <?php endif; ?>
                             <div class="mb-3">

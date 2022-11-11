@@ -35,7 +35,7 @@ class c_user extends controller {
             $result = $insert->login_account($username,md5($password));
 
             if(!$result){
-                $_SESSION['error_login'] = "Tài khoản hoặc mật khẩu không đúng";
+                setcookie("error_login", "Sai tài khoản hoặc mật khẩu!", time()+1, "/","", 0);
                 $this->redirect($this->base_url("login"));
                 
                 
@@ -71,9 +71,9 @@ class c_user extends controller {
                 $edit = $result->editStatus($_GET["id"], 0);
             }
             if(!$edit){
-                $_SESSION["err"] = "Lỗi không đổi trạng thái đc!!";
+                setcookie("err", "Lỗi không đổi trạng thái đc!!", time()+1, "/","", 0);
             }else{
-                $_SESSION["suc"] = "Thay đổi trạng thái thành công!";
+                setcookie("suc", "Thay đổi trạng thái thành công!", time()+1, "/","", 0);
             }
             $this->redirect($this->base_url("user/index"));
         }

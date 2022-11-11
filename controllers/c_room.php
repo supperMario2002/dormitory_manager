@@ -27,9 +27,9 @@ class c_room extends controller{
             $result = $insert->insert_room($name, $user_id, $status, $describes);
 
             if(!$result){
-                $_SESSION["err"] = "Tên phòng đã có";
+                setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
             }else{
-                $_SESSION["suc"] = "Thêm phòng thành công";
+                setcookie("suc", "Thêm phòng thành công", time()+1, "/","", 0);
                 $this->redirect($this->base_url("room/index"));
             }
         }
@@ -49,9 +49,9 @@ class c_room extends controller{
                 $describes = $_POST["describes"];
                 $update = $select->update_room($_GET["id"],$name, $user_id, $status, $describes);
                 if(!$update){
-                    $_SESSION["err"] = "Tên phòng đã có";
+                    setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
                 }else{
-                    $_SESSION["suc"] = "Sửa phòng thành công";
+                    setcookie("suc", "Sửa phòng thành công", time()+1, "/","", 0);
                     $this->redirect($this->base_url("room/index"));
                 }
             }
@@ -67,12 +67,12 @@ class c_room extends controller{
             if(count($students) == 0){
                 $del = $result->delete_room($_GET["id"]);
                 if(!$del){
-                    $_SESSION["err"]="Không được xóa";
+                    setcookie("err", "Không được xóa!", time()+1, "/","", 0);
                 }else{
-                    $_SESSION["suc"] = "Xóa thành công";
+                    setcookie("suc", "Xóa thành công!", time()+1, "/","", 0);
                 }
             }else{
-                $_SESSION["err"]="Không được xóa!! Vẫn còn người ở trong phòng!!";
+                setcookie("err", "Không được xóa!! Vẫn còn người ở trong phòng!!", time()+1, "/","", 0);
             }
             
             $this->redirect($this->base_url("room/index"));

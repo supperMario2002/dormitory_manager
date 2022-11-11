@@ -50,7 +50,7 @@ class c_student extends controller
                         move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
                     }
                 }
-                $_SESSION['suc'] = "Thêm sinh viên thành công";
+                setcookie("suc", "Thêm sinh viên thành công!", time()+1, "/","", 0);
                 $this->redirect($this->base_url("student/index"));
             }
         }
@@ -84,7 +84,7 @@ class c_student extends controller
 
                 $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $date_start, $date_end, $avatar_url, $_GET["id"]);
                 if (!$update) {
-                    $_SESSION["err"] = "Cập nhật thất bại";
+                    setcookie("err", "Cập nhật thất bại!!", time()+1, "/","", 0);
                 } else {
                     if (!file_exists("public/avatar/".$avatar_url)) {
                         $filename = "public/avatar";
@@ -97,7 +97,7 @@ class c_student extends controller
                             move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
                         }
                     }
-                    $_SESSION["suc"] = "Cập nhật thành công";
+                    setcookie("suc", "Cập nhật thành công!!", time()+1, "/","", 0);
                     $this->redirect($this->base_url("student/index"));
                 }
             }
@@ -111,10 +111,10 @@ class c_student extends controller
             $result = new m_student();
             $del = $result->delete_student($_GET["id"]);
             if(!$del){
-                $_SESSION["err"]="Không được xóa";
+                setcookie("err", "Không được xóa!", time()+1, "/","", 0);
                 
             }else{
-                $_SESSION["suc"] = "Xóa thành công";
+                setcookie("suc", "Xóa thành công", time()+1, "/","", 0);
             }
             $this->redirect($this->base_url("student/index"));
         }

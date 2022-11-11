@@ -28,16 +28,14 @@
                         </div>
                     </div>
                 </div>
-                <?php if (isset($_SESSION["err"])) : ?>
+                <?php if (isset($_COOKIE["err"])) : ?>
                     <div class="alert alert-danger " role="alert">
-                        <?= $_SESSION["err"];
-                        unset($_SESSION["err"]); ?>
+                        <?= $_COOKIE["err"]; ?>
                     </div>
                 <?php endif; ?>
-                <?php if (isset($_SESSION["suc"])) : ?>
+                <?php if (isset($_COOKIE["suc"])) : ?>
                     <div class="alert alert-success " role="alert">
-                        <?= $_SESSION["suc"];
-                        unset($_SESSION["suc"]); ?>
+                        <?= $_COOKIE["suc"]; ?>
                     </div>
                 <?php endif; ?>
                 <div class="table-responsive">
