@@ -74,7 +74,6 @@
                                 <select class="form-select" id="room_id" name="room_id">
                                     <?php
                                     if (isset($data["room"])) {
-                                        var_dump($data);
                                         foreach ($data["room"] as $key => $val) {
                                     ?>
                                             <option value="<?php echo $val["id"]; ?>"><?php echo $val["name"]; ?></option>

@@ -15,9 +15,9 @@
     <div class="register-page">
         <form action="" method="post">
             <h2 class="text-align mb-20">Login</h2>
-            <?php if(isset($_COOKIE["error_login"])): ?>
+            <?php if(isset($_COOKIE["err"])): ?>
             <div class="alert alert-danger" role="alert">
-                <?php echo $_COOKIE["error_login"]; ?>
+                <?php echo $_COOKIE["err"]; ?>
             </div>
             <?php endif; ?>
             <div class="form-group">

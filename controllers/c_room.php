@@ -21,11 +21,9 @@ class c_room extends controller{
             $name = $_POST["name"];
             $status= $_POST["status"];
             $user_id = $_POST["user_id"];
-            $describes = $_POST["describes"];
 
             $insert = new m_room();
-            $result = $insert->insert_room($name, $user_id, $status, $describes);
-
+            $result = $insert->insert_room($name, $user_id, $status);
             if(!$result){
                 setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
             }else{

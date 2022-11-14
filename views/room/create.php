@@ -33,8 +33,8 @@
                             <div class="mb-3">
                                 <label for="status1" class="form-label">Phòng</label>
                                 <select class="form-select" id="status1" name="status">
-                                    <option value="0">Hoạt Động</option>
-                                    <option value="1">Bảo Trì</option>
+                                    <option value="1">Hoạt Động</option>
+                                    <option value="0">Bảo Trì</option>
                                 </select>
                             </div>
 
@@ -47,11 +47,6 @@
                                     <option value="4">Nguyễn Đình Khang An</option>
                                     <option value="5">Trần Ngọc Thắng</option>
                                 </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="describes" class="form-label">Thông tin</label>
-                                <textarea class="form-control" id="describes" name="describes" rows="5" placeholder="Nhập địa chỉ ..."></textarea>
                             </div>
 
                             <button type="submit" name="submit" class="btn btn-success">Gửi</button>

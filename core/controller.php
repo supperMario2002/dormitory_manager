@@ -4,12 +4,8 @@ class controller
 
     public function auth()
     {
-        if (!isset($_SESSION["auth_login"])) {
-            if ($_SESSION['status_user'] != 0) {
-                $_SESSION['error_login'] = "Chưa đăng nhập";
-            }else{
-                $_SESSION['error_login'] = "Tài khoản của bạn đã bị khóa";    
-            }
+        if (!isset($_SESSION["login"])) {
+            setcookie("err", "Chưa đăng nhập!!", time() + 1, "/", "", 0);
             $this->redirect($this->base_url("login"));
             die();
         }

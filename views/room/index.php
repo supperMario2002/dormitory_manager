@@ -79,7 +79,7 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <?php if ($value["status"] == 0) { ?>
+                                        <?php if ($value["status"] == 1) { ?>
                                             <span class="badge bg-success">Hoạt động</span>
                                         <?php } else { ?>
                                             <span class="badge bg-danger">Bảo trì</span>

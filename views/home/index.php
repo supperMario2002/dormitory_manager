@@ -36,7 +36,7 @@
                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Tổng số sinh viên</h5>
-                            <h3 class="mt-3 mb-3">36,254</h3>
+                            <h3 class="mt-3 mb-3"><?php echo count($data['students']); ?></h3>
                         </div>
                     </a>
                 </div>
@@ -50,7 +50,7 @@
                                 <i class="mdi mdi-calendar-remove widget-icon"></i>
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Sinh viên hết hạn</h5>
-                            <h3 class="mt-3 mb-3">232</h3>
+                            <h3 class="mt-3 mb-3"><?php echo count($data['students_end']); ?></h3>
                         </div>
                     </a>
                 </div>

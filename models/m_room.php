@@ -3,8 +3,10 @@ include "core/database.php";
 
 class m_room extends DB{
 
-    public function insert_room($name, $user_id, $status, $describes){
-        $sql = "INSERT INTO rooms VALUES (null,'$name',$user_id,'$status','$describes')";
+    public function insert_room($name, $user_id, $status){
+        $sql = "INSERT INTO rooms VALUES (null,'$name',$user_id,$status)";
+        var_dump($sql);
+        die();
         return $this->query($sql);
     }
 

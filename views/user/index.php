@@ -91,7 +91,7 @@
                                             <?php } else { ?>
                                                 <a href="<?= $this->base_url("user/edit/" . $value['id']) ?>" class="action-icon" title="Khóa"> <i class="mdi mdi-account-lock"></i></a>
                                             <?php } 
-                                            if($_SESSION['user_id'] == 2){?>
+                                            if($_SESSION['login']['id'] == 2){?>
                                             <form action="<?= $this->base_url("user/delete/" . $value["id"]) ?>" id="form-delete" method="get">
                                                 <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
                                             </form>

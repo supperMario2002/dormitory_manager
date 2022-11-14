@@ -1,3 +1,4 @@
+
 <div class="navbar-custom">
     <ul class="list-unstyled topbar-menu float-end mb-0">
 
@@ -8,7 +9,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
 
-                <!-- item-->
+
                 <div class="dropdown-item noti-title px-3">
                     <h5 class="m-0">
                         <span class="float-end">
@@ -22,7 +23,7 @@
                 <div class="px-3" style="max-height: 300px;" data-simplebar>
 
                     <h5 class="text-muted font-13 fw-normal mt-0">Today</h5>
-                    <!-- item-->
+
                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-2">
                         <div class="card-body">
                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -40,7 +41,7 @@
                         </div>
                     </a>
 
-                    <!-- item-->
+
                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                         <div class="card-body">
                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -60,7 +61,7 @@
 
                     <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
 
-                    <!-- item-->
+
                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                         <div class="card-body">
                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -80,7 +81,7 @@
 
                     <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
 
-                    <!-- item-->
+
                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                         <div class="card-body">
                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -98,7 +99,7 @@
                         </div>
                     </a>
 
-                    <!-- item-->
+
                     <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-2">
                         <div class="card-body">
                             <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
@@ -121,56 +122,56 @@
                     </div>
                 </div>
 
-                <!-- All-->
+
                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
                     View All
                 </a>
 
             </div>
         </li>
-
+        
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <span class="account-user-avatar">
-                    <!-- <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle"> -->
+                    <img src="<?php echo _WEB_ROOT."/public/avatar/".$_SESSION["login"]["avatar"]; ?>" alt="user-image" class="rounded-circle">
                 </span>
                 <span>
-                    <span class="account-user-name">Dominic Keller</span>
-                    <span class="account-position">Founder</span>
+                    <span class="account-user-name"><?php echo $_SESSION["login"]["name"]; ?></span>
+                    <span class="account-position">Admin</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                <!-- item-->
+
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
 
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+
+                <a href="j<?php echo _WEB_ROOT."user/profile"; ?>" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-circle me-1"></i>
                     <span>My Account</span>
                 </a>
 
-                <!-- item-->
+
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-edit me-1"></i>
                     <span>Settings</span>
                 </a>
 
-                <!-- item-->
+
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-lifebuoy me-1"></i>
                     <span>Support</span>
                 </a>
 
-                <!-- item-->
+
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-lock-outline me-1"></i>
                     <span>Lock Screen</span>
                 </a>
 
-                <!-- item-->
-                <a href="<?= _WEB_ROOT;?>/user/logout" class="dropdown-item notify-item">
+
+                <a href="<?= _WEB_ROOT; ?>/user/logout" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout me-1"></i>
                     <span>Logout</span>
                 </a>

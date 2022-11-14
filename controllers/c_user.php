@@ -35,14 +35,12 @@ class c_user extends controller {
             $result = $insert->login_account($username,md5($password));
 
             if(!$result){
-                setcookie("error_login", "Sai tài khoản hoặc mật khẩu!", time()+1, "/","", 0);
+                setcookie("err", "Sai tài khoản hoặc mật khẩu!", time()+1, "/","", 0);
                 $this->redirect($this->base_url("login"));
                 
                 
             }else{
-                $_SESSION['auth_login'] = $result['username'];
-                $_SESSION['user_id'] = $result['id'];
-                $_SESSION['status_user'] = $result['status'];
+                $_SESSION['login'] = $result;
                 $this->redirect($this->base_url(""));
             }
 
@@ -51,7 +49,7 @@ class c_user extends controller {
     }
 
     public function logout(){
-        unset($_SESSION['auth_login']);
+        session_destroy();
         $this->redirect($this->base_url("login"));
     }
 
@@ -77,5 +75,10 @@ class c_user extends controller {
             }
             $this->redirect($this->base_url("user/index"));
         }
+    }
+
+
+    public function profile() {
+        $this->redirect($this->base_url("user/profile"));
     }
 }
