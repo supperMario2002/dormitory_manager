@@ -17,8 +17,15 @@ define('_WEB_ROOT', $web_root);
 $request = new Request();
 $controllerName = $request->controller;
 $methodName = $request->method;
+$role = $request->role;
 
 // create controllerName
-require_once('controllers/' . $controllerName . '.php');
-$controller = new $controllerName();
-$controller->{$methodName}();
+if($role == "admin"){
+    require_once('controllers/admin/' . $controllerName . '.php');
+    $controller = new $controllerName();
+    $controller->{$methodName}();
+}else{
+    require_once('controllers/' . $controllerName . '.php');
+    $controller = new $controllerName();
+    $controller->{$methodName}();
+}

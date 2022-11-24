@@ -2,6 +2,10 @@
 require_once "core/database.php";
 class m_student extends DB
 {
+    public function get_all_user(){
+        $sql = "SELECT * FROM users";
+        return $this->get_list($sql);
+    }
 
     public function get_all_students()
     {
@@ -15,10 +19,11 @@ class m_student extends DB
         return $this->get_list($sql);
     }
 
-    public function insert_student($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $date_start, $date_end, $avatar_url)
+    public function insert_student($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $id_user_create, $date_start, $date_end, $avatar_url)
     {
         $sql = "INSERT INTO students VALUES ($id, '$name', $sex, '$date_birth', '$address', '$email', '$phone', '$class', '$avatar_url')";
-        $sql1 = "INSERT INTO contracts VALUES (null, $id, $room_id,'$date_start','$date_end',1,null)";
+        $sql1 = "INSERT INTO contracts VALUES (null, $id, $room_id, $id_user_create, '$date_start','$date_end')";
+
 
         $resulst = $this->query($sql);
         if ($resulst) {
@@ -26,7 +31,6 @@ class m_student extends DB
             if (!$resulst1) {
                 $sql2 = "DELETE FROM students WHERE id = $id";
                 $resulst2 = $this->query($sql2);
-                // die($sql2);
                 if ($resulst2) {
                     return false;
                 }
@@ -47,7 +51,7 @@ class m_student extends DB
     {
         $sql = "UPDATE students 
                 SET id=$id,name='$name',sex=$sex,date_birth='$date_birth',address='$address',email='$email',
-                phone='$phone',class='$class',avatar='$avatar_url' WHERE id = $id_edit";
+                phone='$phone',class='$class',avatar_url='$avatar_url' WHERE id = $id_edit";
         $sql1 = "UPDATE contracts SET room_id=$room_id,date_start='$date_start',date_end='$date_end' WHERE student_id = $id_edit";
         $resulst =  $this->query($sql);
         if(!$resulst){
@@ -61,4 +65,21 @@ class m_student extends DB
         $sql = "DELETE FROM students WHERE id=$id";
         return $this->query($sql);
     }
+
+    public function checkNumStudent(){
+        $sql = "SELECT rooms.id, COUNT(contracts.room_id) AS count FROM `contracts` RIGHT JOIN rooms ON contracts.room_id = rooms.id GROUP BY contracts.room_id";
+        return $this->get_list($sql);
+    }
+
+
+    public function checkIssetStudent($id){
+        $sql = "SELECT id FROM students WHERE id = $id";
+        return $this->get_list($sql);
+    }
+
+    public function getAllIdStudent(){
+        $sql = "SELECT id FROM students";
+        return $this->get_list($sql);
+    }
+
 }

@@ -5,9 +5,14 @@ RewriteCond %{REQUEST_FILENAME}% !-f
 RewriteCond %{REQUEST_FILENAME}% !-l
 
 
-RewriteRule login$ index.php?controller=user&method=login
-RewriteRule register$ index.php?controller=user&method=register
-RewriteRule home$ index.php?controller=home&method=index
+# RewriteRule register$ index.php?controller=user&method=register
+# RewriteRule ^([a-z]+)/([a-z]+)$ index.php?controller=$1&method=$2
+# RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)$ index.php?controller=$1&method=$2&id=$3
 
-RewriteRule ^([a-z]+)/([a-z]+)$ index.php?controller=$1&method=$2
-RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)$ ?controller=$1&method=$2&id=$3
+
+
+RewriteRule ^admin/forget-password$ index.php?role=admin&controller=user&method=forgetPassword
+RewriteRule ^admin/login$ index.php?role=admin&controller=user&method=login
+RewriteRule ^admin/$ index.php?role=admin&controller=home&method=index
+RewriteRule ^admin/([a-z]+)/([a-z]+)$ index.php?role=admin&controller=$1&method=$2
+RewriteRule ^admin/([a-z]+)/([a-z]+)/([0-9]+)$ index.php?role=admin&controller=$1&method=$2&id=$3

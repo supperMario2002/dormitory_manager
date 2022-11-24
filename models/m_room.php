@@ -3,10 +3,8 @@ include "core/database.php";
 
 class m_room extends DB{
 
-    public function insert_room($name, $user_id, $status){
-        $sql = "INSERT INTO rooms VALUES (null,'$name',$user_id,$status)";
-        var_dump($sql);
-        die();
+    public function insert_room($name, $price,$user_id, $status){
+        $sql = "INSERT INTO rooms VALUES (null,'$name',$price,$user_id,$status)";
         return $this->query($sql);
     }
 
@@ -26,14 +24,19 @@ class m_room extends DB{
         return $this->get_list($sql);
     }
 
-    public function update_room($id, $name, $user_id, $status, $describes)
+    public function update_room($id, $name, $user_id, $status)
     {
-        $sql = "UPDATE rooms SET name = '$name', user_id = '$user_id', status = '$status', describes = '$describes' WHERE id = '$id'";
+        $sql = "UPDATE rooms SET room_name = '$name', user_id = '$user_id', status = '$status' WHERE id = '$id'";
         return $this->query($sql);
     }
 
     public function select_student(){
         $sql = "SELECT students.*, contracts.room_id,contracts.date_start, contracts.date_end FROM students INNER JOIN contracts ON students.id = contracts.student_id ";
+        return $this->get_list($sql);
+    }
+
+    public function select_student_by_id($id){
+        $sql = "SELECT students.*, contracts.room_id,contracts.date_start, contracts.date_end FROM students INNER JOIN contracts ON students.id = contracts.student_id WHERE room_id = $id";
         return $this->get_list($sql);
     }
 
@@ -45,6 +48,12 @@ class m_room extends DB{
     public function getStudentByRoomId($id){
         $sql = "SELECT * FROM contracts WHERE room_id = $id";
         return $this->get_list($sql);
+    }
+
+    public function getAllUser(){
+        $sql = "SELECT * FROM users  WHERE role = 0 " ;
+        return $this->get_list($sql);
+
     }
 }
 

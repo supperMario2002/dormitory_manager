@@ -34,4 +34,9 @@ class m_user extends DB{
         $sql = "SELECT status FROM users WHERE id = $id";
         return $this->get_row($sql);
     }
+
+    public function checkEmail($email){
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        return $this->get_list($sql);
+    }
 }

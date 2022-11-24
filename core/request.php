@@ -3,6 +3,7 @@ class Request{
 
     public $controller = 'home';
     public $method = 'index';
+    public $role = null;
     public function __construct(){
         $this->getSystemParameters();
     }
@@ -24,6 +25,11 @@ class Request{
             $this->method = $this->get('method');
         }else{
             $this->method = $this->method;
+        }
+        if($this->get('role') != null){
+            $this->role = $this->get('role');
+        }else{
+            $this->role = $this->role;
         }
     }
 }

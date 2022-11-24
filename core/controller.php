@@ -6,8 +6,15 @@ class controller
     {
         if (!isset($_SESSION["login"])) {
             setcookie("err", "Chưa đăng nhập!!", time() + 1, "/", "", 0);
-            $this->redirect($this->base_url("login"));
+            $this->redirect($this->base_url("admin/login"));
             die();
+        }else{
+            if($_SESSION["login"]["status"] == 0){
+                setcookie("err", "Tài khoản bị khóa!!", time() + 1, "/", "", 0);
+                unset($_SESSION["login"]);
+                $this->redirect($this->base_url("admin/login"));
+                die();
+            }
         }
     }
 
@@ -30,8 +37,13 @@ class controller
     {
         $view = "views/" . $path . ".php";
         if (file_exists($view)) {
-            $layout = "views/layout/layout.php";
-            require_once($layout);
+            if(strlen(strstr($view, "admin")) > 0){
+                $layout = "views/admin/layout/layout.php";
+                require_once($layout);
+            }else{
+                $layout = "views/layout/layout.php";
+                require_once($layout);
+            }
         }
     }
 }
