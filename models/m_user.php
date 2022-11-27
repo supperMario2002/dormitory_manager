@@ -9,7 +9,7 @@ class m_user extends DB{
     }
 
     public function getAllUser(){
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM users WHERE role = 0";
         return $this->get_list($sql);
     }
 
@@ -29,7 +29,7 @@ class m_user extends DB{
     }
 
     public function insert_user($name, $sex, $date_birth, $address, $email, $phone, $username, $password, $avatar_url){
-        $sql = "INSERT INTO users VALUES (null, '$username', '$password','$name', $sex, '$date_birth', '$address', '$email', '$phone',  '$avatar_url', 0, 1)";
+        $sql = "INSERT INTO users VALUES (null, '$username', '$password','$name', $sex, '$date_birth', '$address', '$email', '$phone',  '$avatar_url', 0, 1 , 1)";
 
         return $this->query($sql);
     }

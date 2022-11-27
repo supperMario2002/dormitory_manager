@@ -19,11 +19,6 @@ class m_room extends DB{
         return $this->get_row($sql);
     }
 
-    public function select_all_user(){
-        $sql = "SELECT id,name FROM users";
-        return $this->get_list($sql);
-    }
-
     public function update_room($id, $name, $price, $user_id, $status, $max_num)
     {
         $sql = "UPDATE rooms SET room_name = '$name', price = $price, max_num = $max_num, user_id = $user_id, status = $status WHERE id = $id";

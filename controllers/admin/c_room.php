@@ -41,7 +41,7 @@ class c_room extends controller{
             $room_id = $_GET["id"];
             $select = new m_room();
             $room = $select->get_room_by_id($room_id);
-            $user = $select->select_all_user();
+            $user = $select->getAllUser();
             if(isset($_POST["submit"])){
                 $name = $_POST["name"];
                 $user_id = $_POST["user_id"];

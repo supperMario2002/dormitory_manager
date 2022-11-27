@@ -31,9 +31,14 @@
                                 <input type="text" id="username" name="username" class="form-control" placeholder="Nhập tài khoản..." required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Mật khẩu <span class="text-danger">(*)</span></label>
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Nhập mật khẩu..." required>
-                            </div>
+                                    <label for="password" class="form-label">Mật khẩu</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" id="password" name="password" class="form-control"  placeholder="Nhập mật khẩu">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
+                                </div>
 
                             <label for="gender" class="form-label">Giới tính</label>
                             <div class="mb-3">

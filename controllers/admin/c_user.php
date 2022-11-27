@@ -18,27 +18,27 @@ class c_user extends controller
         include "views/admin/auth/forget-password.php";
     }
 
-    public function register()
-    {
+    // public function register()
+    // {
 
-        if (isset($_POST["submit"])) {
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            $email = $_POST["email"];
+    //     if (isset($_POST["submit"])) {
+    //         $username = $_POST["username"];
+    //         $password = $_POST["password"];
+    //         $email = $_POST["email"];
 
-            $insert = new m_user();
-            $result = $insert->insert_account($username, md5($password), $email);
+    //         $insert = new m_user();
+    //         $result = $insert->insert_account($username, md5($password), $email);
 
-            if ($result) {
-                $this->redirect($this->base_url("login"));
-                die();
-            } else {
-                echo "them that bai";
-                die();
-            }
-        }
-        include "views/admin/auth/register.php";
-    }
+    //         if ($result) {
+    //             $this->redirect($this->base_url("login"));
+    //             die();
+    //         } else {
+    //             echo "them that bai";
+    //             die();
+    //         }
+    //     }
+    //     include "views/admin/auth/register.php";
+    // }
 
     public function login()
     {

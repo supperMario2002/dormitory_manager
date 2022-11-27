@@ -88,7 +88,7 @@
                                                     </div>
                                                     <div class="card text-center">
                                                         <div class="modal-body">
-                                                            <div class="text-start mt-3">
+                                                            <div class="text-start">
                                                                 <div class="inbox-widget">
                                                                     <?php
                                                                     foreach ($data['students'] as $student) {
@@ -108,7 +108,7 @@
                                                                     } else {
                                                                         ?>
                                                                         <form action="<?= $this->base_url("admin/room/editstudent/" . $value["id"]) ?>" method="GET">
-                                                                            <button type="submit" name="editStudent" class="btn btn-students">Sửa</button>
+                                                                            <button type="submit" name="editStudent" class="btn btn-info">Sửa</button>
                                                                         </form>
                                                                     <?php
                                                                     }
