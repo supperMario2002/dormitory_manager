@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="status1" class="form-label">Phòng</label>
+                                <label for="status1" class="form-label">Trạng thái</label>
                                 <select class="form-select" id="status1" name="status">
                                     <option value="1" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Hoạt Động</option>
                                     <option value="0" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Bảo Trì</option>
@@ -53,7 +53,19 @@
                                 </select>
                             </div>
 
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Giá phòng <span class="text-danger">(*)</span></label>
+                                <input type="number" class="form-control" id="price" name="price" value="<?= $data["room"]["price"]; ?>"  placeholder="Nhập giá tiền...">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="max_num" class="form-label">Số người ở tối đa <span class="text-danger">(*)</span></label>
+                                <input type="number" class="form-control" id="max_num" name="max_num" value="<?= $data["room"]["max_num"]; ?>"  placeholder="Nhập tổng số người có thể ở...">
+                            </div>
+
                             <button type="submit" name="submit" class="btn btn-success">Gửi</button>
+                            <button class="btn btn-secondary"><a href="<?= $this->base_url("admin/room/index") ?>" style="color: #ffffff;">Quay lại</a></button>
+                        
                         </div>
                     </div>
                 </form>

@@ -1,7 +1,6 @@
 <?php
 class controller
 {
-
     public function auth()
     {
         if (!isset($_SESSION["login"])) {

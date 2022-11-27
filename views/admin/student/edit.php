@@ -102,6 +102,7 @@
                                 <img src="" class="preview" height="120">
                             </div>
                             <button type="submit" name="submit" class="btn btn-success">Sửa</button>
+                            <button class="btn btn-secondary"><a href="<?= $this->base_url("admin/student/index") ?>" style="color: #ffffff;">Quay lại</a></button>
                         </div>
                     </div>
                 </form>

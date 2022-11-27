@@ -105,6 +105,41 @@ class c_user extends controller
 
     public function profile()
     {
-        $this->redirect($this->base_url("admin/user/profile"));
+        $this->view("admin/user/profile");
+    }
+
+    public function create(){
+        
+        if(isset($_POST["submit"])){
+            $result = new m_user();
+            $name = $_POST["name"];
+            $sex = $_POST["gender"];
+            $date_birth = $_POST["date_birth"];
+            $address = $_POST["address"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+            $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : "avatar-default.png";
+
+            $insert = $result->insert_user($name, $sex, $date_birth, $address, $email, $phone, $username, md5($password), $avatar_url);
+
+            if ($insert) {
+                if ($avatar_url != "") {
+
+                    $filename = "public/avatar";
+
+                    if (!file_exists($filename)) {
+                        mkdir($filename,  0777,  TRUE);
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
+                    } else {
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
+                    }
+                }
+                setcookie("suc", "Thêm quản trị viên thành công!", time()+1, "/","", 0);
+                $this->redirect($this->base_url("admin/user/index"));
+            }
+        }
+        $this->view("admin/user/create");
     }
 }

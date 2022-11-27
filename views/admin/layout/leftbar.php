@@ -12,9 +12,9 @@
     </a>
 
 
-    <div class="h-100" id="leftside-menu-container" data-simplebar>
+    <div class="" id="leftside-menu-container" data-simplebar>
 
-        <ul class="side-nav">
+        <ul class="side-nav" style="position: fixed;">
             <li class="side-nav-item">
                 <a href="<?= $this->base_url("admin/") ?>" class="side-nav-link">
                     <i class="uil-home-alt"></i>
@@ -23,48 +23,76 @@
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/student/index") ?>" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Quản lý sinh viên </span>
+                <a data-bs-toggle="collapse" href="#student" aria-expanded="false" aria-controls="student" class="side-nav-link">
+                    <i class="uil-location-point"></i>
+                    <span> Quản lý sinh viên  </span>
+                    <span class="menu-arrow"></span>
                 </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/room/index") ?>" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Quản lý phòng </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/user/index") ?>" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Quản lý người dùng </span>
-                </a>
-            </li>
-            <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
-                                <i class="uil-location-point"></i>
-                                <span> Quản lý hóa đơn </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarMaps">
-                                <ul class="side-nav-second-level">
-                                    <li>
-                                        <a href="<?= $this->base_url("admin/bill/createEWB") ?>">Điện nước</a>
-                                    </li>
-                                    <li>
-                                        <a href="maps-vector.html">Dịch vụ</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="collapse" id="student">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="<?= $this->base_url("admin/student/index") ?>">Danh sách sinh viên</a>
                         </li>
-            <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/room/index") ?>" class="side-nav-link">
-                    <i class="uil-calender"></i>
-                    <span> Quản lý thu/chi lưu trú </span>
-                </a>
+                        <li>
+                            <a href="<?= $this->base_url("admin/student/create") ?>">Thêm sinh viên</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/room/index") ?>" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="room" class="side-nav-link">
+                    <i class="uil-location-point"></i>
+                    <span> Quản lý phòng  </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="room">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="<?= $this->base_url("admin/room/index") ?>">Danh sách phòng</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->base_url("admin/room/create") ?>">Thêm phòng</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user" class="side-nav-link">
+                    <i class="uil-location-point"></i>
+                    <span> Quản lý người dùng</span>
+                    <span class="menu-arrow" ></span>
+                </a>
+                <div class="collapse" id="user">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="<?= $this->base_url("admin/user/index") ?>">Danh sách quản trị viên</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->base_url("admin/user/create") ?>">Thêm quản trị viên</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#bill" aria-expanded="false" aria-controls="bill" class="side-nav-link">
+                    <i class="uil-location-point"></i>
+                    <span> Quản lý hóa đơn </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="bill">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="<?= $this->base_url("admin/bill/list-electric-water") ?>">Điện nước</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->base_url("admin/bill/create-electric-water") ?>">Thêm hóa đơn điện nước</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="<?= $this->base_url("admin/home/statistic") ?>" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Báo cáo thống kê </span>
                 </a>

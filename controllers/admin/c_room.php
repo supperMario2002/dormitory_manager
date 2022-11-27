@@ -24,8 +24,9 @@ class c_room extends controller{
             $status= $_POST["status"];
             $user_id = $_POST["user_id"];
             $price  = $_POST["price"];
+            $max_num = $_POST["max_num"];
 
-            $result = $insert->insert_room($name, $price,$user_id, $status);
+            $result = $insert->insert_room($name, $price,$user_id, $status, $max_num);
             if(!$result){
                 setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
             }else{
@@ -46,12 +47,14 @@ class c_room extends controller{
                 $name = $_POST["name"];
                 $user_id = $_POST["user_id"];
                 $status= $_POST["status"];
-                $update = $select->update_room($_GET["id"],$name, $user_id, $status);
+                $price  = $_POST["price"];
+                $max_num = $_POST["max_num"];
+                $update = $select->update_room($_GET["id"],$name, $price, $user_id, $status, $max_num);
                 if(!$update){
                     setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
                 }else{
                     setcookie("suc", "Sửa phòng thành công", time()+1, "/","", 0);
-                    $this->redirect($this->base_url("room/index"));
+                    $this->redirect($this->base_url("admin/room/index"));
                 }
             }
         }

@@ -30,21 +30,15 @@
 
                                 <ul class="nav nav-pills nav-justified form-wizard-header mb-4">
                                     <li class="nav-item">
-                                        <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                        <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link nav-link1 rounded-0 pt-2 pb-2 ">
                                             <i class="mdi mdi-account-circle me-1"></i>
                                             <span class="d-none d-sm-inline">Xác thực</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item change-password">
-                                        <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                    <li class="nav-item change-password2">
+                                        <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link nav-link2 rounded-0 pt-2 pb-2">
                                             <i class="mdi mdi-face-profile me-1"></i>
                                             <span class="d-none d-sm-inline">Đổi mật khẩu</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a href="#basictab3" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                            <i class="mdi mdi-checkbox-marked-circle-outline me-1"></i>
-                                            <span class="d-none d-sm-inline">Kết thúc</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -88,24 +82,11 @@
                                         </div> <!-- end row -->
                                     </div>
 
-                                    <div class="tab-pane" id="basictab3">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="text-center">
-                                                    <h2 class="mt-0"><i class="mdi mdi-check-all"></i></h2>
-                                                    <h3 class="mt-0">Đổi tài mật khẩu thành công</h3>
-
-                                                    <p class="w-75 mb-2 mx-auto">Vui lòng đăng nhập!</p>
-                                                </div>
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row -->
-                                    </div>
-
                                     <ul class="list-inline wizard mb-0">
-                                        <li class="previous list-inline-item">
+                                        <!-- <li class="previous d-none list-inline-item">
                                             <a href="javascript:void(0);" class="btn btn-info">Quay lại</a>
-                                        </li>
-                                        <li class="next list-inline-item float-end">
+                                        </li> -->
+                                        <li class="next  list-inline-item float-end">
                                             <a  href="javascript:void(0);" class="btn btn-info btn-next">Tiếp tục</a>
                                         </li>
                                     </ul>
@@ -134,6 +115,7 @@
     <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.form-wizard.js"></script>
 
     <script>
+
         $("#email").on("change", function() {
             var email = $("#email").val();
             $.ajax({
@@ -149,7 +131,6 @@
                     }else{
                         $("#email").removeClass("form-err");
                         $(".invalid-feedback").removeClass("d-block");
-                        $(".change-password").click();
                     }
                 }
 

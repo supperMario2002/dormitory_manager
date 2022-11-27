@@ -9,7 +9,7 @@ class m_student extends DB
 
     public function get_all_students()
     {
-        $sql = "SELECT students.*, contracts.room_id,contracts.date_start, contracts.date_end FROM students INNER JOIN contracts ON students.id = contracts.student_id ";
+        $sql = "SELECT users.*, contracts.room_id,contracts.date_start, contracts.date_end FROM users INNER JOIN contracts ON users.username = contracts.student_id WHERE users.role = 1 ";
         return $this->get_list($sql);
     }
 

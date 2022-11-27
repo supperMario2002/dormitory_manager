@@ -4,7 +4,6 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Sinh viên</a></li>
                     <li class="breadcrumb-item active">Thêm sinh viên</li>
                 </ol>
             </div>
@@ -106,7 +105,7 @@
                                 <label class="avatar">Ảnh</label>
                                 <input class="form-control" type="file" name="avatar" id="avatar" accept=".jpg, .png">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-success">Success</button>
+                            <button type="submit" name="submit" class="btn btn-success">Thêm sinh viên</button>
                         </div>
                     </div>
                 </form>

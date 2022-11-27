@@ -23,4 +23,15 @@ class m_home extends DB{
         $sql = "SELECT * FROM users";
         return $this->get_list($sql);
     }
+    
+    public function getBgColor($id){
+        $sql = "SELECT color_scheme FROM users WHERE id = $id";
+        return $this->get_row($sql);
+
+    }
+
+    public function updateBgColor($valBg, $id){
+        $sql = "UPDATE users SET color_scheme = $valBg WHERE id = $id";
+        return $this->query($sql);
+    }
 }

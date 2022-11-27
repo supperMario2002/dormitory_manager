@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="status1" class="form-label">Phòng</label>
+                                <label for="status1" class="form-label">Trạng thái</label>
                                 <select class="form-select" id="status1" name="status">
                                     <option value="1">Hoạt Động</option>
                                     <option value="0">Bảo Trì</option>
@@ -48,11 +48,16 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="price" class="form-label">Tên phòng <span class="text-danger">(*)</span></label>
+                                <label for="price" class="form-label">Giá phòng <span class="text-danger">(*)</span></label>
                                 <input type="number" class="form-control" id="price" name="price"  placeholder="Nhập giá tiền...">
                             </div>
 
-                            <button type="submit" name="submit" class="btn btn-success">Gửi</button>
+                            <div class="mb-3">
+                                <label for="max_num" class="form-label">Số người ở tối đa <span class="text-danger">(*)</span></label>
+                                <input type="number" class="form-control" id="max_num" name="max_num"  placeholder="Nhập tổng số người có thể ở...">
+                            </div>
+
+                            <button type="submit" name="submit" class="btn btn-success">Tạo phòng</button>
                         </div>
                     </div>
                 </form>

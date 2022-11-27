@@ -1,6 +1,7 @@
 <?php
 @session_start();
 include_once "core/request.php";
+include_once "core/controller.php";
 define('_DIR_ROOT', __DIR__);
 
 if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
@@ -19,13 +20,16 @@ $controllerName = $request->controller;
 $methodName = $request->method;
 $role = $request->role;
 
+
 // create controllerName
 if($role == "admin"){
     require_once('controllers/admin/' . $controllerName . '.php');
-    $controller = new $controllerName();
-    $controller->{$methodName}();
 }else{
     require_once('controllers/' . $controllerName . '.php');
-    $controller = new $controllerName();
-    $controller->{$methodName}();
 }
+$controller = new $controllerName();
+if(!method_exists($controller, $methodName)){
+    include "views/admin/home/page-404.php";
+    die();
+}
+$controller->{$methodName}();

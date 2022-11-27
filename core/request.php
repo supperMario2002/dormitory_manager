@@ -32,4 +32,5 @@ class Request{
             $this->role = $this->role;
         }
     }
+    
 }

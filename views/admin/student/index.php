@@ -4,11 +4,10 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="<?php _WEB_ROOT ?>">Trang chủ</a></li>
-                    <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li> -->
-                    <li class="breadcrumb-item active">Sinh viên</li>
+                    <li class="breadcrumb-item active">Danh sách sinh viên</li>
                 </ol>
             </div>
-            <h4 class="page-title">Quản lý sinh viên</h4>
+            <h4 class="page-title">Danh sách sinh viên</h4>
         </div>
     </div>
 </div>
@@ -17,11 +16,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-5">
-                        <a href="<?= _WEB_ROOT; ?>/admin/student/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
-                    </div>
-                </div>
                 <?php if (isset($_COOKIE["err"])) : ?>
                     <div class="alert alert-danger " role="alert">
                         <?= $_COOKIE["err"]; ?>

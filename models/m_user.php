@@ -2,20 +2,8 @@
 require_once "core/database.php";
 class m_user extends DB{
 
-
-    function insert_account($a,$b,$c){
-        // $data = [
-        //     'username' => $a,
-        //     'password' => $b,
-        //     'email' => $c,
-        // ];
-        // $b = $this->insert('users', $data);
-        // return $b;
-        return false;
-    }
-
     function login_account($a,$b){
-        $sql = "SELECT * FROM users WHERE username = '$a' AND password = '$b'";
+        $sql = "SELECT *  FROM users WHERE username = '$a' AND password = '$b'";
         $b = $this->get_row($sql);
         return $b;
     }
@@ -38,5 +26,11 @@ class m_user extends DB{
     public function checkEmail($email){
         $sql = "SELECT * FROM users WHERE email = '$email'";
         return $this->get_list($sql);
+    }
+
+    public function insert_user($name, $sex, $date_birth, $address, $email, $phone, $username, $password, $avatar_url){
+        $sql = "INSERT INTO users VALUES (null, '$username', '$password','$name', $sex, '$date_birth', '$address', '$email', '$phone',  '$avatar_url', 0, 1)";
+
+        return $this->query($sql);
     }
 }

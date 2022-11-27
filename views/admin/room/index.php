@@ -17,11 +17,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-5">
-                        <a href="<?= _WEB_ROOT; ?>/admin/room/create" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm phòng</a>
-                    </div>
-                </div>
                 <?php if (isset($_COOKIE["err"])) : ?>
                     <div class="alert alert-danger " role="alert">
                         <?= $_COOKIE["err"]; ?>
@@ -58,7 +53,6 @@
                                     <td><?= number_format($value["price"]); ?></td>
                                     <td>
                                         <?php
-                                        $tong_student = 6;
                                         $dem[$value["room_name"]] = 0;
                                         foreach ($data['students'] as $student) {
                                             if ($student["room_id"] == $value["id"]) {
@@ -66,8 +60,8 @@
                                             }
                                         }
 
-                                        echo $dem[$value["room_name"]] . "/" . $tong_student;
-                                        if ($dem[$value["room_name"]] == $tong_student) {
+                                        echo $dem[$value["room_name"]] . "/" . $value["max_num"];
+                                        if ($dem[$value["room_name"]] == $value["max_num"]) {
                                             echo "<span class='badge bg-danger ms-2'>Đầy</span>";
                                         } else {
                                             echo "<span class='badge bg-success ms-2'>Thiếu</span>";
@@ -114,7 +108,7 @@
                                                                     } else {
                                                                         ?>
                                                                         <form action="<?= $this->base_url("admin/room/editstudent/" . $value["id"]) ?>" method="GET">
-                                                                            <button type="submit" name="editStudent" class="btn btn-info">Sửa</button>
+                                                                            <button type="submit" name="editStudent" class="btn btn-students">Sửa</button>
                                                                         </form>
                                                                     <?php
                                                                     }

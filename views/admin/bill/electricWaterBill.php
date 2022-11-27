@@ -4,11 +4,10 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="<?php _WEB_ROOT ?>">Trang chủ</a></li>
-                    <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li> -->
-                    <li class="breadcrumb-item active">Sinh viên</li>
+                    <li class="breadcrumb-item active">Danh sách điện nước</li>
                 </ol>
             </div>
-            <h4 class="page-title">Quản lý sinh viên</h4>
+            <h4 class="page-title">Danh sách điện nước</h4>
         </div>
     </div>
 </div>
@@ -17,11 +16,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col-sm-5">
-                        <a href="<?= _WEB_ROOT; ?>/admin/bill/createEWB" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Thêm sinh viên</a>
-                    </div>
-                </div>
                 <?php if (isset($_COOKIE["err"])) : ?>
                     <div class="alert alert-danger " role="alert">
                         <?= $_COOKIE["err"]; ?>
@@ -39,9 +33,7 @@
                                 <th>STT</th>
                                 <th>Mã hóa đơn</th>
                                 <th>Số điện sử dụng</th>
-                                <th>Tổng tiền điện</th>
                                 <th>Số nước sử dụng</th>
-                                <th>Tổng tiền nước</th>
                                 <th>Từ ngày</th>
                                 <th>Đến ngày</th>
                                 <th>Trạng thái</th>
@@ -49,15 +41,17 @@
                         </thead>
                         <tbody>
                             <?php
-                            if (isset($data["students"])) {
-                                foreach ($data["students"] as $key => $value) {
+                            if (isset($data["bill_ew"])) {
+                                foreach ($data["bill_ew"] as $key => $value) {
                             ?>
                                     <tr>
                                         <td><?= $key + 1; ?></td>
                                         <td><?= $value["id"]; ?></td>
-                                        <td><?= $value["name"]; ?></td>
-                                        <td><a href="mailto:<?= $value["email"]; ?>"><?= $value["email"]; ?></a></td>
-                                        <td><a href="tel:<?= $value["phone"]; ?>"><?= $value["phone"]; ?></a></td>
+                                        <td><?= $value["e_last"] - $value["e_first"]; ?></td>
+                                        <td><?= $value["w_last"] - $value["w_first"]; ?></td>
+                                        <td><?= $value["start_date"]; ?></td>
+                                        <td><?= $value["end_date"]; ?></td>
+                                        <td><?= $value["status"] == 0 ? "<span class='badge bg-danger'>Chưa thanh toán</span>" : "<span class='badge bg-success'>Đã thanh toán</span>"; ?></td>
                                         <td class="table-action d-flex">
                                             <a href="javascript:void(0);" class="action-icon" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["id"]; ?>"> <i class="mdi mdi-eye"></i></a>
 
@@ -70,23 +64,27 @@
                                                         </div>
                                                         <div class="card text-center">
                                                             <div class="modal-body">
-                                                                <div>
-                                                                    <img src="<?= _WEB_ROOT ?>/public/avatar/<?= $value["avatar_url"] ?>" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
-                                                                </div>
                                                                 <div class="text-start mt-3">
-                                                                    <p class="text-muted"><strong>Mã sinh viên:</strong> <span class="ms-2"><?= $value["id"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Họ và tên:</strong> <span class="ms-2"><?= $value["name"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Giới tính:</strong> <span class="ms-2"><?= ($value["sex"] == 0) ? "Nam" : "Nữ"; ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày sinh:</strong> <span class="ms-2"><?= $value["date_birth"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Địa chỉ:</strong> <span class="ms-2"><?= $value["address"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Email:</strong> <span class="ms-2"><?= $value["email"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Số điện thoại:</strong> <span class="ms-2"><?= $value["phone"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Lớp:</strong> <span class="ms-2"><?= $value["class"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?php foreach ($data["rooms"] as $k => $t) {
-                                                                                                                                                echo ($value["room_id"] == $t["id"]) ? $t["room_name"] : "";
-                                                                                                                                            } ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày đăng ký:</strong> <span class="ms-2"><?= $value["date_start"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày hết hạn:</strong> <span class="ms-2"><?= $value["date_end"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?= $value["room_name"] ?></span></p>
+                                                                    <p class="text-muted"><strong>Mã hóa đơn:</strong> <span class="ms-2"><?= $value["id"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Chỉ số điện đầu:</strong> <span class="ms-2"><?= $value["e_first"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Chỉ số điện cuối:</strong> <span class="ms-2"><?= $value["e_last"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Giá tiền trên 1 số điện:</strong> <span class="ms-2"><?= $value["price_per_e"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Tổng tiền điện:</strong> <span class="ms-2"><?= number_format($value["price_per_e"] * ($value["e_last"] - $value["e_first"])); ?> VND</span></p>
+                                                                    <p class="text-muted"><strong>Chỉ số nước đầu:</strong> <span class="ms-2"><?= $value["w_first"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Chỉ số nước cuối:</strong> <span class="ms-2"><?= $value["w_first"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Giá tiền trên 1 số nước:</strong> <span class="ms-2"><?= $value["price_per_w"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Tổng tiền nước:</strong> <span class="ms-2"><?= number_format($value["price_per_w"] * ($value["w_last"] - $value["w_first"])); ?> VND</span></p>
+                                                                    <p class="text-muted"><strong>Từ ngày:</strong> <span class="ms-2"><?= $value["start_date"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Đến ngày:</strong> <span class="ms-2"><?= $value["end_date"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Trạng thái :</strong> <span class="ms-2"><?= $value["status"] == 0 ? "<span class='badge bg-danger'>Chưa thanh toán</span>" : "<span class='badge bg-success'>Đã thanh toán</span>"; ?></span></p>
+                                                                    <?php
+                                                                    if ($value["status"] == 1) {
+                                                                    ?>
+                                                                        <p class="text-muted"><strong>Phương thức thanh toán</strong> <span class="ms-2"><?= $value["status"] == 0 ? "Chuyển khoản" : "Tiền mặt"; ?></span></p>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -94,10 +92,11 @@
                                                 </div>
                                             </div>
 
-                                            <a href="<?= $this->base_url("admin/student/edit/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <form action="<?= $this->base_url("admin/student/delete/" . $value["id"]) ?>" id="form-delete" method="get">
-                                                <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
-                                            </form>
+                                            <a href="<?= $this->base_url("admin/bill/edit-electric-water/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            
+                                            <!-- <form action="<?= $this->redirect($this->base_url("admin/bill/delete-electric-water/" . $value['id'])) ?>" id="form-delete" method="get">
+                                                <a class=" btn-delete btn" onclick="showAlert()" type="delete"> <i class="mdi mdi-delete"></i><?= $value["id"];?></a>
+                                            </form> -->
                                         </td>
                                     </tr>
                             <?php
@@ -139,7 +138,7 @@
 
     }
 
-    #form-delete a:hover{
+    #form-delete a:hover {
         color: red;
     }
 
