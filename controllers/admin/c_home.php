@@ -1,7 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "models/m_home.php";
-include_once "core/controller.php";
 class c_home extends controller{
 
     public function __construct()

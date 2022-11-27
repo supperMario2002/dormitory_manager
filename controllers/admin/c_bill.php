@@ -1,6 +1,5 @@
 <?php
 include "models/m_bill.php";
-include "core/controller.php";
 
 class c_bill extends controller{
     

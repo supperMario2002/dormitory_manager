@@ -28,8 +28,8 @@ if($role == "admin"){
     require_once('controllers/' . $controllerName . '.php');
 }
 $controller = new $controllerName();
-if(!method_exists($controller, $methodName)){
-    include "views/admin/home/page-404.php";
-    die();
-}
+// if(!method_exists($controller, $methodName)){
+//     include "views/admin/home/page-404.php";
+//     die();
+// }
 $controller->{$methodName}();

@@ -24,7 +24,7 @@
                         <div class="col-xl-6 ">
                             <div class="mb-3">
                                 <label for="id" class="form-label">Mã sinh viên <span class="text-danger">(*)</span></label>
-                                <input type="text" id="id" name="id" class="form-control" value="<?= $data["student"]["id"]; ?>" placeholder="Nhập mã sinh viên..." required>
+                                <input type="text" id="id" name="id" class="form-control" value="<?= $data["student"]["username"]; ?>" placeholder="Nhập mã sinh viên..." required>
                                 <div class="invalid-feedback">
                                     Mã sinh viên đã tồn tại vui lòng nhập lại
                                 </div>
@@ -65,11 +65,6 @@
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Số điện thoại <span class="text-danger">(*)</span></label>
                                 <input type="text" id="phone" name="phone" class="form-control" value="<?= $data["student"]["phone"]; ?>" placeholder="Nhập số điện thoại..." required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="class" class="form-label">Lớp</label>
-                                <input type="text" id="class" name="class" class="form-control text-uppercase" value="<?= $data["student"]["class"]; ?>" placeholder="Nhập tên lớp...">
                             </div>
 
                             <div class="mb-3">

@@ -1,6 +1,5 @@
 <?php
 include "models/m_student.php";
-include "core/controller.php";
 class c_student extends controller
 {
 
@@ -13,7 +12,7 @@ class c_student extends controller
     {
         $student = new m_student();
         $students = $student->get_all_students();
-        $rooms = $student->get_all_room();
+        $rooms = $student->getAllRooms();
         $this->view("admin/student/index", compact('students', 'rooms'));
     }
 
@@ -22,8 +21,8 @@ class c_student extends controller
 
         $student = new m_student();
         $user = $student->get_all_user();
-        $room = $student->get_all_room();
-        $numStudent = $student->checkNumStudent();
+        $room = $student->getAllRooms();
+        $check = $student->checkNumStudent();
 
         if(isset($_POST["idStudent"])){
             $check = $student->checkIssetStudent($_POST["idStudent"]);
@@ -37,20 +36,20 @@ class c_student extends controller
 
         if (isset($_POST["submit"])) {
             $id = $_POST["id"];
+            $password = "Sv".$id;
             $name = $_POST["name"];
             $sex = $_POST["gender"];
             $date_birth = $_POST["date_birth"];
             $address = $_POST["address"];
             $email = $_POST["email"];
             $phone = $_POST["phone"];
-            $class = $_POST["class"];
             $room_id = $_POST["room_id"];
             $date_start = $_POST["date_start"];
             $date_end = $_POST["date_end"];
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : "avatar-default.png";
             $id_user_create = $_SESSION['login']['id'];
 
-            $insert = $student->insert_student($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $id_user_create, $date_start, $date_end, $avatar_url);
+            $insert = $student->insert_student($id,md5($password), $name, $sex, $date_birth, $address, $email, $phone, $room_id, $id_user_create, $date_start, $date_end, $avatar_url);
 
             if ($insert) {
                 if ($avatar_url != "") {
@@ -68,7 +67,7 @@ class c_student extends controller
                 $this->redirect($this->base_url("admin/student/index"));
             }
         }
-        $this->view("admin/student/create", compact('room','numStudent'));
+        $this->view("admin/student/create", compact('room','check'));
     }
 
 
@@ -77,7 +76,7 @@ class c_student extends controller
         if (isset($_GET["id"])) {
             $result = new m_student();
             $student = $result->get_student_by_id($_GET["id"]);
-            $rooms = $result->get_all_room();
+            $rooms = $result->getAllRooms();
             $numStudent = $result->checkNumStudent();
 
             if(isset($_POST["idStudent"])){
@@ -100,7 +99,6 @@ class c_student extends controller
                 $address = $_POST["address"];
                 $email = $_POST["email"];
                 $phone = $_POST["phone"];
-                $class = $_POST["class"];
                 $room_id = $_POST["room_id"];
                 $date_start = $_POST["date_start"];
                 $date_end = $_POST["date_end"];
@@ -110,7 +108,7 @@ class c_student extends controller
                 }
 
 
-                $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $class, $room_id, $date_start, $date_end, $avatar_url, $_GET["id"]);
+                $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $room_id, $date_start, $date_end, $avatar_url, $_GET["id"]);
                 if (!$update) {
                     setcookie("err", "Cập nhật thất bại!!", time()+1, "/","", 0);
                 } else {

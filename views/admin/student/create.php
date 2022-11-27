@@ -19,11 +19,25 @@
             <div class="card-body">
                 <form id="form-check" action="" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-xl-3 "></div>
+                        <div class="col-xl-3 ">
+                            <span class="text-danger">
+                                Lưu ý: 
+                                <br>
+                                - Mã sinh viên đồng thời là tên đăng nhập cho người dùng là sinh viên.
+                                <br>
+                                - Mật khẩu  mặc định có dạng :  
+                                <br>
+                                "Sv" + mã sinh viên.
+                                <br>
+                                VD: Sv20111063009
+                                <br>
+                                - Sinh viên có thể đổi mật khẩu sau khi được cấp tài khoản.
+                            </span>
+                        </div>
                         <div class="col-xl-6 ">
                             <div class="mb-3">
-                                <label for="id" class="form-label">Mã sinh viên <span class="text-danger">(*)</span></label>
-                                <input type="text" id="id" name="id" class="form-control" placeholder="Nhập mã sinh viên..." required>
+                                <label for="id" class="form-label">Mã sinh viên  <span class="text-danger">(*)</span></label>
+                                <input type="number" id="id" name="id" class="form-control" placeholder="Nhập mã sinh viên..." required>
                                 <div class="invalid-feedback">
                                     Mã sinh viên đã tồn tại vui lòng nhập lại
                                 </div>
@@ -67,25 +81,18 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="class" class="form-label">Lớp</label>
-                                <input type="text" id="class" name="class" class="form-control text-uppercase" placeholder="Nhập tên lớp...">
-                            </div>
-
-                            <div class="mb-3">
                                 <label for="room_id" class="form-label">Phòng</label>
                                 <select class="form-select" id="room_id" name="room_id">
                                     <?php
                                     if (isset($data["room"])) {
                                         foreach ($data["room"] as $key => $val) {
-                                            foreach ($data["numStudent"] as $t) {
-                                                if ($val["id"] == $t["id"]) {
-                                                    if ($t["count"] < 6) {
+                                            
+                                                
                                     ?>
                                                         <option value="<?php echo $val["id"]; ?>"><?php echo $val["room_name"]; ?></option>
                                     <?php
-                                                    }
-                                                }
-                                            }
+                                                    
+                                           
                                         }
                                     }
                                     ?>

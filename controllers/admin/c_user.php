@@ -1,6 +1,5 @@
 <?php
 include_once "models/m_user.php";
-include_once "core/controller.php";
 class c_user extends controller
 {
 

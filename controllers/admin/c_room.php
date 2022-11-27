@@ -1,5 +1,4 @@
 <?php
-include "core/controller.php";
 include "models/m_room.php";
 class c_room extends controller{
 

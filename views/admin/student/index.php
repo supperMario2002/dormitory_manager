@@ -45,7 +45,7 @@
                             ?>
                                     <tr>
                                         <td><?= $key + 1; ?></td>
-                                        <td><?= $value["id"]; ?></td>
+                                        <td><?= $value["username"]; ?></td>
                                         <td><?= $value["name"]; ?></td>
                                         <td><a href="mailto:<?= $value["email"]; ?>"><?= $value["email"]; ?></a></td>
                                         <td><a href="tel:<?= $value["phone"]; ?>"><?= $value["phone"]; ?></a></td>
@@ -65,14 +65,13 @@
                                                                     <img src="<?= _WEB_ROOT ?>/public/avatar/<?= $value["avatar_url"] ?>" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
                                                                 </div>
                                                                 <div class="text-start mt-3">
-                                                                    <p class="text-muted"><strong>Mã sinh viên:</strong> <span class="ms-2"><?= $value["id"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Mã sinh viên:</strong> <span class="ms-2"><?= $value["username"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Họ và tên:</strong> <span class="ms-2"><?= $value["name"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Giới tính:</strong> <span class="ms-2"><?= ($value["sex"] == 0) ? "Nam" : "Nữ"; ?></span></p>
                                                                     <p class="text-muted"><strong>Ngày sinh:</strong> <span class="ms-2"><?= $value["date_birth"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Địa chỉ:</strong> <span class="ms-2"><?= $value["address"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Email:</strong> <span class="ms-2"><?= $value["email"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Số điện thoại:</strong> <span class="ms-2"><?= $value["phone"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Lớp:</strong> <span class="ms-2"><?= $value["class"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?php foreach ($data["rooms"] as $k => $t) {
                                                                                                                                                 echo ($value["room_id"] == $t["id"]) ? $t["room_name"] : "";
                                                                                                                                             } ?></span></p>
@@ -85,8 +84,8 @@
                                                 </div>
                                             </div>
 
-                                            <a href="<?= $this->base_url("admin/student/edit/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <form action="<?= $this->base_url("admin/student/delete/" . $value["id"]) ?>" id="form-delete" method="get">
+                                            <a href="<?= $this->base_url("admin/student/edit/" . $value['username']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <form action="<?= $this->base_url("admin/student/delete/" . $value["username"]) ?>" id="form-delete" method="get">
                                                 <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
                                             </form>
                                         </td>
