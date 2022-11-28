@@ -5,13 +5,13 @@ class controller
     {
         if (!isset($_SESSION["login"])) {
             setcookie("err", "Chưa đăng nhập!!", time() + 1, "/", "", 0);
-            $this->redirect($this->base_url("admin/login"));
+            $this->redirect($this->base_url("login"));
             die();
         }else{
             if($_SESSION["login"]["status"] == 0){
                 setcookie("err", "Tài khoản bị khóa!!", time() + 1, "/", "", 0);
                 unset($_SESSION["login"]);
-                $this->redirect($this->base_url("admin/login"));
+                $this->redirect($this->base_url("login"));
                 die();
             }
         }

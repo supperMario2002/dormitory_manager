@@ -65,38 +65,123 @@
 <div class="row">
     <div class="col-xl-12">
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title mt-0 mb-3">Thông tin</h4>
-                <p class="text-muted font-13">
-                    Hey
-                </p>
-
-                <hr />
-
-                <div class="text-start col-xl-5">
-                    <div class="mb-3">
-                        <label for="simpleinput" class="form-label">Text</label>
-                        <input type="text" id="simpleinput" class="form-control">
+        <form class="form-horizontal" action="" method="POST">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mt-0 mb-3">Thông tin</h4>
+                    <?php if (isset($_COOKIE["err"])) : ?>
+                        <div class="alert alert-danger " role="alert">
+                            <?= $_COOKIE["err"]; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (isset($_COOKIE["suc"])) : ?>
+                        <div class="alert alert-success " role="alert">
+                            <?= $_COOKIE["suc"]; ?>
+                        </div>
+                    <?php endif; ?>
+                    <hr />
+                    <div class="row mb-3">
+                        <label for="name" class="col-2 col-form-label">Họ và tên: </label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Nhập họ tên" value="<?php if (isset($_SESSION["login"]["name"])) {
+                                                                                                                                echo $_SESSION["login"]["name"];
+                                                                                                                            } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="username" class="col-2 col-form-label">Tên tài khoản: </label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Nhập tài khoản" value="<?php if (isset($_SESSION["login"]["username"])) {
+                                                                                                                                            echo $_SESSION["login"]["username"];
+                                                                                                                                        } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="password" class="col-2 col-form-label">Mật khẩu: </label>
+                        <div class="col-5">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Nhập mật khẩu" value="">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="username" class="col-2 col-form-label">Giới tính: </label>
+                        <div class="col-5">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="gender1" name="gender" value="0" class="form-check-input" <?php if (isset($_SESSION["login"]["sex"])) {
+                                                                                                                        if ($_SESSION["login"]["sex"] == 0) {
+                                                                                                                            echo "checked";
+                                                                                                                        }
+                                                                                                                    } ?>>
+                                <label class="form-check-label" for="gender1">Nam</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="gender2" name="gender" value="1" class="form-check-input" <?php if (isset($_SESSION["login"]["sex"])) {
+                                                                                                                        if ($_SESSION["login"]["sex"] == 1) {
+                                                                                                                            echo "checked";
+                                                                                                                        }
+                                                                                                                    } ?>>
+                                <label class="form-check-label" for="gender2">Nữ</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3" id="datepicker1">
+                        <label for="date_birth" class="col-2 col-form-label">Ngày sinh: </label>
+                        <div class="col-5 ">
+                            <input type="date" class="form-control" name="date_birth" id="date_birth" value="<?php if (isset($_SESSION["login"]["date_birth"])) {
+                                                                                                                    echo $_SESSION["login"]["date_birth"];
+                                                                                                                } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="address" class="col-2 col-form-label">Địa chỉ: </label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Nhập địa chỉ" value="<?php if (isset($_SESSION["login"]["address"])) {
+                                                                                                                                        echo $_SESSION["login"]["address"];
+                                                                                                                                    } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col-2 col-form-label">Email: </label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Nhập email" value="<?php if (isset($_SESSION["login"]["email"])) {
+                                                                                                                                echo $_SESSION["login"]["email"];
+                                                                                                                            } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="phone" class="col-2 col-form-label">Số điện thoại: </label>
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại" value="<?php if (isset($_SESSION["login"]["phone"])) {
+                                                                                                                                        echo $_SESSION["login"]["phone"];
+                                                                                                                                    } ?>">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="avatar" class="col-2 col-form-label">Ảnh đại diện: </label>
+                        <div class="col-5">
+                            <input class="form-control" type="file" name="avatar" alt="1" id="avatar" accept=".jpg, .png">
+                            <img src="" class="preview" height="120">
+                        </div>
                     </div>
 
-                    <p class="text-muted"><strong>Giới tính :</strong><span class="ms-2">(+12) 123 1234 567</span></p>
 
-                    <p class="text-muted"><strong>Ngày sing :</strong> <span class="ms-2">coderthemes@gmail.com</span></p>
-
-                    <p class="text-muted"><strong>Địa chỉ :</strong> <span class="ms-2">USA</span></p>
-
-                    <p class="text-muted"><strong>Email :</strong> <span class="ms-2">USA</span></p>
-
-                    <p class="text-muted"><strong>Số điện thoại :</strong> <span class="ms-2">USA</span></p>
-
+                    <div class="justify-content-end row">
+                        <div class="col-9">
+                            <button type="submit" name="submit" class="btn btn-info">Lưu thông tin</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
 
     </div>
-
-
-
-
 </div>
+
+<script>
+    const ipnFileElement = document.querySelector("#avatar")
+    const image = document.querySelector('.preview')
+
+    ipnFileElement.addEventListener('change', function(e) {
+        const src = URL.createObjectURL(e.target.files[0]);
+        image.src = src;
+    })
+</script>

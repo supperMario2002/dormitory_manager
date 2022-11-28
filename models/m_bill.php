@@ -48,8 +48,9 @@ class m_bill extends DB
     }
 
     public function deleteById($id){
+
         $sql = "DELETE FROM electric_water WHERE id = $id";
-        die($sql);
+
         return $this->query($sql);
     }
 }

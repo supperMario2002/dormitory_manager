@@ -20,7 +20,9 @@ $controllerName = $request->controller;
 $methodName = $request->method;
 $role = $request->role;
 
-
+// echo $controllerName;
+// echo $methodName;
+// die();
 // create controllerName
 if($role == "admin"){
     require_once('controllers/admin/' . $controllerName . '.php');

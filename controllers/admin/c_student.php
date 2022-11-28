@@ -24,11 +24,11 @@ class c_student extends controller
         $room = $student->getAllRooms();
         $check = $student->checkNumStudent();
 
-        if(isset($_POST["idStudent"])){
+        if (isset($_POST["idStudent"])) {
             $check = $student->checkIssetStudent($_POST["idStudent"]);
-            if(count($check) == 0){
+            if (count($check) == 0) {
                 echo 1;
-            }else{
+            } else {
                 echo 0;
             }
             return 1;
@@ -36,7 +36,7 @@ class c_student extends controller
 
         if (isset($_POST["submit"])) {
             $id = $_POST["id"];
-            $password = "Sv".$id;
+            $password = "Sv" . $id;
             $name = $_POST["name"];
             $sex = $_POST["gender"];
             $date_birth = $_POST["date_birth"];
@@ -49,7 +49,7 @@ class c_student extends controller
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : "avatar-default.png";
             $id_user_create = $_SESSION['login']['id'];
 
-            $insert = $student->insert_student($id,md5($password), $name, $sex, $date_birth, $address, $email, $phone, $room_id, $id_user_create, $date_start, $date_end, $avatar_url);
+            $insert = $student->insert_student($id, md5($password), $name, $sex, $date_birth, $address, $email, $phone, $room_id, $id_user_create, $date_start, $date_end, $avatar_url);
 
             if ($insert) {
                 if ($avatar_url != "") {
@@ -63,11 +63,11 @@ class c_student extends controller
                         move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
                     }
                 }
-                setcookie("suc", "Thêm sinh viên thành công!", time()+1, "/","", 0);
+                setcookie("suc", "Thêm sinh viên thành công!", time() + 1, "/", "", 0);
                 $this->redirect($this->base_url("admin/student/index"));
             }
         }
-        $this->view("admin/student/create", compact('room','check'));
+        $this->view("admin/student/create", compact('room', 'check'));
     }
 
 
@@ -79,18 +79,18 @@ class c_student extends controller
             $rooms = $result->getAllRooms();
             $numStudent = $result->checkNumStudent();
 
-            if(isset($_POST["idStudent"])){
+            if (isset($_POST["idStudent"])) {
                 $check = $result->checkIssetStudent($_POST["idStudent"]);
-                if(count($check) == 0){
+                if (count($check) == 0) {
                     echo 1;
-                }elseif($_POST["idStudent"] == $_GET["id"]){
+                } elseif ($_POST["idStudent"] == $_GET["id"]) {
                     echo 1;
-                }else{
+                } else {
                     echo 0;
                 }
                 return 1;
             }
-            
+
             if (isset($_POST["submit"])) {
                 $id = $_POST["id"];
                 $name = $_POST["name"];
@@ -110,11 +110,11 @@ class c_student extends controller
 
                 $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $room_id, $date_start, $date_end, $avatar_url, $_GET["id"]);
                 if (!$update) {
-                    setcookie("err", "Cập nhật thất bại!!", time()+1, "/","", 0);
+                    setcookie("err", "Cập nhật thất bại!!", time() + 1, "/", "", 0);
                 } else {
-                    if (!file_exists("public/avatar/".$avatar_url)) {
+                    if (!file_exists("public/avatar/" . $avatar_url)) {
                         $filename = "public/avatar";
-                        unlink($filename."/".$student["avatar"]);
+                        unlink($filename . "/" . $student["avatar"]);
 
                         if (!file_exists($filename)) {
                             mkdir($filename,  0777,  TRUE);
@@ -123,7 +123,8 @@ class c_student extends controller
                             move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
                         }
                     }
-                    setcookie("suc", "Cập nhật thành công!!", time()+1, "/","", 0);
+                    setcookie("suc", "Cập nhật thành công!!", time() + 1, "/", "", 0);
+                    
                     $this->redirect($this->base_url("admin/student/index"));
                 }
             }
@@ -132,22 +133,22 @@ class c_student extends controller
         }
     }
 
-    public function delete(){
-        if(isset($_GET["id"])){
+    public function delete()
+    {
+        if (isset($_GET["id"])) {
             $result = new m_student();
             $student = $result->get_student_by_id($_GET["id"]);
             $link = $student["avatar_url"];
             $del = $result->delete_student($_GET["id"]);
-            if(!$del){
-                setcookie("err", "Không được xóa!", time()+1, "/","", 0);
-                
-            }else {
+            if (!$del) {
+                setcookie("err", "Không được xóa!", time() + 1, "/", "", 0);
+            } else {
                 if ($link != "avatar-default.png") {
                     if (file_exists("public/avatar/" . $link)) {
-                       $status =  unlink("public/avatar/" . $link);
-                       if($status){
-                           setcookie("suc", "Xóa thành công", time() + 1, "/", "", 0);
-                       }
+                        $status =  unlink("public/avatar/" . $link);
+                        if ($status) {
+                            setcookie("suc", "Xóa thành công", time() + 1, "/", "", 0);
+                        }
                     }
                 }
             }

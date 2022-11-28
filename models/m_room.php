@@ -9,7 +9,12 @@ class m_room extends DB{
     }
 
     public function select_room(){
-        $sql = "SELECT rooms.*, users.name as name_user FROM rooms INNER JOIN users ON rooms.user_id = users.id  ";
+        $sql = "SELECT t1.*, users.name as user_name FROM users RIGHT JOIN 
+        (SELECT rooms.* ,COUNT(contracts.room_id) AS count 
+         FROM rooms INNER JOIN contracts 
+         ON rooms.id = contracts.room_id 
+         GROUP BY rooms.id) AS t1
+         ON users.id = t1.user_id";
         return $this->get_list($sql);
     }
 
@@ -51,6 +56,7 @@ class m_room extends DB{
         return $this->get_list($sql);
 
     }
+
 }
 
 ?>

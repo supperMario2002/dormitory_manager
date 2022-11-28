@@ -49,19 +49,12 @@
                                 <tr>
                                     <td><?= $key + 1; ?></td>
                                     <td><?= $value["room_name"]; ?></td>
-                                    <td><?= $value["name_user"]; ?></td>
+                                    <td><?= $value["user_name"]; ?></td>
                                     <td><?= number_format($value["price"]); ?></td>
                                     <td>
                                         <?php
-                                        $dem[$value["room_name"]] = 0;
-                                        foreach ($data['students'] as $student) {
-                                            if ($student["room_id"] == $value["id"]) {
-                                                $dem[$value["room_name"]]++;
-                                            }
-                                        }
-
-                                        echo $dem[$value["room_name"]] . "/" . $value["max_num"];
-                                        if ($dem[$value["room_name"]] == $value["max_num"]) {
+                                        echo $value["count"] . "/" . $value["max_num"];
+                                        if ($value["count"] == $value["max_num"]) {
                                             echo "<span class='badge bg-danger ms-2'>Đầy</span>";
                                         } else {
                                             echo "<span class='badge bg-success ms-2'>Thiếu</span>";
@@ -103,7 +96,7 @@
                                                                         <?php
                                                                         }
                                                                     }
-                                                                    if ($dem[$value["room_name"]] == 0) {
+                                                                    if ($value["count"] == 0) {
                                                                         echo "<h3>Phòng trống</h3>";
                                                                     } else {
                                                                         ?>

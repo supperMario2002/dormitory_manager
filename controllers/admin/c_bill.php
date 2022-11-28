@@ -11,6 +11,7 @@ class c_bill extends controller{
     public function indexEWB(){
         $result = new m_bill();
         $bill_ew = $result->getAllEW();
+        // echo 1;
         $this->view("admin/bill/electricWaterBill", compact('bill_ew'));
     }
 
@@ -72,14 +73,12 @@ class c_bill extends controller{
     public function deleteEWB(){
         if(isset($_GET["id"])){
             $result = new m_bill();
-            $id = $_GET["id"];
-            die($id);
-            $deletee = $result->deleteById($id);
+            $deletee = $result->deleteById($_GET["id"]);
             if($deletee){
                 setcookie("suc", "Xóa hóa đơn thành công!", time()+1, "/","", 0);
             }
+            $this->redirect($this->base_url("admin/bill/list-electric-water"));
         }
-        $this->redirect($this->base_url("admin/bill/list-electric-water"));
     }
 
 

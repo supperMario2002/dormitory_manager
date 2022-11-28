@@ -15,30 +15,10 @@ class c_user extends controller
             }
             return 1;
         }
-        include "views/admin/auth/forget-password.php";
+        include "views/auth/forget-password.php";
     }
 
-    // public function register()
-    // {
 
-    //     if (isset($_POST["submit"])) {
-    //         $username = $_POST["username"];
-    //         $password = $_POST["password"];
-    //         $email = $_POST["email"];
-
-    //         $insert = new m_user();
-    //         $result = $insert->insert_account($username, md5($password), $email);
-
-    //         if ($result) {
-    //             $this->redirect($this->base_url("login"));
-    //             die();
-    //         } else {
-    //             echo "them that bai";
-    //             die();
-    //         }
-    //     }
-    //     include "views/admin/auth/register.php";
-    // }
 
     public function login()
     {
@@ -60,19 +40,24 @@ class c_user extends controller
 
             if (!$result) {
                 setcookie("err", "Sai tài khoản hoặc mật khẩu!", time() + 1, "/", "", 0);
-                $this->redirect($this->base_url("admin/login"));
+                $this->redirect($this->base_url("login"));
             } else {
+                
                 $_SESSION['login'] = $result;
-                $this->redirect($this->base_url("admin/"));
+                if($_SESSION['login']["role"] == 0){
+                    $this->redirect($this->base_url("admin/"));
+                }else{
+                    $this->redirect($this->base_url(""));
+                }
             }
         }
-        include "views/admin/auth/login.php";
+        include "views/auth/login.php";
     }
 
     public function logout()
     {
         session_destroy();
-        $this->redirect($this->base_url("admin/login"));
+        $this->redirect($this->base_url("login"));
     }
 
     public function index()
@@ -101,11 +86,6 @@ class c_user extends controller
         }
     }
 
-
-    public function profile()
-    {
-        $this->view("admin/user/profile");
-    }
 
     public function create(){
         
@@ -140,5 +120,49 @@ class c_user extends controller
             }
         }
         $this->view("admin/user/create");
+    }
+
+
+    public function profile(){
+        if(isset($_POST["submit"])){
+            $result = new m_user();
+            $id = $_SESSION["login"]["id"];
+            $name = $_POST["name"];
+            $sex = $_POST["gender"];
+            $date_birth = $_POST["date_birth"];
+            $address = $_POST["address"];
+            $email = $_POST["email"];
+            $phone = $_POST["phone"];
+            $username = $_POST["username"];
+            $password = md5($_POST["password"]);
+            if($password == null){
+                $password = $_SESSION["login"]["password"];
+            }
+            $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : '';
+            if($_FILES['avatar']['error'] == null){
+                $avatar_url = $_SESSION["login"]["avatar_url"];
+            }
+
+            $insert = $result->update_user($name, $sex, $date_birth, $address, $email, $phone, $username, $password, $avatar_url, $id);
+
+
+            if ($insert) {
+                if ($avatar_url != "") {
+
+                    $filename = "public/avatar";
+
+                    if (!file_exists($filename)) {
+                        mkdir($filename,  0777,  TRUE);
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
+                    } else {
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
+                    }
+                }
+                $_SESSION["login"] = $result->getUserById($id);
+                setcookie("suc", "Cập nhật thông tin thành công!", time()+1, "/","", 0);
+                $this->redirect($this->base_url("admin/user/profile"));
+            }
+        }
+        $this->view("admin/user/profile");
     }
 }

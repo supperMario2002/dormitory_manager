@@ -33,4 +33,16 @@ class m_user extends DB{
 
         return $this->query($sql);
     }
+
+    public function update_user($name, $sex, $date_birth, $address, $email, $phone, $username, $password, $avatar_url, $id)
+    {
+        $sql = "UPDATE users SET username='$username',password='$password',name='$name',sex=$sex,date_birth='$date_birth',address='$address',email='$email',phone='$phone',avatar_url='$avatar_url' WHERE id = $id";
+        return $this->query($sql);
+    }
+
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM users WHERE id = $id";
+        return $this->get_row($sql);
+    }
 }

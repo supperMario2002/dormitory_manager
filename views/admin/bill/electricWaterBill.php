@@ -93,9 +93,12 @@
                                             </div>
 
                                             <a href="<?= $this->base_url("admin/bill/edit-electric-water/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                            
-                                            <!-- <form action="<?= $this->redirect($this->base_url("admin/bill/delete-electric-water/" . $value['id'])) ?>" id="form-delete" method="get">
-                                                <a class=" btn-delete btn" onclick="showAlert()" type="delete"> <i class="mdi mdi-delete"></i><?= $value["id"];?></a>
+
+                                            <form action="<?= $this->base_url("admin/bill/delete-electric-water/" . $value["id"]) ?>" class="form-delete" method="get">
+                                                <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i> </a>
+                                            </form>
+                                            <!-- <form action="<?= $this->base_url("admin/student/delete/" . $value["username"]) ?>" id="form-delete" method="get">
+                                                <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
                                             </form> -->
                                         </td>
                                     </tr>
@@ -110,7 +113,7 @@
     </div>
 </div>
 <script>
-    function showAlert() {
+    $(".form-delete").on("click", function() {
         Swal.fire({
             title: 'Bạn chắc chắn muốn xóa?',
             showDenyButton: true,
@@ -119,26 +122,26 @@
             denyButtonText: `Không`,
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('form-delete').submit();
+                $(this).submit();
             }
         })
-    };
+    })
 </script>
 <style>
-    #form-delete {
+    .form-delete {
         font-size: 1.2rem;
         display: inline-block;
         padding: 0 3px;
     }
 
-    #form-delete a {
+    .form-delete a {
         color: #98a6ad;
         padding: 0;
         border: 0;
 
     }
 
-    #form-delete a:hover {
+    .form-delete a:hover {
         color: red;
     }
 

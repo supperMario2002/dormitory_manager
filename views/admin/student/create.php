@@ -111,6 +111,7 @@
                             <div class="mb-3">
                                 <label class="avatar">Ảnh</label>
                                 <input class="form-control" type="file" name="avatar" id="avatar" accept=".jpg, .png">
+                                <div class="preview"></div>
                             </div>
                             <button type="submit" name="submit" class="btn btn-success">Thêm sinh viên</button>
                         </div>
