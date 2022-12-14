@@ -53,4 +53,14 @@ class m_bill extends DB
 
         return $this->query($sql);
     }
+
+    public function getBillByRoomId($id){
+        $sql = "SELECT * FROM electric_water WHERE rooms_id = $id";
+        return $this->get_list($sql);
+    }
+
+    public function getRoomId($id){
+        $sql = "SELECT room_id FROM contracts WHERE student_id = $id";
+        return $this->get_row($sql);
+    }
 }

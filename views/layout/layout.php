@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="loading" data-layout-color="<?= $_SESSION["color-bg"] == 1 ? "dark" : "light" ; ?>" data-layout="topnav" data-layout-mode="fluid" data-rightbar-onstart="true">
+<body class="loading" data-layout-color="<?= $_SESSION['login']['color_scheme'] == 1 ? "dark" : "light" ; ?>" data-layout="topnav" data-layout-mode="fluid" >
     <!-- Begin page -->
     <div class="wrapper">
 
@@ -94,11 +94,6 @@
     <script src="<?= _WEB_ROOT ?>/public/js/vendor.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/js/app.min.js"></script>
 
-    <!-- third party js -->
-    <script src="<?= _WEB_ROOT ?>/public/js/vendor/apexcharts.min.js"></script>
-    <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.dashboard.js"></script>
 
 </body>
 

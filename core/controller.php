@@ -17,6 +17,17 @@ class controller
         }
     }
 
+    public function permission($role){
+        if($role == 0){
+            if($_SESSION["login"]["role"] == 1){
+                // setcookie("err", "Bạn không đủ quyền truy cập trang này!!", time() + 1, "/", "", 0);
+                $this->redirect($this->base_url("home/viewpermission"));
+                die();
+            }
+        }
+
+    }
+
     public function base_url($url = '')
     {
         $a = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER["HTTP_HOST"];
@@ -44,5 +55,24 @@ class controller
                 require_once($layout);
             }
         }
+    }
+
+    public function formatDate($date){
+        return date_format(date_create($date), "d-m-Y");
+    }
+
+    public function uploadFileImage($tmp,$path, $basename){
+        $link  = $path."/".$basename;
+        if(!file_exists($path.$basename)){
+            if (!file_exists($path)) {
+                mkdir($path,  0777,  TRUE);
+                move_uploaded_file($tmp, $link);
+                return true;
+            } else {
+                move_uploaded_file($tmp, $link);
+                return true;
+            }
+        }
+        return false;
     }
 }

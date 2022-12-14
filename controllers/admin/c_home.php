@@ -6,9 +6,12 @@ class c_home extends controller{
     public function __construct()
     {
         $this->auth();
+        $this->permission(0);
     }
 
     public function index(){
+        // var_dump($_SESSION['login']['color_scheme']);
+        // die($_SESSION['login']['color_scheme']);
         $today = date("Y-m-d");
         $result = new m_home();
         if(isset($_POST["valBg"])){
@@ -23,7 +26,7 @@ class c_home extends controller{
                 var_dump($update1);
             }
             $students = $result->getBgColor($user_id);
-            $_SESSION["color-bg"] = $students["color_scheme"];
+            $_SESSION['login']['color_scheme'] = $students["color_scheme"];
             return 1;
         }
         $students = $result->getAllStudent();

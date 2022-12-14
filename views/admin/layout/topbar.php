@@ -131,9 +131,9 @@
         <li class="dropdown notification-list" style="line-height: 70px;">
             
             <input hidden class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check">
-            <label class="form-check-label light-btn  <?= $_SESSION["color-bg"] == 0 ? "d-none" : "" ;?>" for="light-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-night"></i></label>
+            <label class="form-check-label light-btn  <?= $_SESSION['login']['color_scheme'] == 0 ? "d-none" : "" ;?>" for="light-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-night"></i></label>
             <input hidden class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-            <label class="form-check-label dark-btn <?= $_SESSION["color-bg"] == 1 ? "d-none" : "" ;?> " for="dark-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-sunny"></i></label>
+            <label class="form-check-label dark-btn <?= $_SESSION['login']['color_scheme'] == 1 ? "d-none" : "" ;?> " for="dark-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-sunny"></i></label>
         </li>
 
         <li class="dropdown notification-list">

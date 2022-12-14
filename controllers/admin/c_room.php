@@ -5,6 +5,7 @@ class c_room extends controller{
     public function __construct()
     {
         $this->auth();
+        $this->permission(0);
     }
 
     public function index(){
@@ -78,15 +79,6 @@ class c_room extends controller{
             
             $this->redirect($this->base_url("admin/room/index"));
         }
-    }
-
-    public function editstudent(){
-        if(isset($_GET["editStudent"])){
-            $room_id = $_GET["id"];
-            $select = new m_room();
-            $students = $select->select_student_by_id($room_id);
-        }
-        return $this->view("admin/room/editStudent", compact('students'));
     }
 
 }

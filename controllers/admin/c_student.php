@@ -6,6 +6,7 @@ class c_student extends controller
     public function __construct()
     {
         $this->auth();
+        $this->permission(0);
     }
 
     public function index()
@@ -53,15 +54,7 @@ class c_student extends controller
 
             if ($insert) {
                 if ($avatar_url != "") {
-
-                    $filename = "public/avatar";
-
-                    if (!file_exists($filename)) {
-                        mkdir($filename,  0777,  TRUE);
-                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
-                    } else {
-                        move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
-                    }
+                    $this->uploadFileImage($_FILES['avatar']['tmp_name'],"public/avatar", $avatar_url);
                 }
                 setcookie("suc", "Thêm sinh viên thành công!", time() + 1, "/", "", 0);
                 $this->redirect($this->base_url("admin/student/index"));
@@ -112,16 +105,11 @@ class c_student extends controller
                 if (!$update) {
                     setcookie("err", "Cập nhật thất bại!!", time() + 1, "/", "", 0);
                 } else {
-                    if (!file_exists("public/avatar/" . $avatar_url)) {
-                        $filename = "public/avatar";
-                        unlink($filename . "/" . $student["avatar"]);
-
-                        if (!file_exists($filename)) {
-                            mkdir($filename,  0777,  TRUE);
-                            move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
-                        } else {
-                            move_uploaded_file($_FILES['avatar']['tmp_name'], "public/avatar/" . $avatar_url);
-                        }
+                    if ($avatar_url != "") {
+                        unlink("public/avatar/".$student["avatar_url"]);
+                        if(!$this->uploadFileImage($_FILES['avatar']['tmp_name'],"public/avatar", $avatar_url)){
+                            setcookie("err", "Cập nhật file thất bại!!", time() + 1, "/", "", 0);
+                        };
                     }
                     setcookie("suc", "Cập nhật thành công!!", time() + 1, "/", "", 0);
                     
@@ -139,6 +127,7 @@ class c_student extends controller
             $result = new m_student();
             $student = $result->get_student_by_id($_GET["id"]);
             $link = $student["avatar_url"];
+            var_dump($link);
             $del = $result->delete_student($_GET["id"]);
             if (!$del) {
                 setcookie("err", "Không được xóa!", time() + 1, "/", "", 0);

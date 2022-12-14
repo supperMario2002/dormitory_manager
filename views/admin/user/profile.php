@@ -65,7 +65,7 @@
 <div class="row">
     <div class="col-xl-12">
 
-        <form class="form-horizontal" action="" method="POST">
+        <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-0 mb-3">Thông tin</h4>
@@ -158,7 +158,7 @@
                     <div class="row mb-3">
                         <label for="avatar" class="col-2 col-form-label">Ảnh đại diện: </label>
                         <div class="col-5">
-                            <input class="form-control" type="file" name="avatar" alt="1" id="avatar" accept=".jpg, .png">
+                            <input class="form-control" type="file" name="avatar"  id="avatar" accept=".jpg, .png">
                             <img src="" class="preview" height="120">
                         </div>
                     </div>

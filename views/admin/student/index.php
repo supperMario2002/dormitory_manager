@@ -101,7 +101,7 @@
     </div>
 </div>
 <script>
-    $(">form-delete").on("click", function() {
+    $(".form-delete").on("click", function() {
         Swal.fire({
             title: 'Bạn chắc chắn muốn xóa?',
             showDenyButton: true,

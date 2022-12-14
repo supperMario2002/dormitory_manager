@@ -16,9 +16,9 @@
         <li class="dropdown notification-list" style="line-height: 70px;">
 
             <input hidden class="form-check-input" type="checkbox" name="color-scheme-mode" value="light" id="light-mode-check">
-            <label class="form-check-label light-btn  <?= $_SESSION["color-bg"] == 0 ? "d-none" : ""; ?>" for="light-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-night"></i></label>
+            <label class="form-check-label light-btn  <?= $_SESSION['login']['color_scheme'] == 0 ? "d-none" : ""; ?>" for="light-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-night"></i></label>
             <input hidden class="form-check-input" type="checkbox" name="color-scheme-mode" value="dark" id="dark-mode-check">
-            <label class="form-check-label dark-btn <?= $_SESSION["color-bg"] == 1 ? "d-none" : ""; ?> " for="dark-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-sunny"></i></label>
+            <label class="form-check-label dark-btn <?= $_SESSION['login']['color_scheme'] == 1 ? "d-none" : ""; ?> " for="dark-mode-check"><i style="font-size: 25px;" class="mdi mdi-weather-sunny"></i></label>
         </li>
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" id="topbar-notifydrop" role="button" aria-haspopup="true" aria-expanded="false">
@@ -86,7 +86,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
                                     <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                        <!-- <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" /> -->
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -124,7 +124,7 @@
                             <div class="d-flex align-items-center">
                                 <div class="flex-shrink-0">
                                     <div class="notify-icon">
-                                        <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" />
+                                        <!-- <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" /> -->
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 text-truncate ms-2">
@@ -214,7 +214,7 @@
     function changeBgColor(valBg){
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/dormitory_manager/admin/',
+            url: 'http://localhost/dormitory_manager/home/index',
             data: {
                 valBg: valBg,
             },

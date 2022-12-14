@@ -134,12 +134,12 @@ class c_user extends controller
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $username = $_POST["username"];
-            $password = md5($_POST["password"]);
+            $password = null;
             if($password == null){
                 $password = $_SESSION["login"]["password"];
             }
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : '';
-            if($_FILES['avatar']['error'] == null){
+            if(!$avatar_url){
                 $avatar_url = $_SESSION["login"]["avatar_url"];
             }
 
@@ -150,6 +150,9 @@ class c_user extends controller
                 if ($avatar_url != "") {
 
                     $filename = "public/avatar";
+                    if($_SESSION["login"]["avatar_url"] != "avatar-default.png"){
+                        unlink('public/avatar/' . $_SESSION["login"]["avatar_url"]);
+                    }
 
                     if (!file_exists($filename)) {
                         mkdir($filename,  0777,  TRUE);

@@ -16,7 +16,7 @@
     <script src="<?= _WEB_ROOT ?>/public/js/jquery-3.6.1.min.js"></script>
 </head>
 
-<body class="loading" data-layout-color="<?= $_SESSION["color-bg"] == 1 ? "dark" : "light" ; ?>" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+<body class="loading" data-layout-color="<?= $_SESSION['login']['color_scheme'] == 1 ? "dark" : "light" ; ?>" data-leftbar-theme="dark" data-layout-mode="fluid" >
     <div class="wrapper">
 
         <?php include("leftbar.php"); ?>

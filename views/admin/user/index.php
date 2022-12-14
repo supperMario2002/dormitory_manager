@@ -88,12 +88,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php if ($value["status"] == 1) { ?>
-                                                    <a href="<?= $this->base_url("admin/user/edit/" . $value['id']) ?>" class="action-icon" title="Mở"> <i class="mdi mdi-account-lock-open"></i></a>
-                                                <?php } else { ?>
-                                                    <a href="<?= $this->base_url("admin/user/edit/" . $value['id']) ?>" class="action-icon" title="Khóa"> <i class="mdi mdi-account-lock"></i></a>
-                                                <?php }
-                                                if ($_SESSION['login']['id'] == 2) { ?>
+                                                <?php if ($_SESSION['login']['id'] != $value['id']) { ?>
+                                                    <?php if ($value["status"] == 1) { ?>
+                                                        <a href="<?= $this->base_url("admin/user/edit/" . $value['id']) ?>" class="action-icon" title="Mở"> <i class="mdi mdi-account-lock-open"></i></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?= $this->base_url("admin/user/edit/" . $value['id']) ?>" class="action-icon" title="Khóa"> <i class="mdi mdi-account-lock"></i></a>
+                                                    <?php } ?>
                                                     <form action="<?= $this->base_url("admin/user/delete/" . $value["id"]) ?>" id="form-delete" method="get">
                                                         <a class=" btn-delete btn" onclick="showAlert()"> <i class="mdi mdi-delete"></i></a>
                                                     </form>

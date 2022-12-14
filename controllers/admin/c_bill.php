@@ -6,6 +6,7 @@ class c_bill extends controller{
     public function __construct()
     {
         $this->auth();
+        $this->permission(0);
     }
 
     public function indexEWB(){

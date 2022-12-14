@@ -11,7 +11,7 @@ class m_room extends DB{
     public function select_room(){
         $sql = "SELECT t1.*, users.name as user_name FROM users RIGHT JOIN 
         (SELECT rooms.* ,COUNT(contracts.room_id) AS count 
-         FROM rooms INNER JOIN contracts 
+         FROM rooms LEFT JOIN contracts 
          ON rooms.id = contracts.room_id 
          GROUP BY rooms.id) AS t1
          ON users.id = t1.user_id";
@@ -36,10 +36,6 @@ class m_room extends DB{
         return $this->get_list($sql);
     }
 
-    public function select_student_by_id($id){
-        $sql = "SELECT students.*, contracts.room_id,contracts.date_start, contracts.date_end FROM students INNER JOIN contracts ON students.id = contracts.student_id WHERE room_id = $id";
-        return $this->get_list($sql);
-    }
 
     public function delete_room($id){
         $sql = "DELETE FROM rooms WHERE id=$id";
@@ -57,6 +53,20 @@ class m_room extends DB{
 
     }
 
-}
+    public function getRoomByIdUser($id){
+        $sql = "SELECT t1.*, users.name FROM users INNER JOIN
+        (SELECT rooms.*, contracts.room_id 
+         FROM contracts  INNER JOIN rooms  ON contracts.room_id = rooms.id
+         WHERE student_id = $id) as t1
+         ON users.id = t1.user_id";
 
-?>
+        return $this->get_row($sql);
+
+    }
+
+    public function getStudentByRoomsId($room_id){
+        $sql = "SELECT users.username, users.name, users.sex, users.date_birth, users.address,users.email, users.phone,users.avatar_url,contracts.date_start, contracts.date_end FROM users INNER JOIN contracts ON users.username = contracts.student_id WHERE contracts.room_id = $room_id";
+        return $this->get_list($sql);
+    }
+
+}

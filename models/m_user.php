@@ -36,7 +36,11 @@ class m_user extends DB{
 
     public function update_user($name, $sex, $date_birth, $address, $email, $phone, $username, $password, $avatar_url, $id)
     {
-        $sql = "UPDATE users SET username='$username',password='$password',name='$name',sex=$sex,date_birth='$date_birth',address='$address',email='$email',phone='$phone',avatar_url='$avatar_url' WHERE id = $id";
+        // if($password != null){
+        //     $sql = "UPDATE users SET username='$username',password='$password',name='$name',sex=$sex,date_birth='$date_birth',address='$address',email='$email',phone='$phone',avatar_url='$avatar_url' WHERE id = $id";
+        // }else{
+            $sql = "UPDATE users SET username='$username',name='$name',sex=$sex,date_birth='$date_birth',address='$address',email='$email',phone='$phone',avatar_url='$avatar_url' WHERE id = $id"; 
+        // }
         return $this->query($sql);
     }
 
