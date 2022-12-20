@@ -21,8 +21,8 @@ class m_student extends DB
 
     public function insert_student($id,$password, $name, $sex, $date_birth, $address, $email, $phone, $room_id, $id_user_create, $date_start, $date_end, $avatar_url)
     {
-        $sql = "INSERT INTO users VALUES (null, '$id', '$password', '$name', $sex, '$date_birth', '$address', '$email', '$phone', '$avatar_url', 1 ,1 ,0)";
-        $sql1 = "INSERT INTO contracts VALUES (null, $id, $room_id, $id_user_create, '$date_start','$date_end')";
+        $sql = "INSERT INTO users VALUES (null, $id, '$password', '$name', $sex, '$date_birth', '$address', '$email', '$phone', '$avatar_url', 1 ,1 ,0)";
+        $sql1 = "INSERT INTO contracts VALUES (null, $id, $room_id, $id_user_create, '$date_start','$date_end',null,0)";
 
         $resulst = $this->query($sql);
         if ($resulst) {

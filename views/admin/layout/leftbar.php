@@ -92,6 +92,24 @@
             </li>
 
             <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#contract" aria-expanded="false" aria-controls="contract" class="side-nav-link">
+                    <i class="uil-location-point"></i>
+                    <span> Quản lý hợp đồng </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="contract">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="<?= $this->base_url("admin/contract/index") ?>">Danh sách hợp đồng</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->base_url("admin/contract/create") ?>">Thêm hợp đồng</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
                 <a href="<?= $this->base_url("admin/home/statistic") ?>" class="side-nav-link">
                     <i class="uil-calender"></i>
                     <span> Báo cáo thống kê </span>

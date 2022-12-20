@@ -1,6 +1,6 @@
 <?php
 include "models/m_contract.php";
-class contract extends controller {
+class c_contract extends controller {
 
     function __construct()
     {
@@ -9,6 +9,16 @@ class contract extends controller {
     }
 
     public function index(){
+        $result = new m_contract();
+        $contract = $result->getAllContract();
+        $this->view("admin/contract/index", compact('contract'));
+    }
+
+    public function create(){
+        $result = new m_contract();
+        $students = $result->getAllStudent();
+        $rooms = $result->getAllRooms();
         
+        $this->view("admin/contract/create", compact('students','rooms'));
     }
 }
