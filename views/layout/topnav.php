@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link " href="<?= _WEB_ROOT ?>">
+                <a class="nav-link " href="<?= _WEB_ROOT ?>/report/index">
                     Báo cáo 
                 </a>
             </li>

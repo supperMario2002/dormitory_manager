@@ -83,5 +83,13 @@ class c_bill extends controller{
     }
 
 
+    public function invoice(){
+        $this->view("admin/bill/invoice");
+    }
+
+    public function createInvoice(){
+        $this->view("admin/bill/invoice");
+    }
+
 }
 ?>

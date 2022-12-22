@@ -72,11 +72,6 @@
                                                                     <p class="text-muted"><strong>Địa chỉ:</strong> <span class="ms-2"><?= $value["address"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Email:</strong> <span class="ms-2"><?= $value["email"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Số điện thoại:</strong> <span class="ms-2"><?= $value["phone"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Tên phòng:</strong> <span class="ms-2"><?php foreach ($data["rooms"] as $k => $t) {
-                                                                                                                                                echo ($value["room_id"] == $t["id"]) ? $t["room_name"] : "";
-                                                                                                                                            } ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày đăng ký:</strong> <span class="ms-2"><?= $value["date_start"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Ngày hết hạn:</strong> <span class="ms-2"><?= $value["date_end"]; ?></span></p>
                                                                 </div>
                                                             </div>
                                                         </div>

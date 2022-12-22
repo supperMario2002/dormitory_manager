@@ -81,34 +81,6 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="room_id" class="form-label">Phòng</label>
-                                <select class="form-select" id="room_id" name="room_id">
-                                    <?php
-                                    if (isset($data["room"])) {
-                                        foreach ($data["room"] as $key => $val) {
-                                            
-                                                
-                                    ?>
-                                                        <option value="<?php echo $val["id"]; ?>"><?php echo $val["room_name"]; ?></option>
-                                    <?php
-                                                    
-                                           
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="mb-3 position-relative" id="datepicker1">
-                                <label class="date_start">Ngày đăng ký <span class="text-danger">(*)</span></label>
-                                <input type="date" class="form-control" id="date_start" name="date_start" required>
-                            </div>
-
-                            <div class="mb-3 position-relative" id="datepicker1">
-                                <label class="date_end">Ngày hết hạn <span class="text-danger">(*)</span></label>
-                                <input type="date" class="form-control" id="date_end" name="date_end" required>
-                            </div>
-                            <div class="mb-3">
                                 <label class="avatar">Ảnh</label>
                                 <input class="form-control" type="file" name="avatar" id="avatar" accept=".jpg, .png">
                                 <div class="preview"></div>

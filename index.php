@@ -10,6 +10,7 @@ if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
     $web_root = 'http://' . $_SERVER['HTTP_HOST'];
 }
 
+
 $forder = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),'', str_replace('\\','/', strtolower(_DIR_ROOT)));
 $web_root = trim($web_root . trim($forder, '\\'), '/');
 
@@ -20,9 +21,7 @@ $controllerName = $request->controller;
 $methodName = $request->method;
 $role = $request->role;
 
-// echo $controllerName;
-// echo $methodName;
-// die();
+
 // create controllerName
 if($role == "admin"){
     require_once('controllers/admin/' . $controllerName . '.php');
@@ -30,8 +29,4 @@ if($role == "admin"){
     require_once('controllers/' . $controllerName . '.php');
 }
 $controller = new $controllerName();
-// if(!method_exists($controller, $methodName)){
-//     include "views/admin/home/page-404.php";
-//     die();
-// }
 $controller->{$methodName}();

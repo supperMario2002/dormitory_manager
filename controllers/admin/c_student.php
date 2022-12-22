@@ -44,13 +44,10 @@ class c_student extends controller
             $address = $_POST["address"];
             $email = $_POST["email"];
             $phone = $_POST["phone"];
-            $room_id = $_POST["room_id"];
-            $date_start = $_POST["date_start"];
-            $date_end = $_POST["date_end"];
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : "avatar-default.png";
             $id_user_create = $_SESSION['login']['id'];
 
-            $insert = $student->insert_student($id, md5($password), $name, $sex, $date_birth, $address, $email, $phone, $room_id, $id_user_create, $date_start, $date_end, $avatar_url);
+            $insert = $student->insert_student($id, md5($password), $name, $sex, $date_birth, $address, $email, $phone,  $id_user_create, $avatar_url);
 
             if ($insert) {
                 if ($avatar_url != "") {
@@ -92,16 +89,13 @@ class c_student extends controller
                 $address = $_POST["address"];
                 $email = $_POST["email"];
                 $phone = $_POST["phone"];
-                $room_id = $_POST["room_id"];
-                $date_start = $_POST["date_start"];
-                $date_end = $_POST["date_end"];
                 $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : "";
                 if (!$avatar_url) {
                     $avatar_url = $student["avatar_url"];
                 }
 
 
-                $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $room_id, $date_start, $date_end, $avatar_url, $_GET["id"]);
+                $update = $result->update_student_by_id($id, $name, $sex, $date_birth, $address, $email, $phone, $avatar_url, $_GET["id"]);
                 if (!$update) {
                     setcookie("err", "Cập nhật thất bại!!", time() + 1, "/", "", 0);
                 } else {

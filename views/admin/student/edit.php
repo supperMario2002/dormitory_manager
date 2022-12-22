@@ -68,30 +68,6 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="room_id" class="form-label">Phòng</label>
-                                <select class="form-select" id="room_id" name="room_id">
-                                    <?php
-                                    if (isset($data["rooms"])) {
-                                        foreach ($data["rooms"] as $key => $val) {
-                                    ?>
-                                            <option value="<?php echo $val["id"]; ?>" <?= ($data["student"]["room_id"] == $val["id"]) ? "checked" : " "; ?>><?php echo $val["room_name"]; ?></option>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="mb-3 position-relative" id="datepicker1">
-                                <label class="date_start">Ngày đăng ký <span class="text-danger">(*)</span></label>
-                                <input type="date" class="form-control" id="date_start" value="<?= $data["student"]["date_start"]; ?>" name="date_start" required>
-                            </div>
-
-                            <div class="mb-3 position-relative" id="datepicker1">
-                                <label class="date_end">Ngày hết hạn <span class="text-danger">(*)</span></label>
-                                <input type="date" class="form-control" id="date_end" value="<?= $data["student"]["date_end"]; ?>" name="date_end" required>
-                            </div>
-                            <div class="mb-3">
                                 <label class="avatar">Ảnh</label>
                                 <input class="form-control" type="file" name="avatar" alt="1" id="avatar" value="<?= $data["student"]["avatar_url"]; ?>" accept=".jpg, .png">
                                 <img src="" class="preview" height="120">
