@@ -26,8 +26,8 @@
                             <?php endif; ?>
 
                             <div class="mb-3">
-                                <label for="user1" class="form-label">Sinh viên</label>
-                                <select class="form-select" id="user1" name="user_id">
+                                <label for="user_id" class="form-label">Sinh viên</label>
+                                <select class="form-select" id="user_id" name="user_id">
                                     <?php  foreach($data["students"] as $value){?>
                                     <option value="<?php echo $value["username"]; ?>"><?php echo $value["name"]; ?></option>
                                     <?php } ?>
@@ -35,8 +35,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="user1" class="form-label">Phòng</label>
-                                <select class="form-select" id="user1" name="room_id">
+                                <label for="room_id" class="form-label">Phòng</label>
+                                <select class="form-select" id="room_id" name="room_id">
                                     <?php  foreach($data["rooms"] as $value){?>
                                     <option value="<?php echo $value["id"]; ?>"><?php echo $value["room_name"]; ?></option>
                                     <?php } ?>
@@ -67,3 +67,18 @@
         </div>
     </div>
 </div>
+<script>
+    $('#user_id').change(function() {
+        $.ajax({
+            type: 'POST',
+            url: '',
+            data: {
+                idS: $('#user_id').val(),
+            },
+            success: function(data) {
+                $('#room_id').empty();
+                $('#room_id').append(data);
+            }
+        })
+    });
+</script>

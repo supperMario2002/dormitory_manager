@@ -4,13 +4,19 @@ include "core/database.php";
 class m_contract extends DB{
 
 
+
+    public function getAllRoomsByGender($sex){
+        $sql = "SELECT * FROM rooms WHERE area = $sex";
+        return $this->get_list($sql);
+
+    }
     public function getAllRooms(){
         $sql = "SELECT * FROM rooms";
         return $this->get_list($sql);
     }
 
     public function getAllStudent(){
-        $sql = "SELECT * FROM users WHERE role = 1";
+        $sql = "SELECT users.* FROM users LEFT join contracts ON users.username = contracts.student_id WHERE users.role = 1 AND contracts.id is null";
         return $this->get_list($sql);
     }
 
