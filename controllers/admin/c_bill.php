@@ -124,7 +124,8 @@ class c_bill extends controller
 
     public function editInvoice()
     {
-        $this->view("admin/bill/editInvoice", compact('allStudent'));
+
+        $this->view("admin/bill/editInvoice");
     }
 
     public function deleteInvoice()
