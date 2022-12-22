@@ -109,7 +109,7 @@
                             <a href="<?= $this->base_url("admin/contract/index") ?>">Danh sách hợp đồng</a>
                         </li>
                         <li>
-                            <a href="<?= $this->base_url("admin/contract/indexliquid") ?>">Hợp đồng đã thanh lý</a>
+                            <a href="<?= $this->base_url("admin/contract/indexliquid") ?>">Hợp đồng đã kết thúc</a>
                         </li>
                         <li>
                             <a href="<?= $this->base_url("admin/contract/create") ?>">Thêm hợp đồng</a>
