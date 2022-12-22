@@ -112,8 +112,7 @@ CREATE TABLE `invoices` (
 CREATE TABLE `invoice_details` (
   `id` int(11) NOT NULL,
   `invoices_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
-  `price` int(11) NOT NULL
+  `service_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
