@@ -52,11 +52,11 @@
                                         <td><?= $value["status"] == 0 ? "<span class='badge bg-danger'>Chưa thanh toán</span>" : "<span class='badge bg-success'>Đã thanh toán</span>"; ?></td>
                                         <td class="table-action d-flex">
                                             <a href="<?= $this->base_url("admin/bill/view-details-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            <a href="<?= $this->base_url("admin/bill/edit-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <!-- <a href="<?= $this->base_url("admin/bill/edit-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a> -->
 
-                                            <form action="<?= $this->base_url("admin/bill/delete-invoice/" . $value["id"]) ?>" class="form-delete" method="get">
+                                            <!-- <form action="<?= $this->base_url("admin/bill/delete-invoice/" . $value["id"]) ?>" class="form-delete" method="get">
                                                 <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i> </a>
-                                            </form>
+                                            </form> -->
                                         </td>
                                     </tr>
                             <?php
