@@ -15,7 +15,7 @@ class m_contract extends DB{
     }
 
     public function getAllContract(){
-        $sql = "SELECT * FROM contracts";
+        $sql = "SELECT * FROM contracts WHERE liquidation is null";
         return $this->get_list($sql);
     }
 
@@ -36,7 +36,8 @@ class m_contract extends DB{
     }
 
     public function updateLiqui($id){
-        
+        $sql = "UPDATE contracts SET liquidation = '" . date('Y-m-d') . "' WHERE id = $id";
+        return $this->query($sql);
     }
 
 }

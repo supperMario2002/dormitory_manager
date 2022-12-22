@@ -22,8 +22,15 @@ class c_contract extends controller {
         $this->view("admin/contract/create", compact('students','rooms'));
     }
     public function update(){
-
-
-        $this->view("admin/contract/edit");
+        $result = new m_contract();
+        if(isset($_GET['id'])){
+            $update = $result->updateLiqui($_GET['id']);
+            if(!$update){
+                setcookie("err", "Thanh lý không thành công!", time()+1, "/","", 0);
+            }else{
+                setcookie("suc", "Thanh lý thành công", time()+1, "/","", 0);
+                $this->redirect($this->base_url("admin/contract/index"));
+            }
+        }
     }
 }
