@@ -63,4 +63,40 @@ class m_bill extends DB
         $sql = "SELECT room_id FROM contracts WHERE student_id = $id";
         return $this->get_row($sql);
     }
+
+    #Invoice
+    public function getAllInvoice()
+    {
+        $sql = "SELECT * FROM `invoices` WHERE 1";
+        return $this->get_list($sql);
+    }
+
+    public function getInvoiceDetailsByID($id)
+    {
+        $sql = "SELECT invoice_details.id as invoice_detailsID, invoice_details.service_id as serviceID, services.*
+        FROM `invoice_details` 
+        INNER JOIN services ON invoice_details.service_id = services.id
+        WHERE invoice_details.invoices_id = $id";
+        return $this->get_list($sql);
+    }
+
+    public function delete_invoice($id)
+    {
+        $sql = "DELETE FROM invoices WHERE id = $id";
+        return $this->query($sql);
+    }
+
+    public function create_invoice($user_id, $student_id, $status)
+    {
+        $sql = "INSERT INTO `invoices`(`id`, `created_at`, `user_id`, `student_id`, `status`) 
+                VALUES (null,".date('Y-m-d').",$user_id,$student_id,$status)";
+            // die(var_dump($sql));
+        return $this->query($sql);
+    }
+
+    public function getAllUserByRole($role)
+    {
+        $sql = "SELECT * FROM `users` WHERE `role` = $role AND `status` = 1";
+        return $this->get_list($sql);
+    }
 }
