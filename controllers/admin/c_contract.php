@@ -21,4 +21,9 @@ class c_contract extends controller {
         
         $this->view("admin/contract/create", compact('students','rooms'));
     }
+    public function update(){
+
+
+        $this->view("admin/contract/edit");
+    }
 }
