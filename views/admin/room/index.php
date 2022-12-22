@@ -90,6 +90,10 @@
                                                             <div class="text-start">
                                                                 <div class="inbox-widget">
                                                                     <?php
+                                                                    
+                                                                    if($value["count"] == 0){
+                                                                        echo "<h3 class='text-center'>Phòng trống</h3>";
+                                                                    }
                                                                     foreach ($data['students'] as $student) {
                                                                         if ($student["room_id"] == $value["id"]) {
                                                                     ?>
