@@ -36,6 +36,7 @@
                             <th>Người tạo</th>
                             <th>Ngày tạo</th>
                             <th>Ngày hết hạn</th>
+                            <th>Ngày thanh lý</th>
                             <th>Trạng thái</th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@
                                     <td><?= $value["user_id"] ?></td>
                                     <td><?= $value["date_start"]?></td>
                                     <td><?= $value["date_end"]?></td>
+                                    <td><?= $value["liquidation"]?></td>
                                     <td>
                                         <?php if ($value["status"] == 1) { ?>
                                             <span class="badge bg-success">Đã thanh toán</span>
