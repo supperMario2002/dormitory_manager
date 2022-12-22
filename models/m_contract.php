@@ -15,7 +15,11 @@ class m_contract extends DB{
     }
 
     public function getAllContract(){
-        $sql = "SELECT * FROM contracts WHERE liquidation is null";
+        $sql = "SELECT * FROM contracts WHERE liquidation is null and DATEDIFF(date_end, CURDATE()) > 0";
+        return $this->get_list($sql);
+    }
+    public function getAllContractLiqui(){
+        $sql = "SELECT * FROM contracts WHERE liquidation is not null or DATEDIFF(date_end, CURDATE()) < 0";
         return $this->get_list($sql);
     }
 
@@ -37,6 +41,13 @@ class m_contract extends DB{
 
     public function updateLiqui($id){
         $sql = "UPDATE contracts SET liquidation = '" . date('Y-m-d') . "' WHERE id = $id";
+        return $this->query($sql);
+    }
+
+    public function insert_contract($admin_id, $user_id, $room_id, $date_start, $date_end, $method_payment){
+        $sql = "INSERT INTO `contracts`(`id`, `student_id`, `room_id`, `user_id`, `date_start`, `date_end`, `method_payment`, `status`, `liquidation`) 
+        VALUES (null,$user_id,$room_id,$admin_id,'$date_start','$date_end',$method_payment,0,null)";
+        
         return $this->query($sql);
     }
 

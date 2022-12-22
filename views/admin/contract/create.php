@@ -29,39 +29,36 @@
                                 <label for="user1" class="form-label">Sinh viên</label>
                                 <select class="form-select" id="user1" name="user_id">
                                     <?php  foreach($data["students"] as $value){?>
-                                    <option value="<?php echo $value["id"]; ?>"><?php echo $value["name"]; ?></option>
+                                    <option value="<?php echo $value["username"]; ?>"><?php echo $value["name"]; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="user1" class="form-label">Phòng</label>
-                                <select class="form-select" id="user1" name="user_id">
+                                <select class="form-select" id="user1" name="room_id">
                                     <?php  foreach($data["rooms"] as $value){?>
                                     <option value="<?php echo $value["id"]; ?>"><?php echo $value["room_name"]; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
-
+                            <div class="mb-3 position-relative" id="datepicker1">
+                                <label class="date_birth">Ngày tạo</label>
+                                <input type="date" class="form-control" id="date_birth" name="date_start">
+                            </div>
+                            <div class="mb-3 position-relative" id="datepicker1">
+                                <label class="date_birth">Ngày kết thúc</label>
+                                <input type="date" class="form-control" id="date_birth" name="date_end">
+                            </div>
                             <div class="mb-3">
-                                <label for="status1" class="form-label">Trạng thái</label>
-                                <select class="form-select" id="status1" name="status">
-                                    <option value="1">Hoạt Động</option>
-                                    <option value="0">Bảo Trì</option>
+                                <label for="status1" class="form-label">Phương thức thanh toán</label>
+                                <select class="form-select" id="status1" name="method_payment">
+                                    <option value="0">Tiền mặt</option>
+                                    <option value="1">Chuyển khoản</option>
                                 </select>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="price" class="form-label">Giá phòng <span class="text-danger">(*)</span></label>
-                                <input type="number" class="form-control" id="price" name="price"  placeholder="Nhập giá tiền...">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="max_num" class="form-label">Số người ở tối đa <span class="text-danger">(*)</span></label>
-                                <input type="number" class="form-control" id="max_num" name="max_num"  placeholder="Nhập tổng số người có thể ở...">
-                            </div>
-
-                            <button type="submit" name="submit" class="btn btn-success">Tạo phòng</button>
+                            <button type="submit" name="submit" class="btn btn-success">Thêm hợp đồng</button>
                         </div>
                     </div>
                 </form>

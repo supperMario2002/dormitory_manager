@@ -88,7 +88,6 @@ class c_user extends controller
 
 
     public function create(){
-        
         if(isset($_POST["submit"])){
             $result = new m_user();
             $name = $_POST["name"];
