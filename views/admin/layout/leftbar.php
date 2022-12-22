@@ -24,7 +24,7 @@
             </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#student" aria-expanded="false" aria-controls="student" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-account-cowboy-hat-outline"></i>
                     <span> Quản lý sinh viên  </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -41,7 +41,7 @@
             </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#room" aria-expanded="false" aria-controls="room" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-folder-home"></i>
                     <span> Quản lý phòng  </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -58,7 +58,7 @@
             </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-account-details-outline"></i>
                     <span> Quản lý người dùng</span>
                     <span class="menu-arrow" ></span>
                 </a>
@@ -75,7 +75,7 @@
             </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#bill" aria-expanded="false" aria-controls="bill" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-cash-100"></i>
                     <span> Quản lý hóa đơn </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -99,7 +99,7 @@
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#contract" aria-expanded="false" aria-controls="contract" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-contacts"></i>
                     <span> Quản lý hợp đồng </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -109,7 +109,7 @@
                             <a href="<?= $this->base_url("admin/contract/index") ?>">Danh sách hợp đồng</a>
                         </li>
                         <li>
-                            <a href="<?= $this->base_url("admin/contract/indexliquid") ?>">Hợp đồng đã thanh lý</a>
+                            <a href="<?= $this->base_url("admin/contract/indexliquid") ?>">Hợp đồng đã kết thúc</a>
                         </li>
                         <li>
                             <a href="<?= $this->base_url("admin/contract/create") ?>">Thêm hợp đồng</a>
@@ -120,7 +120,7 @@
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#service" aria-expanded="false" aria-controls="service" class="side-nav-link">
-                    <i class="uil-location-point"></i>
+                    <i class="mdi mdi-room-service"></i>
                     <span> Quản lý dịch vụ</span>
                     <span class="menu-arrow" ></span>
                 </a>

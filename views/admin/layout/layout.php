@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="<?= _WEB_ROOT ?>/public/image/logo/logo_icon.png">
-
+    <link href="<?= _WEB_ROOT ?>/public/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <link href="<?= _WEB_ROOT ?>/public/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="<?= _WEB_ROOT ?>/public/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?= _WEB_ROOT ?>/node_modules/sweetalert2/dist/sweetalert2.min.css">
     <link href="<?= _WEB_ROOT ?>/public/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= _WEB_ROOT ?>/public/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <script src="<?= _WEB_ROOT ?>/public/js/jquery-3.6.1.min.js"></script>
+
 </head>
 
 <body class="loading" data-layout-color="<?= $_SESSION['login']['color_scheme'] == 1 ? "dark" : "light" ; ?>" data-leftbar-theme="dark" data-layout-mode="fluid" >
@@ -63,6 +64,8 @@
     <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery.dataTables.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/js/vendor/dataTables.bootstrap5.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.datatable-init.js"></script>
+    <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
 
 
 </body>
