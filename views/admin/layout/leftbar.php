@@ -137,9 +137,9 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="<?= $this->base_url("admin/home/statistic") ?>" class="side-nav-link">
+                <a href="<?= $this->base_url("admin/report/index") ?>" class="side-nav-link">
                     <i class="uil-calender"></i>
-                    <span> Báo cáo thống kê </span>
+                    <span> Báo cáo </span>
                 </a>
             </li>
         </ul>
