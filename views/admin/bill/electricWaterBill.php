@@ -72,7 +72,7 @@
                                                                     <p class="text-muted"><strong>Giá tiền trên 1 số điện:</strong> <span class="ms-2"><?= $value["price_per_e"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Tổng tiền điện:</strong> <span class="ms-2"><?= number_format($value["price_per_e"] * ($value["e_last"] - $value["e_first"])); ?> VND</span></p>
                                                                     <p class="text-muted"><strong>Chỉ số nước đầu:</strong> <span class="ms-2"><?= $value["w_first"]; ?></span></p>
-                                                                    <p class="text-muted"><strong>Chỉ số nước cuối:</strong> <span class="ms-2"><?= $value["w_first"]; ?></span></p>
+                                                                    <p class="text-muted"><strong>Chỉ số nước cuối:</strong> <span class="ms-2"><?= $value["w_last"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Giá tiền trên 1 số nước:</strong> <span class="ms-2"><?= $value["price_per_w"]; ?></span></p>
                                                                     <p class="text-muted"><strong>Tổng tiền nước:</strong> <span class="ms-2"><?= number_format($value["price_per_w"] * ($value["w_last"] - $value["w_first"])); ?> VND</span></p>
                                                                     <p class="text-muted"><strong>Từ ngày:</strong> <span class="ms-2"><?= $value["start_date"]; ?></span></p>
