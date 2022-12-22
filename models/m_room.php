@@ -3,8 +3,8 @@ include "core/database.php";
 
 class m_room extends DB{
 
-    public function insert_room($name, $price,$user_id, $status , $max_num){
-        $sql = "INSERT INTO rooms VALUES (null,'$name',$price, $max_num,$user_id,$status)";
+    public function insert_room($name, $price,$user_id, $status , $max_num,$area){
+        $sql = "INSERT INTO rooms VALUES (null,'$name',$price, $max_num,$user_id,$status,$area)";
         return $this->query($sql);
     }
 
@@ -24,9 +24,9 @@ class m_room extends DB{
         return $this->get_row($sql);
     }
 
-    public function update_room($id, $name, $price, $user_id, $status, $max_num)
+    public function update_room($id, $name, $price, $user_id, $status, $max_num,$area)
     {
-        $sql = "UPDATE rooms SET room_name = '$name', price = $price, max_num = $max_num, user_id = $user_id, status = $status WHERE id = $id";
+        $sql = "UPDATE rooms SET room_name = '$name', price = $price, max_num = $max_num, user_id = $user_id, status = $status, area = $area WHERE id = $id";
 
         return $this->query($sql);
     }

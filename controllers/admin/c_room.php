@@ -22,11 +22,12 @@ class c_room extends controller{
         if(isset($_POST["submit"])){
             $name = $_POST["name"];
             $status= $_POST["status"];
+            $area = $_POST["area"];
             $user_id = $_POST["user_id"];
             $price  = $_POST["price"];
             $max_num = $_POST["max_num"];
 
-            $result = $insert->insert_room($name, $price,$user_id, $status, $max_num);
+            $result = $insert->insert_room($name, $price,$user_id, $status, $max_num,$area);
             if(!$result){
                 setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
             }else{
@@ -38,18 +39,19 @@ class c_room extends controller{
     }
 
     public function edit(){
+        $select = new m_room();
         if(isset($_GET["id"])){
             $room_id = $_GET["id"];
-            $select = new m_room();
             $room = $select->get_room_by_id($room_id);
             $user = $select->getAllUser();
             if(isset($_POST["submit"])){
                 $name = $_POST["name"];
                 $user_id = $_POST["user_id"];
+                $area = $_POST["area"];
                 $status= $_POST["status"];
                 $price  = $_POST["price"];
                 $max_num = $_POST["max_num"];
-                $update = $select->update_room($_GET["id"],$name, $price, $user_id, $status, $max_num);
+                $update = $select->update_room($_GET["id"],$name, $price, $user_id, $status, $max_num,$area);
                 if(!$update){
                     setcookie("err", "Tên phòng đã có!", time()+1, "/","", 0);
                 }else{

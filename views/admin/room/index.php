@@ -34,6 +34,7 @@
                             <th>Tên phòng</th>
                             <th>Người quản lý</th>
                             <th>Giá phòng(VND)</th>
+                            <th>Khu </th>
                             <th>Số lượng</th>
                             <th>Trạng thái</th>
                             <th></th>
@@ -51,6 +52,11 @@
                                     <td><?= $value["room_name"]; ?></td>
                                     <td><?= $value["user_name"]; ?></td>
                                     <td><?= number_format($value["price"]); ?></td>
+                                    <td>
+                                        <?=
+                                        $value["area"] == 0 ? "Nam" : "Nữ";
+                                        ?>
+                                    </td>
                                     <td>
                                         <?php
                                         echo $value["count"] . "/" . $value["max_num"];
