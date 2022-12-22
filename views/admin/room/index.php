@@ -95,17 +95,7 @@
 
                                                                         <?php
                                                                         }
-                                                                    }
-                                                                    if ($value["count"] == 0) {
-                                                                        echo "<h3>Phòng trống</h3>";
-                                                                    } else {
-                                                                        ?>
-                                                                        <form action="<?= $this->base_url("admin/room/editstudent/" . $value["id"]) ?>" method="GET">
-                                                                            <button type="submit" name="editStudent" class="btn btn-info">Sửa</button>
-                                                                        </form>
-                                                                    <?php
-                                                                    }
-                                                                    ?>
+                                                                    }?>
                                                                 </div>
                                                             </div>
                                                         </div>

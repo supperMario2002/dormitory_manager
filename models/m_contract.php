@@ -35,5 +35,8 @@ class m_contract extends DB{
         return $this->get_row($sql);
     }
 
+    public function updateLiqui($id){
+        
+    }
 
 }
