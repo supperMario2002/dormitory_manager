@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 22, 2022 at 05:37 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 22, 2022 lúc 05:42 PM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ql_kytuc`
+-- Cơ sở dữ liệu: `ql_kytuc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contracts`
+-- Cấu trúc bảng cho bảng `contracts`
 --
 
 CREATE TABLE `contracts` (
@@ -40,7 +40,7 @@ CREATE TABLE `contracts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `contracts`
+-- Đang đổ dữ liệu cho bảng `contracts`
 --
 
 INSERT INTO `contracts` (`id`, `student_id`, `room_id`, `user_id`, `date_start`, `date_end`, `method_payment`, `status`, `liquidation`) VALUES
@@ -60,7 +60,7 @@ INSERT INTO `contracts` (`id`, `student_id`, `room_id`, `user_id`, `date_start`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `electric_water`
+-- Cấu trúc bảng cho bảng `electric_water`
 --
 
 CREATE TABLE `electric_water` (
@@ -79,7 +79,7 @@ CREATE TABLE `electric_water` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `electric_water`
+-- Đang đổ dữ liệu cho bảng `electric_water`
 --
 
 INSERT INTO `electric_water` (`id`, `e_first`, `e_last`, `price_per_e`, `w_first`, `w_last`, `price_per_w`, `rooms_id`, `start_date`, `end_date`, `payment`, `status`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `electric_water` (`id`, `e_first`, `e_last`, `price_per_e`, `w_first
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invoices`
+-- Cấu trúc bảng cho bảng `invoices`
 --
 
 CREATE TABLE `invoices` (
@@ -106,21 +106,20 @@ CREATE TABLE `invoices` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invoice_details`
+-- Cấu trúc bảng cho bảng `invoice_details`
 --
 
 CREATE TABLE `invoice_details` (
   `id` int(11) NOT NULL,
   `invoices_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `noti`
+-- Cấu trúc bảng cho bảng `noti`
 --
 
 CREATE TABLE `noti` (
@@ -133,7 +132,7 @@ CREATE TABLE `noti` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Cấu trúc bảng cho bảng `reports`
 --
 
 CREATE TABLE `reports` (
@@ -147,7 +146,7 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reports`
+-- Đang đổ dữ liệu cho bảng `reports`
 --
 
 INSERT INTO `reports` (`id`, `user_id`, `student_id`, `title`, `message`, `created_at`, `status`) VALUES
@@ -156,7 +155,7 @@ INSERT INTO `reports` (`id`, `user_id`, `student_id`, `title`, `message`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Cấu trúc bảng cho bảng `rooms`
 --
 
 CREATE TABLE `rooms` (
@@ -170,7 +169,7 @@ CREATE TABLE `rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `rooms`
+-- Đang đổ dữ liệu cho bảng `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `room_name`, `price`, `max_num`, `user_id`, `status`, `area`) VALUES
@@ -179,12 +178,13 @@ INSERT INTO `rooms` (`id`, `room_name`, `price`, `max_num`, `user_id`, `status`,
 (11, 'A102', 100000, 6, 40, 1, 0),
 (12, 'A103', 500000, 6, 40, 0, 0),
 (14, 'B100', 1000000000, 12, 42, 0, 0),
-(15, 'A1111', 2, 9, 58, 1, 0);
+(15, 'A1111', 2, 9, 58, 1, 0),
+(16, 'Phòng hơn Chống', 123123, 12, 40, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `services`
+-- Cấu trúc bảng cho bảng `services`
 --
 
 CREATE TABLE `services` (
@@ -195,18 +195,10 @@ CREATE TABLE `services` (
   `status` tinyint(2) NOT NULL COMMENT '0: đóng\r\n1: Hoạt động'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `services`
---
-
-INSERT INTO `services` (`id`, `name`, `describe`, `price`, `status`) VALUES
-(1, 'Đổ rác VIP 1', 'Đổ rác thuê cho sinh viên ở ký túc xá gói Vip1', 12000, 1),
-(2, 'Dịch vụ giặt quần áo', 'Giặt quần áo cho sinh viên', 20000, 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -226,12 +218,12 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`, `sex`, `date_birth`, `address`, `email`, `phone`, `avatar_url`, `role`, `status`, `color_scheme`) VALUES
 (40, 'admin', '202cb962ac59075b964b07152d234b70', 'Lương Văn Hòa ', 0, '2022-11-27', 'Tân Thành - Kiên Thành', 'hoa@gmail.com', '0972798037', '978gái xinh 1.1.jpg', 0, 1, 0),
-(42, 'khanh', 'c4ca4238a0b923820dcc509a6f75849b', 'Đỗ Kim Khánh', 0, '0000-00-00', 'Hà Nội', 'toiroiluomoi123@gmail.com', '0357143496', '724avt_khanh.jpg', 0, 1, 0),
+(42, 'khanh', '202cb962ac59075b964b07152d234b70', 'Đỗ Kim Khánh', 0, '0000-00-00', 'Hà Nội', 'toiroiluomoi123@gmail.com', '0357143496', '724avt_khanh.jpg', 0, 0, 0),
 (47, '201112', '2502552352d455b1280a579f4b80100d', 'Đỗ Kim Khánh', 0, '2022-11-27', 'Hà Nội', 'khanhthanchet@gmail.com', '0357143496', '55avt_khanh.jpg', 1, 1, 0),
 (48, '201113', '895182ccc51b4ef371103e8de2a907c0', 'Lưu Quang Vinh', 0, '2022-11-27', 'Lạng Sơn', 'vinh@gmail.com', '0357143496', '6avt_vinh.jpg', 1, 1, 0),
 (49, '201114', 'd719a83da23531fb2fb0d5bd855e0157', 'Trần Ngọc Thắng', 0, '2022-11-27', 'Hà Nội', 'thang@gmail.com', '0357143496', '11avt_chuot.jpg', 1, 1, 0),
@@ -249,11 +241,11 @@ INSERT INTO `users` (`id`, `username`, `password`, `name`, `sex`, `date_birth`, 
 (69, '20111133', '5db99c6989ce93c98edb8aacee1b97cd', 'Lương Văn Hòa  123', 0, '2022-12-22', '123', 'toiroiluomoi123@gmail.com2', '0357143496', '662gái xinh 1.1.jpg', 1, 1, 0);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `contracts`
+-- Chỉ mục cho bảng `contracts`
 --
 ALTER TABLE `contracts`
   ADD PRIMARY KEY (`id`),
@@ -262,14 +254,14 @@ ALTER TABLE `contracts`
   ADD KEY `fk_saa` (`student_id`);
 
 --
--- Indexes for table `electric_water`
+-- Chỉ mục cho bảng `electric_water`
 --
 ALTER TABLE `electric_water`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_ew_roms` (`rooms_id`);
 
 --
--- Indexes for table `invoices`
+-- Chỉ mục cho bảng `invoices`
 --
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`id`),
@@ -277,7 +269,7 @@ ALTER TABLE `invoices`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `invoice_details`
+-- Chỉ mục cho bảng `invoice_details`
 --
 ALTER TABLE `invoice_details`
   ADD PRIMARY KEY (`id`),
@@ -285,13 +277,13 @@ ALTER TABLE `invoice_details`
   ADD KEY `service_id` (`service_id`);
 
 --
--- Indexes for table `noti`
+-- Chỉ mục cho bảng `noti`
 --
 ALTER TABLE `noti`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `reports`
+-- Chỉ mục cho bảng `reports`
 --
 ALTER TABLE `reports`
   ADD PRIMARY KEY (`id`),
@@ -299,7 +291,7 @@ ALTER TABLE `reports`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `rooms`
+-- Chỉ mục cho bảng `rooms`
 --
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`),
@@ -307,13 +299,13 @@ ALTER TABLE `rooms`
   ADD KEY `fk_room_user` (`user_id`);
 
 --
--- Indexes for table `services`
+-- Chỉ mục cho bảng `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -321,69 +313,69 @@ ALTER TABLE `users`
   ADD KEY `fk_roleUser` (`role`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `contracts`
+-- AUTO_INCREMENT cho bảng `contracts`
 --
 ALTER TABLE `contracts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `electric_water`
+-- AUTO_INCREMENT cho bảng `electric_water`
 --
 ALTER TABLE `electric_water`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `invoices`
+-- AUTO_INCREMENT cho bảng `invoices`
 --
 ALTER TABLE `invoices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `invoice_details`
+-- AUTO_INCREMENT cho bảng `invoice_details`
 --
 ALTER TABLE `invoice_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `noti`
+-- AUTO_INCREMENT cho bảng `noti`
 --
 ALTER TABLE `noti`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reports`
+-- AUTO_INCREMENT cho bảng `reports`
 --
 ALTER TABLE `reports`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `rooms`
+-- AUTO_INCREMENT cho bảng `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `services`
+-- AUTO_INCREMENT cho bảng `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `contracts`
+-- Các ràng buộc cho bảng `contracts`
 --
 ALTER TABLE `contracts`
   ADD CONSTRAINT `contracts_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -391,34 +383,34 @@ ALTER TABLE `contracts`
   ADD CONSTRAINT `fk_sa` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `electric_water`
+-- Các ràng buộc cho bảng `electric_water`
 --
 ALTER TABLE `electric_water`
   ADD CONSTRAINT `fk_ew_roms` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `invoices`
+-- Các ràng buộc cho bảng `invoices`
 --
 ALTER TABLE `invoices`
   ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `invoice_details`
+-- Các ràng buộc cho bảng `invoice_details`
 --
 ALTER TABLE `invoice_details`
   ADD CONSTRAINT `invoice_details_ibfk_1` FOREIGN KEY (`invoices_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `invoice_details_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `reports`
+-- Các ràng buộc cho bảng `reports`
 --
 ALTER TABLE `reports`
   ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `reports_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `rooms`
+-- Các ràng buộc cho bảng `rooms`
 --
 ALTER TABLE `rooms`
   ADD CONSTRAINT `fk_room_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
