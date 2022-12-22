@@ -31,10 +31,10 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="status1" class="form-label">Trạng thái</label>
-                                <select class="form-select" id="status1" name="status">
-                                    <option value="1" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Hoạt Động</option>
-                                    <option value="0" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Bảo Trì</option>
+                                <label for="area" class="form-label">Khu</label>
+                                <select class="form-select" id="area" name="area">
+                                    <option value="1"  <?= ($data["room"]["area"] == 1) ? "selected" : ""; ?>>Nữ</option>
+                                    <option value="0"  <?= ($data["room"]["area"] == 0) ? "selected" : ""; ?>>Nam</option>
                                 </select>
                             </div>
 
@@ -61,6 +61,14 @@
                             <div class="mb-3">
                                 <label for="max_num" class="form-label">Số người ở tối đa <span class="text-danger">(*)</span></label>
                                 <input type="number" class="form-control" id="max_num" name="max_num" value="<?= $data["room"]["max_num"]; ?>"  placeholder="Nhập tổng số người có thể ở...">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="status1" class="form-label">Trạng thái</label>
+                                <select class="form-select" id="status1" name="status">
+                                    <option value="1" <?= ($data["room"]["status"] == 1) ? "selected" : ""; ?>>Hoạt Động</option>
+                                    <option value="0" <?= ($data["room"]["status"] == 0) ? "selected" : ""; ?>>Bảo Trì</option>
+                                </select>
                             </div>
 
                             <button type="submit" name="submit" class="btn btn-success">Gửi</button>
