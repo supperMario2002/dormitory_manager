@@ -20,9 +20,7 @@ $controllerName = $request->controller;
 $methodName = $request->method;
 $role = $request->role;
 
-// echo $controllerName;
-// echo $methodName;
-// die();
+
 // create controllerName
 if($role == "admin"){
     require_once('controllers/admin/' . $controllerName . '.php');
@@ -30,8 +28,4 @@ if($role == "admin"){
     require_once('controllers/' . $controllerName . '.php');
 }
 $controller = new $controllerName();
-// if(!method_exists($controller, $methodName)){
-//     include "views/admin/home/page-404.php";
-//     die();
-// }
 $controller->{$methodName}();
