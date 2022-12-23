@@ -70,5 +70,13 @@ class DB
         }
         return false;
     }
+    public function lastId($sql){
+        $this->connect();
+         if($this->ketnoi->query($sql)){
+            return mysqli_insert_id($this->ketnoi);
+         }else{
+            return false;
+         }
+    }
 }
 

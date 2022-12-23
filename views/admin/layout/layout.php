@@ -14,6 +14,7 @@
     <link href="<?= _WEB_ROOT ?>/public/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= _WEB_ROOT ?>/public/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <script src="<?= _WEB_ROOT ?>/public/js/jquery-3.6.1.min.js"></script>
+    <link href="<?= _WEB_ROOT ?>/public/js/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -66,6 +67,7 @@
     <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.datatable-init.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="<?= _WEB_ROOT ?>/public/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="<?= _WEB_ROOT ?>/public/js/vendor/select2/js/select2.min.js"></script>
 
 
 </body>

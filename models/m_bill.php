@@ -76,7 +76,7 @@ class m_bill extends DB
     public function getInvoiceDetailsByID($id)
     {
         $sql = "SELECT invoice_details.id as invoice_detailsID, invoice_details.service_id as serviceID, services.*
-        FROM `invoice_details` 
+        FROM invoice_details 
         INNER JOIN services ON invoice_details.service_id = services.id
         WHERE invoice_details.invoices_id = $id";
         return $this->get_list($sql);
@@ -90,15 +90,24 @@ class m_bill extends DB
 
     public function create_invoice($user_id, $student_id, $status)
     {
-        $sql = "INSERT INTO `invoices`(`id`, `created_at`, `user_id`, `student_id`, `status`) 
+        $sql = "INSERT INTO invoices(id, created_at, user_id, student_id, status) 
                 VALUES (null, STR_TO_DATE('".date('Y-m-d')."', '%Y-%m-%d'),$user_id,$student_id,$status)";
-            // die(var_dump($sql));
-        return $this->query($sql);
+        return $this->lastId($sql);
     }
 
     public function getAllUserByRole($role)
     {
-        $sql = "SELECT * FROM `users` WHERE `role` = $role AND `status` = 1";
+        $sql = "SELECT * FROM users WHERE role = $role AND status = 1";
         return $this->get_list($sql);
+    }
+
+    public function getAllService(){
+        $sql = "SELECT * FROM services ";
+        return $this->get_list($sql);
+    }
+
+    public function create_invoice_dentals($invoice_id, $service_id){
+        $sql = "INSERT INTO invoice_details VALUES (null,$invoice_id,$service_id)";
+        return $this->query($sql);
     }
 }
