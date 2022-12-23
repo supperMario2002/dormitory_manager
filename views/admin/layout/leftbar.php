@@ -2,7 +2,7 @@
 
     <a href="<?php _WEB_ROOT ?>" class="logo text-center logo-light" style="margin-top: 18px;">
         <span class="logo-lg">
-            <h2>Hunre</h2>
+            <h2 class="">Hunre</h2>
             <!-- <img src="assets/images/logo.png" alt="" height="16"> -->
         </span>
         <span class="logo-sm">
