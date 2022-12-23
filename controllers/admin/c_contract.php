@@ -22,7 +22,17 @@ class c_contract extends controller {
     public function create(){
         $result = new m_contract();
         $students = $result->getAllStudent();
-        $rooms = $result->getAllRooms();
+
+        if(isset($_POST['idS'])){
+            $student = $result->getStudentByRoomsId($_POST['idS']);
+            $roomss = $result->getAllRoomsByGender($student['sex']);
+            foreach($roomss as $value) {
+                echo '<option value="' . $value['id'] . '">' . $value['room_name'] . '</option>';
+            }
+            return 1;
+        }else{
+            $rooms = $result->getAllRoomsByGender($students[0]['sex']);
+        }
 
         if(isset($_POST["submit"])){
             $admin_id = $_SESSION["login"]["id"];

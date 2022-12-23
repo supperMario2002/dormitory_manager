@@ -10,7 +10,6 @@ if(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
     $web_root = 'http://' . $_SERVER['HTTP_HOST'];
 }
 
-
 $forder = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),'', str_replace('\\','/', strtolower(_DIR_ROOT)));
 $web_root = trim($web_root . trim($forder, '\\'), '/');
 

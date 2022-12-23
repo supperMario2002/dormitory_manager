@@ -76,9 +76,9 @@
                                     </td>
 
                                     <td class="table-action">
-                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["room_name"]; ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#centermodal<?= $value["id"]; ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>
 
-                                        <div class="modal fade" id="centermodal<?= $value["room_name"]; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal fade" id="centermodal<?= $value["id"]; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

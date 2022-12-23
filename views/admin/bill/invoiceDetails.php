@@ -4,10 +4,11 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="<?php _WEB_ROOT ?>">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Danh sách hoá đơn</li>
+                    <li class="breadcrumb-item">Danh sách hoá đơn</li>
+                    <li class="breadcrumb-item active">Chi tiết hoá đơn</li>
                 </ol>
             </div>
-            <h4 class="page-title">Danh sách hoá đơn</h4>
+            <h4 class="page-title">Danh sách chi tiết hoá đơn</h4>
         </div>
     </div>
 </div>
@@ -32,32 +33,24 @@
                             <tr>
                                 <th>STT</th>
                                 <th>ID</th>
-                                <th>Ngày tạo</th>
-                                <th>Người tạo</th>
-                                <th>Người sử dụng</th>
-                                <th>Trạng thái</th>
+                                <th>ID Dịch vụ</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Chi tiết dịch vụ</th>
+                                <th>Giá tiền</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            if (isset($data["invoice_list"])) {
-                                foreach ($data["invoice_list"] as $key => $value) {
+                            if (isset($data["invoiceDetails_list"])) {
+                                foreach ($data["invoiceDetails_list"] as $key => $value) {
                             ?>
                                     <tr>
                                         <td><?= $key + 1; ?></td>
-                                        <td><?= $value["id"]; ?></td>
-                                        <td><?= $value["created_at"]?></td>
-                                        <td><?= $value["user_id"]?></td>
-                                        <td><?= $value["student_id"]; ?></td>
-                                        <td><?= $value["status"] == 0 ? "<span class='badge bg-danger'>Chưa thanh toán</span>" : "<span class='badge bg-success'>Đã thanh toán</span>"; ?></td>
-                                        <td class="table-action d-flex">
-                                            <a href="<?= $this->base_url("admin/bill/view-details-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            <!-- <a href="<?= $this->base_url("admin/bill/edit-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a> -->
-
-                                            <!-- <form action="<?= $this->base_url("admin/bill/delete-invoice/" . $value["id"]) ?>" class="form-delete" method="get">
-                                                <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i> </a>
-                                            </form> -->
-                                        </td>
+                                        <td><?= $value["invoice_detailsID"]; ?></td>
+                                        <td><?= $value["serviceID"]?></td>
+                                        <td><?= $value["name"]?></td>
+                                        <td><?= $value["describe"]; ?></td>
+                                        <td><?= $value["price"]; ?></td>
                                     </tr>
                             <?php
                                 }

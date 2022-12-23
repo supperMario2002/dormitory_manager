@@ -23,6 +23,10 @@ RewriteRule admin/bill/edit-electric-water/([0-9]+)$ index.php?role=admin&contro
 RewriteRule admin/bill/delete-electric-water/([0-9]+)$ index.php?role=admin&controller=bill&method=deleteEWB&id=$1
 
 RewriteRule admin/bill/create-invoice$ index.php?role=admin&controller=bill&method=createInvoice
+RewriteRule admin/bill/list-invoice$ index.php?role=admin&controller=bill&method=invoice
+RewriteRule admin/bill/edit-invoice/([0-9]+)$ index.php?role=admin&controller=bill&method=editInvoice&id=$1
+RewriteRule admin/bill/delete-invoice/([0-9]+)$ index.php?role=admin&controller=bill&method=deleteInvoice&id=$1
+RewriteRule admin/bill/view-details-invoice/([0-9]+)$ index.php?role=admin&controller=bill&method=invoiceDetails&id=$1
 
 RewriteRule admin/([a-z]+)/([a-z]+)$ index.php?role=admin&controller=$1&method=$2
 RewriteRule admin/([a-z]+)/([a-z]+)/([0-9]+)$ index.php?role=admin&controller=$1&method=$2&id=$3

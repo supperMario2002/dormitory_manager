@@ -4,13 +4,19 @@ include "core/database.php";
 class m_contract extends DB{
 
 
+
+    public function getAllRoomsByGender($sex){
+        $sql = "SELECT * FROM rooms WHERE area = $sex";
+        return $this->get_list($sql);
+
+    }
     public function getAllRooms(){
         $sql = "SELECT * FROM rooms";
         return $this->get_list($sql);
     }
 
     public function getAllStudent(){
-        $sql = "SELECT * FROM users WHERE role = 1";
+        $sql = "SELECT users.* FROM users LEFT join contracts ON users.username = contracts.student_id WHERE users.role = 1 AND contracts.id is null";
         return $this->get_list($sql);
     }
 
@@ -40,4 +46,14 @@ class m_contract extends DB{
         return $this->query($sql);
     }
 
+    public function insert_contract($admin_id, $user_id, $room_id, $date_start, $date_end, $method_payment){
+        $sql = "INSERT INTO `contracts`(`id`, `student_id`, `room_id`, `user_id`, `date_start`, `date_end`, `method_payment`, `status`, `liquidation`) 
+        VALUES (null,$user_id,$room_id,$admin_id,'$date_start','$date_end',$method_payment,0,null)";
+
+        return $this->query($sql);
+    }
+    public function getAllContractLiqui(){
+        $sql = "SELECT * FROM contracts WHERE liquidation is not null or DATEDIFF(date_end, CURDATE()) < 0";
+        return $this->get_list($sql);
+    }
 }
