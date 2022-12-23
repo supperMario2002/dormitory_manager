@@ -25,26 +25,21 @@
 
                         <h4 class="header-title mb-3">Quên mật khẩu</h4>
 
-                        <form action="" method="POST">
+                        
+                        <form action="" method="POST" id="resetpass">
                             <div id="basicwizard">
 
                                 <ul class="nav nav-pills nav-justified form-wizard-header mb-4">
-                                    <li class="nav-item">
+                                    <li class="nav-item" class="basictab1">
                                         <a href="#basictab1" data-bs-toggle="tab" data-toggle="tab" class="nav-link nav-link1 rounded-0 pt-2 pb-2 ">
                                             <i class="mdi mdi-account-circle me-1"></i>
                                             <span class="d-none d-sm-inline">Xác thực</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item change-password2">
-                                        <a href="#basictab2" data-bs-toggle="tab" data-toggle="tab" class="nav-link nav-link2 rounded-0 pt-2 pb-2">
-                                            <i class="mdi mdi-face-profile me-1"></i>
-                                            <span class="d-none d-sm-inline">Đổi mật khẩu</span>
-                                        </a>
-                                    </li>
                                 </ul>
 
                                 <div class="tab-content b-0 mb-0">
-                                    <div class="tab-pane" id="basictab1">
+                                    <div class="tab-pane" id="basictab1" class="basictab1">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="row mb-3">
@@ -59,8 +54,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="tab-pane" id="basictab2">
+                                    <!-- <div class="tab-pane" id="basictab2">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="row mb-3">
@@ -78,16 +72,12 @@
                                                 </div>
 
 
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row -->
-                                    </div>
-
+                                            </div>
+                                        </div> 
+                                    </div> -->
                                     <ul class="list-inline wizard mb-0">
-                                        <!-- <li class="previous d-none list-inline-item">
-                                            <a href="javascript:void(0);" class="btn btn-info">Quay lại</a>
-                                        </li> -->
                                         <li class="next  list-inline-item float-end">
-                                            <a  href="javascript:void(0);" class="btn btn-info btn-next">Tiếp tục</a>
+                                            <button type="submit" name="submit" class="btn btn-info btn-next">Xác thực</button>
                                         </li>
                                     </ul>
 
@@ -115,25 +105,32 @@
     <script src="<?= _WEB_ROOT ?>/public/js/pages/demo.form-wizard.js"></script>
 
     <script>
-
-        $("#email").on("change", function() {
+        $(document).ready(function() {
             var email = $("#email").val();
-            $.ajax({
-                type: 'POST',
-                url: window.location.href,
-                data: {
-                    email: email,
-                },
-                success: function(data) {
-                    if (data == 1) {
-                        $("#email").addClass("form-err");
-                        $(".invalid-feedback").addClass("d-block");
-                    }else{
-                        $("#email").removeClass("form-err");
-                        $(".invalid-feedback").removeClass("d-block");
+            if (email == '') {
+                $("#resetpass").attr("onsubmit", "return false");
+            }
+            $("#email").on("change", function() {
+                $.ajax({
+                    type: 'POST',
+                    url: window.location.href,
+                    data: {
+                        email: $("#email").val(),
+                    },
+                    success: function(data) {
+                        if (data == 1) {
+                            $("#email").addClass("form-err");
+                            $(".invalid-feedback").addClass("d-block");
+                            $("#resetpass").attr("onsubmit", "return false");
+                        } else {
+                            $("#email").removeClass("form-err");
+                            $(".invalid-feedback").removeClass("d-block");
+                            $("#resetpass").attr("onsubmit", "");
+                            // $(".basictab1").addClass("d-none");
+                        }
                     }
-                }
 
+                })
             })
         })
     </script>
@@ -149,6 +146,10 @@
 
         .d-block {
             display: block !important;
+        }
+
+        .d-none{
+            display: none !important;
         }
     </style>
 </body>
