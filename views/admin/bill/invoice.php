@@ -48,7 +48,7 @@
                                         <td><?= $value["id"]; ?></td>
                                         <td><?= $value["created_at"]?></td>
                                         <td><?= $value["user_id"]?></td>
-                                        <td><?= $value["student_id"]; ?></td>
+                                        <td><?= $value["name"]; ?></td>
                                         <td><?= $value["status"] == 0 ? "<span class='badge bg-danger'>Chưa thanh toán</span>" : "<span class='badge bg-success'>Đã thanh toán</span>"; ?></td>
                                         <td class="table-action d-flex">
                                             <a href="<?= $this->base_url("admin/bill/view-details-invoice/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-eye"></i></a>

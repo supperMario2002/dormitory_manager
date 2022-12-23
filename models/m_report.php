@@ -17,4 +17,8 @@ class m_report extends DB{
         $sql = "UPDATE reports SET status = 2 where id = $id";
         return $this->query($sql);
     }
+    public function delete_report($id){
+        $sql = "DELETE FROM reports WHERE id = $id";
+        return $this->query($sql);
+    }
 }
