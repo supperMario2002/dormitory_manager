@@ -10,8 +10,10 @@ class c_contract extends controller{
         $result = new m_contract();
         $contract = $result->getRoomByIdUser($_SESSION["login"]["username"]);
         $student = $result->getStudentByRoomsId($contract["student_id"]);
-        $this->view("contract/index", compact('contract','student'));
+        $checkContract = $result->checkContract($_SESSION["login"]["username"]);
+        $this->view("contract/index", compact('contract','student','checkContract'));
     }
+
 
 }
 ?>

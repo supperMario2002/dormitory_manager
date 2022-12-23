@@ -6,6 +6,7 @@
     </div>
     <div class="card d-flex ">
         <div class="card-body">
+            <?php if(!empty($data['checkContract'])){?>
             <table class="contract-word">
                 <tr>
                     <td class=" text-center">
@@ -83,6 +84,7 @@
                     </td>
                 </tr>
             </table>
+        <?}else{echo 1;}?>
         </div>
     </div>
 </div>
