@@ -10,7 +10,7 @@ class c_room extends controller {
     public function index(){
         $result = new m_room();
         $room = $result->getRoomByIdUser($_SESSION["login"]["username"]);
-        $students = $result->getStudentByRoomsId($room["room_id"]);
+        $students = !empty($room["room_id"]) ? $result->getStudentByRoomsId($room["room_id"]) : "";
         $this->view("room/index", compact('room','students'));
     }
 
