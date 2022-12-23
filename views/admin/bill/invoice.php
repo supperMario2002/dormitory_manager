@@ -4,10 +4,10 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="<?php _WEB_ROOT ?>">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Danh sách hoá đơn</li>
+                    <li class="breadcrumb-item active">Hoá đơn dịch vụ</li>
                 </ol>
             </div>
-            <h4 class="page-title">Danh sách hoá đơn</h4>
+            <h4 class="page-title">Danh sách hoá đơn dịch vụ</h4>
         </div>
     </div>
 </div>

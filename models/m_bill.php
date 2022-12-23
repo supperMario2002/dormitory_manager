@@ -89,7 +89,7 @@ class m_bill extends DB
     public function create_invoice($user_id, $student_id, $status)
     {
         $sql = "INSERT INTO `invoices`(`id`, `created_at`, `user_id`, `student_id`, `status`) 
-                VALUES (null,".date('Y-m-d').",$user_id,$student_id,$status)";
+                VALUES (null, STR_TO_DATE('".date('Y-m-d')."', '%Y-%m-%d'),$user_id,$student_id,$status)";
             // die(var_dump($sql));
         return $this->query($sql);
     }

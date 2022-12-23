@@ -40,6 +40,11 @@
                                     <?php echo $_COOKIE["err"]; ?>
                                 </div>
                             <?php endif; ?>
+                            <?php if (isset($_SESSION["suc"])) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?php echo $_SESSION["suc"]; ?>
+                                </div>
+                            <?php unset($_SESSION["suc"]); endif; ?>
 
                             <form action=" " method="POST">
 
