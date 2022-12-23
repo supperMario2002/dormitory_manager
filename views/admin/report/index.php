@@ -58,8 +58,7 @@
                                         echo "Đã xác nhận";
                                     } ?></td>
                                     <td class="table-action">
-                                        
-                                        <form action="<?= $this->base_url("admin/room/delete/" . $value["id"]) ?>" class="form-delete" id="form-delete" method="get">
+                                          <form action="<?= $this->base_url("admin/room/delete/" . $value["id"]) ?>" class="form-delete" id="form-delete" method="get">
                                             <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i></a>
                                         </form>
                                     </td>
