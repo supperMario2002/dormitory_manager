@@ -104,9 +104,7 @@ class c_bill extends controller
     {
         $m_bill = new m_bill();
         $allStudent = $m_bill->getAllUserByRole(1);
-        // die(var_dump($allStudent));
         if (isset($_POST['submit'])) {
-
             $user_id = $_SESSION['login']['id'];
             $student_id = $_POST['student_id'];
             $status = $_POST['status'];

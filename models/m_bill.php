@@ -67,7 +67,9 @@ class m_bill extends DB
     #Invoice
     public function getAllInvoice()
     {
-        $sql = "SELECT * FROM `invoices` WHERE 1";
+        $sql = "SELECT invoices.*, users.name
+        FROM invoices INNER JOIN users
+        ON invoices.student_id = users.username";
         return $this->get_list($sql);
     }
 

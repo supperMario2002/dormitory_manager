@@ -56,4 +56,9 @@ class m_contract extends DB{
         $sql = "SELECT * FROM contracts WHERE liquidation is not null or DATEDIFF(date_end, CURDATE()) < 0";
         return $this->get_list($sql);
     }
+    public function checkContract($id){
+        $sql = "SELECT * FROM contracts WHERE student_id = $id";
+        die($sql);
+        return $this->get_list($sql);
+    }
 }
