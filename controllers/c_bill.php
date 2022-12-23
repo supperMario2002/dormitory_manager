@@ -9,7 +9,7 @@ class c_bill extends controller{
     public function index(){
         $result = new m_bill();
         $contract = $result->getRoomId($_SESSION["login"]["username"]);
-        $bills = $result->getBillByRoomId($contract["room_id"]);
+        $bills = !empty($contract["room_id"]) ? $result->getBillByRoomId($contract["room_id"]) : $result->getBillByRoomId(9999);
         if(isset($_POST['payment'])){
             include "api/momo.php";
             // $update = $result->updateStatus()
