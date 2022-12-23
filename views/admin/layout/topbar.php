@@ -165,7 +165,8 @@
                 </a>
 
 
-                <a href="<?= _WEB_ROOT; ?>/admin/user/logout" class="dropdown-item notify-item">
+                <a href="<?= _WEB_ROOT; ?>/admin/user/logout" id="url"></a>
+                <a href="#" class="dropdown-item notify-item" id="logout">
                     <i class="mdi mdi-logout me-1"></i>
                     <span>Đăng xuất</span>
                 </a>
@@ -210,5 +211,13 @@
     
         })
     }
+
+    $("#logout").click(function(event){
+        $('body').addClass('animate__animated animate__zoomOutLeft');
+        var url = $("#url").attr("href");
+        setTimeout(()=>{
+            window.location=url;
+        },1000)
+    })
 
 </script>
