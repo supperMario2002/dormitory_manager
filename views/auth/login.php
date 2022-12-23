@@ -18,7 +18,7 @@
         body{
             background-image: url(https://toigingiuvedep.vn/wp-content/uploads/2021/01/hinh-nen-4k-tuyet-dep-cho-may-tinh-820x461.jpg) ;
             background-repeat: no-repeat;
-            background-size: 1707px ;
+            background-size: cover ;
         }
     </style>
 </head>
