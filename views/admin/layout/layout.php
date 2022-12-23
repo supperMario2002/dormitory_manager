@@ -15,10 +15,16 @@
     <link href="<?= _WEB_ROOT ?>/public/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
     <script src="<?= _WEB_ROOT ?>/public/js/jquery-3.6.1.min.js"></script>
     <link href="<?= _WEB_ROOT ?>/public/js/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?= _WEB_ROOT ?>/node_modules/animate.css/animate.min.css">
 
+    <style>
+        .animate__animated.animate__zoomOutLeft {
+            --animate-duration: 2s;
+        }
+    </style>
 </head>
 
-<body class="loading" data-layout-color="<?= $_SESSION['login']['color_scheme'] == 1 ? "dark" : "light" ; ?>" data-leftbar-theme="dark" data-layout-mode="fluid" >
+<body class="loading" data-layout-color="<?= $_SESSION['login']['color_scheme'] == 1 ? "dark" : "light"; ?>" data-leftbar-theme="dark" data-layout-mode="fluid">
     <div class="wrapper">
 
         <?php include("leftbar.php"); ?>

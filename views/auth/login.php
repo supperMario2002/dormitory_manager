@@ -14,9 +14,17 @@
     <link href="<?= _WEB_ROOT ?>/public/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= _WEB_ROOT ?>/public/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
+    <style>
+        body{
+            background-image: url(https://toigingiuvedep.vn/wp-content/uploads/2021/01/hinh-nen-4k-tuyet-dep-cho-may-tinh-820x461.jpg) ;
+            background-repeat: no-repeat;
+            background-size: 1707px ;
+        }
+    </style>
 </head>
 
 <body>
+    <div class></div>
     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
         <div class="container">
             <div class="row justify-content-center">
