@@ -38,6 +38,7 @@
                             <th>Ngày hết hạn</th>
                             <th>Ngày thanh lý</th>
                             <th>Trạng thái</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -61,6 +62,11 @@
                                         <?php } else { ?>
                                             <span class="badge bg-danger">Chưa thanh toán</span>
                                         <?php } ?>
+                                    </td>
+                                    <td>
+                                        <form action="<?= $this->base_url("admin/contract/deletecontractliqui/" . $value["id"]) ?>" class="form-delete" id="form-delete" method="get">
+                                                <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i></a>
+                                        </form>
                                     </td>
                                 </tr>
                         <?php

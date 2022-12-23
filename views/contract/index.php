@@ -1,13 +1,16 @@
 <div class="row mt-4">
-    <div class="d-print-none mb-3">
-        <div class="text-end">
-            <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> In</a>
-        </div>
-    </div>
     <div class="card d-flex ">
-    <?php if (empty($data["room"]["id"])) { ?>
-            <p>Không có thông tin hợp đồng, hãy đăng ký</p>
-        <?php } else { ?>    
+        <?php if (empty($data["room"]["id"])) { ?>
+            <div class="d-flex justify-content-center flex-column text-center align-items-center">
+                <h2>Không có thông tin hợp đồng</h2>
+                <button type="button" class="btn btn-primary">Đăng ký hợp đồng</button>
+            </div>
+            <?php } else { ?>    
+                <div class="d-print-none mb-3">
+                    <div class="text-end">
+                        <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i> In</a>
+                    </div>
+                </div>
     <div class="card-body">
             <table class="contract-word">
                 <tr>

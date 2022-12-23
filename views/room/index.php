@@ -1,7 +1,10 @@
 <div class="row">
     <div class="card d-block">
         <?php if (empty($data["room"]["id"])) { ?>
-            <p>Không có thông tin phòng</p>
+            <div class="d-flex justify-content-center flex-column text-center align-items-center">
+                <h2>Không có thông tin phòng</h2>
+                <button type="button" class="btn btn-primary">Yêu cầu vào phòng</button>
+            </div>
         <?php } else { ?>
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-2">
