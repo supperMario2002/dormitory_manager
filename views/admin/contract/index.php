@@ -64,9 +64,6 @@
 
                                     <td class="table-action">
                                         <a href="<?= $this->base_url("admin/contract/update/" . $value["id"]) ?>" class="action-icon"><button class="btn btn btn-success">Thanh Lý</button></a>
-                                        <form action="<?= $this->base_url("admin/room/delete/" . $value["id"]) ?>" class="form-delete" id="form-delete" method="get">
-                                            <a class=" btn-delete btn"> <i class="mdi mdi-delete"></i></a>
-                                        </form>
                                     </td>
                                 </tr>
                         <?php
