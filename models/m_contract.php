@@ -61,4 +61,8 @@ class m_contract extends DB{
         die($sql);
         return $this->get_list($sql);
     }
+    public function deleteContractLiqui($id){
+        $sql = "DELETE FROM contracts WHERE id = $id";
+        return $this->query($sql);
+    }
 }

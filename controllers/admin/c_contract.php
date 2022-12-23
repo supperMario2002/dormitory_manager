@@ -66,4 +66,16 @@ class c_contract extends controller {
             }
         }
     }
+    public function deletecontractliqui(){
+        if(isset($_GET["id"])){
+            $result = new m_contract();
+            $del = $result->deleteContractLiqui($_GET["id"]);
+            if(!$del){
+                setcookie("err", "Không được xóa!", time()+1, "/","", 0);
+            }else{
+                setcookie("suc", "Xóa thành công!", time()+1, "/","", 0);
+            }
+            $this->redirect($this->base_url("admin/contract/indexliquid"));
+        }
+    }
 }
