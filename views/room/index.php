@@ -1,9 +1,9 @@
 <div class="row">
     <div class="card d-block">
-        <?php if (empty($data["room"]["id"])) { ?>
-            <p>Không có thông tin phòng</p>
-        <?php } else { ?>
-            <div class="card-body">
+        <div class="card-body">
+                <?php if (empty($data["room"]["id"])) { ?>
+                    <p>Không có thông tin phòng</p>
+                <?php } else { ?>
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h4 class="">Tên Phòng: <?= $data["room"]["room_name"] ?></h4>
                 </div>
