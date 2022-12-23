@@ -18,7 +18,7 @@
   </div>
 </div> -->
 <div class="row">
-<video controls="controls">
+<video controls="controls" autoplay muted>
   <source src="http://localhost/dormitory_manager/public/videos/domitory.mp4" type="video/mp4">
 </video>
 </div>
