@@ -49,4 +49,9 @@ class m_user extends DB{
         $sql = "SELECT * FROM users WHERE id = $id";
         return $this->get_row($sql);
     }
+
+    public function updatePassword($pass, $email){
+        $sql = "UPDATE users SET password ='" . md5($pass) . "' WHERE email = '$email'";
+        return $this->query($sql);
+    }
 }

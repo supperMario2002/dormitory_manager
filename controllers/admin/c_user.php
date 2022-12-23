@@ -1,5 +1,6 @@
 <?php
 include_once "models/m_user.php";
+include_once "mail/sendmail.php";
 class c_user extends controller
 {
 
@@ -7,30 +8,34 @@ class c_user extends controller
     {
         $insert = new m_user();
         if (isset($_POST["email"])) {
-            $mail_user = $_POST["email"];
-            $check = $insert->checkEmail($_POST["email"]);
+            $_SESSION['mail_user'] = $_POST["email"];
+            $check = $insert->checkEmail($_SESSION['mail_user']);
             if (count($check) != 0) {
                 echo 0;
             } else {
                 echo 1;
             }
-            // return 1;
         }
+
         if (isset($_POST['submit'])) {
-            $email = $mail_user;
-            $subject = "Verbazon.net - Password Request";
-            $header = "From: webmaster@verbazon.net";
-            $content = "Your password is 123";
-            $success = mail('toiroiluomoi123@gmail.com', $subject, $content, $header);
-            if ($success == true) {
-                echo "Đã gửi mail thành công...";
-            } else {
-                echo "Không gửi đi được...";
+            $send = new sendmail();
+            $new_password = rand(100000, 999999);
+            $email = $_SESSION['mail_user'];
+            $title = "Quên mật khẩu";
+            $content = "Mật khẩu mới của bạn là " . $new_password;
+            $update = $insert->updatePassword($new_password, $email);
+            if ($update) {
+                $success = $send->sendmailab($email, $title, $content);
+                if ($success == true) {
+                    $_SESSION['suc'] = "Mật khẩu mới đã gửi vào email của bạn! Vui lòng kiểm tra";
+                    $this->redirect($this->base_url("login"));
+                }
             }
+
+            unset($_SESSION['mail_user']);
         }
         include "views/auth/forget-password.php";
     }
-
 
 
     public function login()
