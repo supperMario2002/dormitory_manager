@@ -104,20 +104,29 @@ class c_bill extends controller
     {
         $m_bill = new m_bill();
         $allStudent = $m_bill->getAllUserByRole(1);
+        $allService = $m_bill->getAllService();
         if (isset($_POST['submit'])) {
             $user_id = $_SESSION['login']['id'];
             $student_id = $_POST['student_id'];
             $status = $_POST['status'];
-
+            $service = $_POST['service'];
+            
             $create = $m_bill->create_invoice($user_id, $student_id, $status);
             if(!$create){
                 setcookie("err", "Hoá đơn đã có!", time()+1, "/","", 0);
             }else{
-                setcookie("suc", "Thêm hoá đơn dịch vụ thành công", time()+1, "/","", 0);
+                foreach($service as $value){
+                    $ins = $m_bill->create_invoice_dentals($create, $value);
+                }
+                if(!$ins){
+                    setcookie("err", "Không thêm đc!", time()+1, "/","", 0);
+                }else{
+                    setcookie("suc", "Thêm hoá đơn dịch vụ thành công", time()+1, "/","", 0);
+                }
                 $this->redirect($this->base_url("admin/bill/invoice"));
             }
         }
-        $this->view("admin/bill/createInvoice", compact('allStudent'));
+        $this->view("admin/bill/createInvoice", compact('allStudent','allService'));
     }
 
     public function editInvoice()
