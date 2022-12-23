@@ -6,7 +6,7 @@
     </div>
     <div class="card d-flex ">
         <div class="card-body">
-            <?php if(!empty($data['checkContract'])){?>
+            <?php if(!empty($data['checkContract']['id'])){?>
             <table class="contract-word">
                 <tr>
                     <td class=" text-center">

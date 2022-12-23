@@ -58,6 +58,7 @@ class m_contract extends DB{
     }
     public function checkContract($id){
         $sql = "SELECT * FROM contracts WHERE student_id = $id";
-        return $this->query($sql);
+        die($sql);
+        return $this->get_list($sql);
     }
 }
