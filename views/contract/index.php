@@ -5,8 +5,10 @@
         </div>
     </div>
     <div class="card d-flex ">
-        <div class="card-body">
-            <?php if(!empty($data['checkContract']['id'])){?>
+    <?php if (empty($data["room"]["id"])) { ?>
+            <p>Không có thông tin hợp đồng, hãy đăng ký</p>
+        <?php } else { ?>    
+    <div class="card-body">
             <table class="contract-word">
                 <tr>
                     <td class=" text-center">
@@ -55,19 +57,19 @@
                             Bên B được phép sử dụng các tài sản do nhà trường trang bị tại phòng ở theo các quy định và nội quy KTX Trường Đại học Tài Nguyên và Môi Trường Hà Nội.
                         </p>
 
-                        <p class="my-0"><strong>Điều 2: Giá cả, thời gian và phương thức thanh toán.</strong></p>
-                        <p class="my-0"><strong>a)</strong>Đơn giá cho thuê: <?= number_format($data['contract']['price']) ?> VND/tháng. </p>
-                        <p class="my-0"><strong>b)</strong>Thời gian cho thuê từ ngày <?= $this->formatDate($data['contract']['date_start']) ?> đến ngày<?= $this->formatDate($data['contract']['date_end']) ?>. </p>
-                        <p class="my-0"><strong>c)</strong>Phương thức thanh toán: Bên B thanh toán cho Bên A tiền thuê chỗ ở nội trú bằng tiền mặt. </p>
-                        <p class="my-0"><strong>d)</strong>Tiền điện và tiền nước: Bên B thanh toán theo số thực tế sử dụng (chỉ số côngtơ), theo giá quy định chung của nhà trường. </p>
+                            <p class="my-0"><strong>Điều 2: Giá cả, thời gian và phương thức thanh toán.</strong></p>
+                            <p class="my-0"><strong>a)</strong>Đơn giá cho thuê: <?= number_format($data['contract']['price']) ?> VND/tháng. </p>
+                            <p class="my-0"><strong>b)</strong>Thời gian cho thuê từ ngày <?= $this->formatDate($data['contract']['date_start']) ?> đến ngày<?= $this->formatDate($data['contract']['date_end']) ?>. </p>
+                            <p class="my-0"><strong>c)</strong>Phương thức thanh toán: Bên B thanh toán cho Bên A tiền thuê chỗ ở nội trú bằng tiền mặt. </p>
+                            <p class="my-0"><strong>d)</strong>Tiền điện và tiền nước: Bên B thanh toán theo số thực tế sử dụng (chỉ số côngtơ), theo giá quy định chung của nhà trường. </p>
 
-                        <p class="my-0"><strong>Điều 3: Hợp đồng chấm dứt hiệu lực khi:.</strong></p>
-                        <p class="my-0"><strong>a)</strong>Thời hạn thuê chỗ ở KTX ghi trong hợp đồng kết thúc. </p>
-                        <p class="my-0"><strong>b)</strong>Bên B có đơn đề nghị chấm dứt hợp đồng trước thời hạn. </p>
-                        <p class="my-0"><strong>c)</strong>Bên B không còn là sinh viên của trường: đã tốt nghiệp, bị đình chỉ học tập, bị đuổi học hoặc tự ý bỏ học. </p>
-                        <p class="my-0"><strong>d)</strong>Bên B không đảm bảo về sức khỏe, mắc các chứng bệnh về lây nhiễm theo kết luận của cơ quan y tế cấp quận (huyện) trở lên. </p>
-                        <p class="my-0"><strong>e)</strong>Bên B vi phạm Nội quy KTX, bị xử lý kỷ luật theo khung kỷ luật ban hành mức chấm dứt hợp đồng cho ra khỏi KTX. </p>
-                        <p><strong>Bên A không có trách nhiệm hoàn trả tiền cho bên B trong các trường hợp chấm dứt hợp đồng nội trú tại các điểm b,c,d,e.</strong></p>
+                            <p class="my-0"><strong>Điều 3: Hợp đồng chấm dứt hiệu lực khi:.</strong></p>
+                            <p class="my-0"><strong>a)</strong>Thời hạn thuê chỗ ở KTX ghi trong hợp đồng kết thúc. </p>
+                            <p class="my-0"><strong>b)</strong>Bên B có đơn đề nghị chấm dứt hợp đồng trước thời hạn. </p>
+                            <p class="my-0"><strong>c)</strong>Bên B không còn là sinh viên của trường: đã tốt nghiệp, bị đình chỉ học tập, bị đuổi học hoặc tự ý bỏ học. </p>
+                            <p class="my-0"><strong>d)</strong>Bên B không đảm bảo về sức khỏe, mắc các chứng bệnh về lây nhiễm theo kết luận của cơ quan y tế cấp quận (huyện) trở lên. </p>
+                            <p class="my-0"><strong>e)</strong>Bên B vi phạm Nội quy KTX, bị xử lý kỷ luật theo khung kỷ luật ban hành mức chấm dứt hợp đồng cho ra khỏi KTX. </p>
+                            <p><strong>Bên A không có trách nhiệm hoàn trả tiền cho bên B trong các trường hợp chấm dứt hợp đồng nội trú tại các điểm b,c,d,e.</strong></p>
 
                     </td>
                 </tr>
@@ -84,8 +86,8 @@
                     </td>
                 </tr>
             </table>
-        <?}else{echo 1;}?>
         </div>
+        <?php } ?>
     </div>
 </div>
 <style>
