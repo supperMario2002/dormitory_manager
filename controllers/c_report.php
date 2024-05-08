@@ -7,7 +7,9 @@ class c_report extends controller {
     }
 
     public function index(){
-        $this->view("report/index");
+        $result = new m_report();
+        $listRepot = $result->getReportByStudent($_SESSION["login"]["username"]);
+        $this->view("report/index", compact('listRepot'));
     }
 
     public function create(){

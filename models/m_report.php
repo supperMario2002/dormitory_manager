@@ -13,6 +13,12 @@ class m_report extends DB{
         WHERE users.role = 1";
         return $this->query($sql); 
     }
+
+    public function getReportByStudent($id) {
+        $sql = "SELECT * FROM `reports` WHERE `student_id` =  $id";
+        return $this->query($sql);
+    }
+
     public function getEditReport($id){
         $sql = "UPDATE reports SET status = 2 where id = $id";
         return $this->query($sql);

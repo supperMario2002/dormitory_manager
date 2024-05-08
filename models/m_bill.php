@@ -110,4 +110,9 @@ class m_bill extends DB
         $sql = "INSERT INTO invoice_details VALUES (null,$invoice_id,$service_id)";
         return $this->query($sql);
     }
+
+    public function updateStatus($bill_id) {
+        $sql = "UPDATE electric_water SET status = 1 WHERE id = $bill_id";
+        return $this->query($sql);
+    }
 }
