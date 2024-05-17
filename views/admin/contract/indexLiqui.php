@@ -51,7 +51,7 @@
                                 <tr>
                                     <td><?= $key + 1; ?></td>
                                     <td><?= $value["id"]; ?></td>
-                                    <td><?= $value["student_id"]; ?></td>
+                                    <td><?= $value["student_id"]; ?> - <?= $value["name"]; ?></td>
                                     <td><?= $value["user_id"] ?></td>
                                     <td><?= $value["date_start"]?></td>
                                     <td><?= $value["date_end"]?></td>

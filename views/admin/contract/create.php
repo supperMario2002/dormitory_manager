@@ -29,7 +29,7 @@
                                 <label for="user_id" class="form-label">Sinh viên</label>
                                 <select class="form-select" id="user_id" name="user_id">
                                     <?php  foreach($data["students"] as $value){?>
-                                    <option value="<?php echo $value["username"]; ?>"><?php echo $value["name"]; ?></option>
+                                    <option value="<?php echo $value["username"]; ?>"><?php echo $value["username"]; ?> - <?php echo $value["name"]; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
