@@ -34,4 +34,10 @@ class m_home extends DB{
         $sql = "UPDATE users SET color_scheme = $valBg WHERE id = $id";
         return $this->query($sql);
     }
+
+    public function getAllEW()
+    {
+        $sql = "SELECT electric_water.*, rooms.room_name FROM electric_water INNER JOIN rooms ON electric_water.rooms_id = rooms.id";
+        return $this->get_list($sql);
+    }
 }

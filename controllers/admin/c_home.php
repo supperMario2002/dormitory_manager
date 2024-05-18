@@ -42,8 +42,10 @@ class c_home extends controller{
 
         $checkStudent = $result->checkNumStudent();
 
+        $get_all_bills = $result->getAllEW();
+
         $users = $result->getAllUsers();
-        $this->view("admin/home/index", compact('students','students_end','rooms','checkStudent','users'));
+        $this->view("admin/home/index", compact('students','students_end','rooms','checkStudent','users', 'get_all_bills'));
     }
 
     public function statistic(){
