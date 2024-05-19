@@ -115,4 +115,17 @@ class m_bill extends DB
         $sql = "UPDATE electric_water SET status = 1 WHERE id = $bill_id";
         return $this->query($sql);
     }
+
+    public function getContracByStundet($student_id) {
+        $sql = "SELECT contracts.*, rooms.price
+        FROM contracts
+        JOIN rooms ON contracts.room_id = rooms.id
+        WHERE liquidation is null AND student_id = $student_id";
+        return $this->get_list($sql);
+    }
+
+    public function updateStatusContract($contract_id) {
+        $sql = "UPDATE contracts SET status = 1 WHERE id = $contract_id";
+        return $this->query($sql);
+    }
 }

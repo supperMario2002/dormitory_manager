@@ -21,12 +21,12 @@ class m_contract extends DB{
     }
 
     public function getAllStudent(){
-        $sql = "SELECT users.* FROM users LEFT join contracts ON users.username = contracts.student_id WHERE users.role = 1 AND contracts.id is null";
+        $sql = "SELECT users.* FROM users LEFT join contracts ON users.username = contracts.student_id WHERE users.role = 1";
         return $this->get_list($sql);
     }
 
     public function getAllContract(){
-        $sql = "SELECT contracts.*, users.*
+        $sql = "SELECT contracts.*, users.username, users.name, users.sex
         FROM contracts
         JOIN users ON contracts.student_id = users.username
         WHERE liquidation is null";
@@ -61,7 +61,7 @@ class m_contract extends DB{
         return $this->query($sql);
     }
     public function getAllContractLiqui(){
-        $sql = "SELECT contracts.*, users.*
+        $sql = "SELECT contracts.*, users.username, users.name, users.sex
         FROM contracts
         JOIN users ON contracts.student_id = users.username
         WHERE contracts.liquidation IS NOT NULL OR DATEDIFF(contracts.date_end, CURDATE()) < 0";

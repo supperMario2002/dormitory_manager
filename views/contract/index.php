@@ -14,7 +14,7 @@
                         <td class=" text-center">
                             <p> <strong> ĐẠI HỌC TÀI NGUYÊN VÀ MÔI TRƯỜNG HÀ NỘI </strong></p>
                             <p><strong>Số: <?= $data['contract']['contract_id'] ?>/HĐ thuê chỗ ở KTX</strong></p>
-                            <p><strong>Năm học 2020 -2022</strong></p>
+                            <p><strong>Năm học 2020 -2024</strong></p>
                         </td>
                         <td class=" text-center">
                             <p><strong> CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM </strong></p>
