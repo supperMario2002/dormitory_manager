@@ -1,8 +1,11 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-9">
         <div class="page-title-box">
-            <h4 class="page-title">Hóa đơn hợp đồng của bạn</h4>
+            <h4 class="page-title">Hóa đơn dịch vụ của bạn</h4>
         </div>
+    </div>
+    <div class="col-9">
+        <a class="btn btn-primary" href="<?= _WEB_ROOT ?>/bill/createservice">Đặt dịch vụ</a>
     </div>
 </div>
 <!-- end page title -->
@@ -42,9 +45,8 @@
                                         <label class="form-check-label" for="customCheck1">&nbsp;</label>
                                     </div>
                                 </th>
-                                <th>Mã hợp đồng</th>
-                                <th>Từ Ngày</th>
-                                <th>Đến Ngày</th>
+                                <th>Mã hóa đơn</th>
+                                <th>Tên dịch vụ</th>
                                 <th>Tổng tiền</th>
                                 <th>Trạng thái</th>
                                 <!-- <th>Phương thức thanh toán</th> -->
@@ -52,7 +54,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($data['bill_contract'] as $bill) { ?>
+                        <?php foreach ($data['oder_services'] as $bill) { ?>
                             <tr>
                                 <td>
                                     <div class="form-check">
@@ -61,9 +63,8 @@
                                     </div>
                                 </td>
                                 <td><?=$bill['id'];?></td>
-                                <td><?=$bill['date_start'];?></td>
-                                <td><?=$bill['date_end'];?></td>
-                                <td><?=$bill['price'];?></td>
+                                <td><?=$bill['name'];?></td>
+                                <td><?=$bill['total_price'];?></td>
                                 <td>
                                     <h5><?php if ($bill['status'] == 1) {?>
                                         <span class="badge badge-success-lighten">

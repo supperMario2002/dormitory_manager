@@ -4,7 +4,7 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="http://localhost/dormitory_manager/">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Thêm hợp đồng</li>
+                    <li class="breadcrumb-item active">Thêm báo cáo</li>
                 </ol>
             </div>
             <h4 class="page-title">Thêm báo cáo</h4>

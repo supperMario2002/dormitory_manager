@@ -136,4 +136,28 @@ class c_bill extends controller{
         }
         $this->view("bill/billContrac", compact('bill_contract'));
     }
+
+    public function serviceindex() {
+        $result = new m_bill();
+        $oder_services = $result->getAllOderServices();
+        $this->view("bill/billService", compact('oder_services'));
+    }
+
+    public function createservice() {
+        $result = new m_bill();
+        $services = $result->getAllOderServices();
+        if(isset($_POST['submit'])){
+            $service_id = $_POST['service_id'];
+            $quanlity = $_POST['quanlity'];
+            $total_price = str_replace(',', '', $_POST['total_price']);
+            $create = $result->createServiceOrder($_SESSION["login"]["id"],$service_id,$quanlity,$total_price);
+            if(!$create){
+                setcookie("err", "Lỗi tạo đơn hàng!", time()+1, "/","", 0);
+            }else{
+                setcookie("suc", "Gửi đơn hàng thành công", time()+1, "/","", 0);
+                $this->redirect($this->base_url("bill/serviceindex"));
+            }
+        }
+        $this->view("bill/createService", compact("services"));
+    }
 }

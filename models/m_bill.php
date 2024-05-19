@@ -128,4 +128,16 @@ class m_bill extends DB
         $sql = "UPDATE contracts SET status = 1 WHERE id = $contract_id";
         return $this->query($sql);
     }
+
+    public function getAllOderServices() {
+        $sql = "SELECT order_service.*, services.name, services.describe,services.price
+        FROM order_service
+        JOIN services ON order_service.service_id = services.id";
+        return $this->get_list($sql);
+    }
+
+    public function createServiceOrder($student_id, $service_id, $quanlity, $total_price) {
+        $sql = "INSERT INTO order_service VALUES (null,$student_id,$service_id, $quanlity, $total_price, 0)";
+        return $this->query($sql);
+    }
 }
