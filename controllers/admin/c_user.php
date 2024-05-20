@@ -55,6 +55,7 @@ class c_user extends controller
 
             $insert = new m_user();
             $result = $insert->login_account($username, md5($password));
+            $insert->updateAllContract();
 
             if (!$result) {
                 setcookie("err", "Sai tài khoản hoặc mật khẩu!", time() + 1, "/", "", 0);

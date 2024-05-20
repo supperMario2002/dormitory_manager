@@ -54,4 +54,10 @@ class m_user extends DB{
         $sql = "UPDATE users SET password ='" . md5($pass) . "' WHERE email = '$email'";
         return $this->query($sql);
     }
+
+    public function updateAllContract() {
+        $currentDate = date('Y-m-d');
+        $sql = "UPDATE contracts SET liquidation = date_end WHERE date_end < '$currentDate'";
+        return $this->query($sql);
+    }
 }

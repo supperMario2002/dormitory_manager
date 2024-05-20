@@ -21,7 +21,10 @@ class m_contract extends DB{
     }
 
     public function getAllStudent(){
-        $sql = "SELECT users.* FROM users LEFT join contracts ON users.username = contracts.student_id WHERE users.role = 1";
+        $sql = "SELECT users.*
+        FROM users
+        LEFT JOIN contracts ON users.username = contracts.student_id
+        WHERE users.role = 1 AND contracts.liquidation IS NOT NULL";
         return $this->get_list($sql);
     }
 
