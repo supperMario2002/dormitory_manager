@@ -12,11 +12,11 @@ class m_room extends DB{
         $sql = "SELECT t1.*, users.name AS user_name
         FROM users
         RIGHT JOIN (
-            SELECT rooms.*, COUNT(DISTINCT contracts.student_id) AS count
+            SELECT rooms.*, COUNT(DISTINCT CASE WHEN contracts.liquidation IS NULL THEN contracts.student_id END) AS count
             FROM rooms
             LEFT JOIN contracts ON rooms.id = contracts.room_id
             GROUP BY rooms.id
-        ) AS t1 ON users.id = t1.user_id";
+        ) AS t1 ON users.id = t1.user_id LIMIT 0, 25";
         return $this->get_list($sql);
     }
 
@@ -34,7 +34,7 @@ class m_room extends DB{
     }
 
     public function select_student(){
-        $sql = "SELECT users.*, contracts.room_id,contracts.date_start, contracts.date_end FROM users INNER JOIN contracts ON users.username = contracts.student_id ";
+        $sql = "SELECT users.*, contracts.room_id,contracts.date_start, contracts.date_end, contracts.liquidation FROM users INNER JOIN contracts ON users.username = contracts.student_id WHERE contracts.liquidation IS NULL";
         return $this->get_list($sql);
     }
 

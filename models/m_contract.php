@@ -6,12 +6,17 @@ class m_contract extends DB{
 
 
     public function getAllRoomsByGender($sex){
-        $sql = "SELECT t1.*, users.name as user_name FROM users RIGHT JOIN 
-        (SELECT rooms.* ,COUNT(contracts.room_id) AS count 
-         FROM rooms LEFT JOIN contracts 
-         ON rooms.id = contracts.room_id 
-         GROUP BY rooms.id) AS t1
-         ON users.id = t1.user_id WHERE area = $sex AND max_num != COUNT";
+        $sql = "SELECT t1.*, users.name AS user_name 
+        FROM users 
+        RIGHT JOIN (
+            SELECT rooms.*, COUNT(contracts.room_id) AS count 
+            FROM rooms 
+            LEFT JOIN contracts ON rooms.id = contracts.room_id 
+            WHERE rooms.status = 1
+            GROUP BY rooms.id
+        ) AS t1
+        ON users.id = t1.user_id 
+        WHERE area = $sex AND max_num != COUNT";
         return $this->get_list($sql);
 
     }
