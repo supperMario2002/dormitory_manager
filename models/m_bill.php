@@ -102,7 +102,7 @@ class m_bill extends DB
     }
 
     public function getAllService(){
-        $sql = "SELECT * FROM services ";
+        $sql = "SELECT * FROM services";
         return $this->get_list($sql);
     }
 
@@ -136,8 +136,13 @@ class m_bill extends DB
         return $this->get_list($sql);
     }
 
-    public function createServiceOrder($student_id, $service_id, $quanlity, $total_price) {
-        $sql = "INSERT INTO order_service VALUES (null,$student_id,$service_id, $quanlity, $total_price, 0)";
+    public function createServiceOrder($student_id, $service_id, $room_id, $quanlity, $total_price) {
+        $sql = "INSERT INTO order_service VALUES (NULL, $student_id, $service_id, $room_id, $quanlity, $total_price, '" . date('Y-m-d') . "', 0, 0)";
+        return $this->query($sql);
+    }
+
+    public function updateStatusOrderService($contract_id) {
+        $sql = "UPDATE order_service SET status = 1 WHERE id = $contract_id";
         return $this->query($sql);
     }
 }

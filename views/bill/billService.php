@@ -48,7 +48,9 @@
                                 <th>Mã hóa đơn</th>
                                 <th>Tên dịch vụ</th>
                                 <th>Tổng tiền</th>
-                                <th>Trạng thái</th>
+                                <th>Ngày đặt</th>
+                                <th>Trạng thái xử lý đơn hàng</th>
+                                <th>Trạng thái thanh toán</th>
                                 <!-- <th>Phương thức thanh toán</th> -->
                                 <th style="width: 125px;">Action</th>
                             </tr>
@@ -65,6 +67,23 @@
                                 <td><?=$bill['id'];?></td>
                                 <td><?=$bill['name'];?></td>
                                 <td><?=$bill['total_price'];?></td>
+                                <td><?=$bill['oder_date'];?></td>
+                                <td>
+                                    <h5><?php if ($bill['order_status'] == 0) {?>
+                                        <span class="badge badge-warning-lighten">
+                                            <i class="mdi mdi-bitcoin"></i> Chờ xử lý
+                                        </span>
+                                        <?php } if ($bill['order_status'] == 1) {?>
+                                        <span class="badge badge-success-lighten">
+                                            <i class="mdi mdi-bitcoin"></i> Đã xác nhận
+                                        </span>
+                                        <?php } if ($bill['order_status'] == 2) {?>
+                                        <span class="badge badge-danger-lighten">
+                                            <i class="mdi mdi-bitcoin"></i> Đã hủy
+                                        </span>
+                                        <?php }?>
+                                    </h5>
+                                </td>
                                 <td>
                                     <h5><?php if ($bill['status'] == 1) {?>
                                         <span class="badge badge-success-lighten">
@@ -158,7 +177,7 @@
                                                             <input type="hidden" name="bill_id"
                                                                 value="<?=$bill['id']?>" />
                                                             <input type="hidden" name="total"
-                                                                value="<?=$bill['price']?>" />
+                                                                value="<?=$bill['total_price']?>" />
                                                             <div class="border p-3 mb-3 rounded">
                                                                 <div class="row">
                                                                     <div class="col-sm-8">

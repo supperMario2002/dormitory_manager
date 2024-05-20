@@ -30,7 +30,7 @@
                                 <select class="form-select" id="service_id" name="service_id" onchange="updatePrice()">
                                     <?php foreach($data["services"] as $value) { ?>
                                     <option value="<?php echo $value["id"]; ?>"
-                                        data-price="<?php echo $value["price"]; ?>"><?php echo $value["name"]; ?>
+                                        data-price="<?php echo $value["price"]; ?>" data-des="<?php echo $value["describe"]; ?>"><?php echo $value["name"]; ?>
                                     </option>
                                     <?php } ?>
                                 </select>
@@ -46,6 +46,11 @@
                                 <label for="quanlity" class="form-label">Số lượng</label>
                                 <input type="number" class="form-control" id="quanlity" name="quanlity"
                                     placeholder="Số lượng" required oninput="calculateTotal()">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="describe" class="form-label">Mô tả</label>
+                                <textarea class="form-control" id="describe" name="describe" readonly></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -71,10 +76,12 @@ function formatNumber(num) {
 function updatePrice() {
     var select = document.getElementById("service_id");
     var price = select.options[select.selectedIndex].getAttribute("data-price");
+    var des = select.options[select.selectedIndex].getAttribute("data-des");
     var formattedPrice = formatNumber(price);
     document.getElementById("service_price").value = price;
+    document.getElementById("describe").value = des;
     document.getElementById("display_price").value = formattedPrice;
-    calculateTotal();  // Cập nhật tổng tiền khi giá dịch vụ thay đổi
+    calculateTotal();
 }
 
 function calculateTotal() {

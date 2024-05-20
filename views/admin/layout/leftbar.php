@@ -127,6 +127,9 @@
                 <div class="collapse" id="service">
                     <ul class="side-nav-second-level">
                         <li>
+                            <a href="<?= $this->base_url("admin/service/indexoderservice") ?>">Danh sách đơn hàng dịch vụ</a>
+                        </li>
+                        <li>
                             <a href="<?= $this->base_url("admin/service/index") ?>">Danh sách dịch vụ</a>
                         </li>
                         <li>

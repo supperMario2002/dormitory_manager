@@ -75,4 +75,36 @@ class c_service extends controller
             $this->redirect($this->base_url("admin/service/index"));
         }
     }
+
+    public function indexoderservice() {
+        $m_service = new m_service();
+        $list_order_service = $m_service->getAllOderServices();
+        $this->view("admin/service/indexOrderService", compact('list_order_service'));
+    }
+
+    public function acceptorderservice() {
+        if (isset($_GET["id"])) {
+            $m_service = new m_service();
+            $del = $m_service->update_oder_status_acceot($_GET["id"]);
+            if (!$del) {
+                setcookie("err", "Cập nhật trạng thái không thành công!", time() + 1, "/", "", 0);
+            } else {
+                setcookie("suc", "Cập nhật trạng thái thành công!", time() + 1, "/", "", 0);
+            }
+            $this->redirect($this->base_url("admin/service/indexoderservice"));
+        }
+    }
+
+    public function deactiveorderservice() {
+        if (isset($_GET["id"])) {
+            $m_service = new m_service();
+            $del = $m_service->update_oder_status_deactive($_GET["id"]);
+            if (!$del) {
+                setcookie("err", "Cập nhật trạng thái không thành công!", time() + 1, "/", "", 0);
+            } else {
+                setcookie("suc", "Cập nhật trạng thái thành công!", time() + 1, "/", "", 0);
+            }
+            $this->redirect($this->base_url("admin/service/indexoderservice"));
+        }
+    }
 }
