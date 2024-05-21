@@ -139,7 +139,7 @@ class c_bill extends controller{
 
     public function serviceindex() {
         $result = new m_bill();
-        $oder_services = $result->getAllOderServices();
+        $oder_services = $result->getAllOderServices($_SESSION["login"]["id"]);
         $selectedPaymentMethod = isset($_POST['billingOptions']) ? $_POST['billingOptions'] : null;
         if($selectedPaymentMethod == 'momo'){
             $billId = $_POST["bill_id"];

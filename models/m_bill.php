@@ -129,10 +129,11 @@ class m_bill extends DB
         return $this->query($sql);
     }
 
-    public function getAllOderServices() {
+    public function getAllOderServices($id) {
         $sql = "SELECT order_service.*, services.name, services.describe,services.price
         FROM order_service
-        JOIN services ON order_service.service_id = services.id";
+        JOIN services ON order_service.service_id = services.id
+        WHERE student_id = $id";
         return $this->get_list($sql);
     }
 

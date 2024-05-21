@@ -9,14 +9,13 @@ class m_contract extends DB{
         $sql = "SELECT t1.*, users.name AS user_name 
         FROM users 
         RIGHT JOIN (
-            SELECT rooms.*, COUNT(contracts.room_id) AS count 
+            SELECT rooms.*, COUNT(DISTINCT CASE WHEN contracts.liquidation IS NULL THEN contracts.student_id END) AS count
             FROM rooms 
             LEFT JOIN contracts ON rooms.id = contracts.room_id 
             WHERE rooms.status = 1
             GROUP BY rooms.id
         ) AS t1
-        ON users.id = t1.user_id 
-        WHERE area = $sex AND max_num != COUNT";
+        ON users.id = t1.user_id WHERE area = $sex AND max_num != COUNT";
         return $this->get_list($sql);
 
     }
@@ -29,7 +28,11 @@ class m_contract extends DB{
         $sql = "SELECT users.*
         FROM users
         LEFT JOIN contracts ON users.username = contracts.student_id
-        WHERE users.role = 1 AND contracts.liquidation IS NOT NULL";
+        WHERE users.role = 1
+          AND users.username NOT IN (
+              SELECT student_id
+              FROM contracts
+              WHERE liquidation IS NULL)";
         return $this->get_list($sql);
     }
 

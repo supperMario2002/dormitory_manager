@@ -105,7 +105,8 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title" id="myviewLabel">Thông tin chi tiết</h4>
+                                                    <h4 class="modal-title me-5" id="myviewLabel">Thông tin chi tiết</h4>
+                                                    <a href="javascript:window.print()" class="btn btn-primary"><i class="mdi mdi-printer"></i>In hóa đơn</a>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-hidden="true"></button>
                                                 </div>

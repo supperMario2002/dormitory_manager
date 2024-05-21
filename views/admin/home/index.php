@@ -18,6 +18,9 @@ for ($month = 1; $month <= 12; $month++) {
 }
 $tongtiendien = '[' . implode(',', $tongtiendien) . ']';
 $tongtiennuoc = '[' . implode(',', $tongtiennuoc) . ']';
+$tongtienphong = array_map(function($item) {
+    return $item['total_room_price'];
+}, $data["get_money_room"]);
 ?>
 
 <div class="row">
@@ -33,43 +36,14 @@ $tongtiennuoc = '[' . implode(',', $tongtiennuoc) . ']';
 
 <div class="row">
     <div class="col-xl-12 col-lg-12">
-        <div class="side-nav-title side-nav-item">Số liệu sinh viên</div>
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card widget-flat">
-                    <a href="">
-                        <div class="card-body">
-                            <div class="float-end">
-                                <i class="mdi mdi-account-multiple widget-icon"></i>
-                            </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Tổng số sinh viên</h5>
-                            <h3 class="mt-3 mb-3"><?php echo count($data['students']); ?></h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="card widget-flat">
-                    <a href="">
-                        <div class="card-body">
-                            <div class="float-end">
-                                <i class="mdi mdi-calendar-remove widget-icon"></i>
-                            </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Sinh viên hết hạn</h5>
-                            <h3 class="mt-3 mb-3"><?php echo count($data['students_end']); ?></h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-4">
                 <div class="side-nav-title side-nav-item">Số liệu phòng</div>
                 <canvas id="chartRooms" width="50" height="50"></canvas>
             </div>
-            <div class="col-sm-2">
-
+            <div class="col-sm-4">
+                <div class="side-nav-title side-nav-item">Số liệu sinh viên</div>
+                <canvas id="chartStudent" width="50" height="50"></canvas>
             </div>
             <div class="col-sm-4">
                 <div class="side-nav-title side-nav-item">Số liệu người dùng</div>
@@ -77,9 +51,15 @@ $tongtiennuoc = '[' . implode(',', $tongtiennuoc) . ']';
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 <div class="side-nav-title side-nav-item">Thống kê tiền điện nước theo tháng</div>
                 <canvas id="chartMoney" width="200" height="50"></canvas>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-sm-12">
+                <div class="side-nav-title side-nav-item">Thống kê tiền phòng theo tháng</div>
+                <canvas id="chartMoneyRoom" width="200" height="50"></canvas>
             </div>
         </div>
     </div>
@@ -124,7 +104,38 @@ var chartAccouts = new Chart(ctxAccout, {
         labels: ['Tài khoản bị khóa', 'Tài khoản hoạt động'],
         datasets: [{
             label: 'Tổng số tài khoản',
-            data: [<?php $dem1 = 0; foreach($data['users'] as $value){if($value['status'] == 0){ $dem1++;}} echo $dem1;?>, <?php echo count($data['users'])-$dem1; ?>],
+            data: [<?php $dem1 = 0; foreach($data['users'] as $value){if($value['status'] == 0){ $dem1++;}} echo $dem1;?>,
+                <?php echo count($data['users'])-$dem1; ?>
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+var ctxStudent = document.getElementById('chartStudent').getContext('2d');
+var chartStudent = new Chart(ctxStudent, {
+    type: 'pie',
+    data: {
+        labels: ['Số sinh viên hiệu lực hợp đồng', 'Số sinh viên hết hạn hợp đồng'],
+        datasets: [{
+            label: 'Tổng số tài khoản',
+            data: [<?php echo count($data['students']) - count($data['students_end']); ?>,
+                <?php echo count($data['students_end']); ?>
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -163,6 +174,56 @@ var chartMoney = new Chart(ctxMoney, {
             data: <?=$tongtiennuoc?>,
             fill: false,
             borderColor: 'rgb(54, 162, 235)'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    },
+})
+var ctxMoneyRoom = document.getElementById('chartMoneyRoom').getContext('2d');
+var chartMoneyRoom = new Chart(ctxMoneyRoom, {
+    type: 'bar',
+    data: {
+        labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7",
+            "Tháng 8",
+            "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"
+        ],
+        datasets: [{
+            label: 'Dữ liều tiền phòng',
+            data: <?php echo json_encode($tongtienphong);  ?>,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)',
+                'rgba(255, 0, 0, 0.2)', // Đỏ
+                'rgba(0, 255, 0, 0.2)', // Xanh lá
+                'rgba(0, 0, 255, 0.2)', // Xanh dương
+                'rgba(255, 255, 0, 0.2)', // Vàng
+                'rgba(255, 165, 0, 0.2)' // Cam
+            ],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                'rgb(255, 0, 0)', // Đỏ
+                'rgb(0, 255, 0)', // Xanh lá
+                'rgb(0, 0, 255)', // Xanh dương
+                'rgb(255, 255, 0)', // Vàng
+                'rgb(255, 165, 0)' // Cam
+            ],
+            borderWidth: 1
         }]
     },
     options: {
