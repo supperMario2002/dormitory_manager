@@ -87,11 +87,14 @@
                         <li>
                             <a href="<?= $this->base_url("admin/bill/create-electric-water") ?>">Thêm hóa đơn điện nước</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="<?= $this->base_url("admin/bill/invoice") ?>">Hóa đơn dịch vụ</a>
                         </li>
                         <li>
                             <a href="<?= $this->base_url("admin/bill/create-invoice") ?>">Thêm hóa đơn dịch vụ</a>
+                        </li> -->
+                        <li>
+                            <a href="<?= $this->base_url("admin/service/indexoderservice") ?>">Danh sách đơn hàng dịch vụ</a>
                         </li>
                     </ul>
                 </div>
@@ -126,14 +129,12 @@
                 </a>
                 <div class="collapse" id="service">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="<?= $this->base_url("admin/service/indexoderservice") ?>">Danh sách đơn hàng dịch vụ</a>
-                        </li>
+                        
                         <li>
                             <a href="<?= $this->base_url("admin/service/index") ?>">Danh sách dịch vụ</a>
                         </li>
                         <li>
-                            <a href="<?= $this->base_url("admin/service/create") ?>">Thêm quản dịch vụ</a>
+                            <a href="<?= $this->base_url("admin/service/create") ?>">Thêm dịch vụ</a>
                         </li>
                     </ul>
                 </div>

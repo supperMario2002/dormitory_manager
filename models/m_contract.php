@@ -68,6 +68,8 @@ class m_contract extends DB{
     public function insert_contract($admin_id, $user_id, $room_id, $date_start, $date_end, $method_payment){
         $sql = "INSERT INTO `contracts`(`id`, `student_id`, `room_id`, `user_id`, `date_start`, `date_end`, `method_payment`, `status`, `liquidation`) 
         VALUES (null,$user_id,$room_id,$admin_id,'$date_start','$date_end',$method_payment,0,null)";
+        echo $sql;
+        die();
 
         return $this->query($sql);
     }
@@ -85,6 +87,53 @@ class m_contract extends DB{
     }
     public function deleteContractLiqui($id){
         $sql = "DELETE FROM contracts WHERE id = $id";
+        return $this->query($sql);
+    }
+
+    public function getContractById($id){
+        $sql = "SELECT 
+        contracts.id AS contract_id,
+        contracts.student_id,
+        users.name AS student_name,
+        contracts.room_id,
+        rooms.room_name,
+        contracts.user_id AS contract_user_id,
+        contracts.date_start,
+        contracts.date_end,
+        contracts.method_payment,
+        contracts.status AS contract_status,
+        contracts.liquidation,
+        users.username AS user_username,
+        users.email AS user_email,
+        rooms.price AS room_price,
+        rooms.max_num AS room_max_num,
+        rooms.user_id AS room_user_id,
+        rooms.status AS room_status,
+        rooms.area AS room_area
+    FROM 
+        contracts
+    JOIN 
+        users ON contracts.student_id = users.username
+    JOIN 
+        rooms ON contracts.room_id = rooms.id
+    WHERE contracts.id = $id;";
+        return $this->get_row($sql);
+    }
+
+    public function updateContract($id, $admin_id, $user_id, $room_id, $date_start, $date_end, $method_payment, $status) {
+        $sql = "UPDATE contracts 
+        SET 
+            `student_id`=$user_id,
+            `room_id`=$room_id,
+            `user_id`=$admin_id,
+            `date_start`='$date_start',
+            `date_end`='$date_end',
+            `method_payment`=$method_payment,
+            `status`= $status,
+            `liquidation`=NULL  
+        WHERE 
+            `id`=$id; 
+        ";
         return $this->query($sql);
     }
 }

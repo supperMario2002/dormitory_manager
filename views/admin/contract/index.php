@@ -63,6 +63,7 @@
                                     </td>
 
                                     <td class="table-action">
+                                    <a href="<?= $this->base_url("admin/contract/edit/" . $value['id']) ?>" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                         <a href="<?= $this->base_url("admin/contract/update/" . $value["id"]) ?>" class="action-icon"><button class="btn btn btn-success">Thanh Lý</button></a>
                                     </td>
                                 </tr>
