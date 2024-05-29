@@ -210,7 +210,7 @@ class c_bill extends controller{
             $service_id = $_POST['service_id'];
             $quanlity = $_POST['quanlity'];
             $total_price = str_replace(',', '', $_POST['total_price']);
-            $create = $result->createServiceOrder($_SESSION["login"]["id"],$service_id,$room,$quanlity,$total_price);
+            $create = $result->createServiceOrder($_SESSION["login"]["id"],$service_id,$room["room_id"],$quanlity,$total_price);
             if(!$create){
                 setcookie("err", "Lỗi tạo đơn hàng!", time()+1, "/","", 0);
             }else{

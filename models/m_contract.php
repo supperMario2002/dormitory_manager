@@ -68,9 +68,6 @@ class m_contract extends DB{
     public function insert_contract($admin_id, $user_id, $room_id, $date_start, $date_end, $method_payment){
         $sql = "INSERT INTO `contracts`(`id`, `student_id`, `room_id`, `user_id`, `date_start`, `date_end`, `method_payment`, `status`, `liquidation`) 
         VALUES (null,$user_id,$room_id,$admin_id,'$date_start','$date_end',$method_payment,0,null)";
-        echo $sql;
-        die();
-
         return $this->query($sql);
     }
     public function getAllContractLiqui(){
