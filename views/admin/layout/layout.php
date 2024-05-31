@@ -16,7 +16,7 @@
     <script src="<?= _WEB_ROOT ?>/public/js/jquery-3.6.1.min.js"></script>
     <!-- <link href="<?= _WEB_ROOT ?>/public/js/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="<?= _WEB_ROOT ?>/node_modules/animate.css/animate.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="<?= _WEB_ROOT ?>/public/js/chart.js"></script>
 
 
     <style>
