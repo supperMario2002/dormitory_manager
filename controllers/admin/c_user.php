@@ -154,9 +154,11 @@ class c_user extends controller
             $email = $_POST["email"];
             $phone = $_POST["phone"];
             $username = $_POST["username"];
-            $password = null;
+            $password = $_POST["password"];
             if ($password == null) {
                 $password = $_SESSION["login"]["password"];
+            }else{
+                $password = md5($password);
             }
             $avatar_url = ($_FILES['avatar']['error'] == 0) ? rand(0, 1000) . $_FILES['avatar']['name'] : '';
             if (!$avatar_url) {
@@ -186,6 +188,10 @@ class c_user extends controller
                 $this->redirect($this->base_url("admin/user/profile"));
             }
         }
-        $this->view("admin/user/profile");
+        if($_SESSION["login"]["role"] == 0) {
+            $this->view("admin/user/profile");
+        }else{
+            $this->view("user/profile");
+        }
     }
 }

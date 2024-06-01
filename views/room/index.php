@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h4 class="">Tên Phòng: <?= $data["room"]["room_name"] ?></h4>
                 </div>
-                <?php if ($data["room"]["status"] == 0) { ?>
+                <?php if ($data["room"]["room_status"] == 0) {?>
                     <div class="badge bg-secondary text-light mb-3">Bảo trì</div>
                 <?php } else { ?>
                     <div class="badge bg-success text-light mb-3">Hoạt động</div>

@@ -56,11 +56,16 @@ class m_room extends DB{
     }
 
     public function getRoomByIdUser($id){
-        $sql = "SELECT t1.*, users.* FROM users INNER JOIN
-        (SELECT rooms.*, contracts.room_id 
-         FROM contracts  INNER JOIN rooms  ON contracts.room_id = rooms.id
-         WHERE student_id = $id AND contracts.liquidation IS NULL) as t1
-         ON users.id = t1.user_id";
+        // $sql = "SELECT t1.*, users.* FROM users INNER JOIN
+        // (SELECT rooms.*, contracts.room_id 
+        //  FROM contracts  INNER JOIN rooms  ON contracts.room_id = rooms.id
+        //  WHERE student_id = $id AND contracts.liquidation IS NULL) as t1
+        //  ON users.id = t1.user_id";
+        $sql = "SELECT t1.*, users.status AS user_status, users.* FROM users INNER JOIN
+        (SELECT rooms.*, contracts.room_id, rooms.status AS room_status
+         FROM contracts INNER JOIN rooms ON contracts.room_id = rooms.id
+         WHERE student_id = $id AND contracts.liquidation IS NULL) AS t1
+         ON users.id = t1.user_id;";
 
         return $this->get_row($sql);
 

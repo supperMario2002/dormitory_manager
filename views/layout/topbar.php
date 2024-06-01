@@ -168,7 +168,7 @@
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="<?php echo _WEB_ROOT . "/admin/user/profile"; ?>" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-circle me-1"></i>
                     <span>Thông tin cá nhân</span>
                 </a>
