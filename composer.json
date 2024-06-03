@@ -1,0 +1,19 @@
+{
+    "name": "admin/dormitory_manager",
+    "type": "n",
+    "autoload": {
+        "psr-4": {
+            "Admin\\DormitoryManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "quangvinh1102",
+            "email": "vinhls2002@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "psr/log": "^3.0"
+    }
+}

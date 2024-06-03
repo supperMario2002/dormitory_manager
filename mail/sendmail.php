@@ -19,13 +19,13 @@ class sendmail
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'luonghoa121002@gmail.com';
-            $mail->Password = 'ielcaiflkgpkszvs';
+            $mail->Username = 'vip1acma@gmail.com';
+            $mail->Password = 'sbwstlkkxkxarbkr';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom('luonghoa121002@gmail.com', "=?utf-8?b?".base64_encode("Quản trị viên ký túc")."?=");;
+            $mail->setFrom('shitgame9@gmail.com', "=?utf-8?b?".base64_encode("Quản trị viên ký túc")."?=");;
             $mail->addAddress($email, 'user');
             // $mail->addAddress('ellen@example.com');               
             // $mail->addReplyTo('info@example.com', 'Information');
