@@ -13,7 +13,8 @@ class c_user extends controller
             if (count($check) != 0) {
                 echo 0;
             } else {
-                echo 1;
+                $_SESSION['suc'] = "Email không tồn tại trong hệ thống!";
+                $this->redirect($this->base_url("login"));
             }
         }
 
